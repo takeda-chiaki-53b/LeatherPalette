@@ -126,4 +126,4 @@ FAQの記載はテキストのみで興味を引きにくいため閲覧され�
 https://www.figma.com/design/jnOgeZSlBRqvVxVc4GKm6W/%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA?node-id=15-2&t=7VhAFGoEFCTfJDu4-1
 
 ## ■ ER図
-[![Image from Gyazo](https://i.gyazo.com/8efcff8e3a9577d02b129b95211a280d.png)](https://gyazo.com/8efcff8e3a9577d02b129b95211a280d)
+[![Image from Gyazo](https://i.gyazo.com/b6532b4f9dc60538c379848551f94500.png)](https://gyazo.com/b6532b4f9dc60538c379848551f94500)
