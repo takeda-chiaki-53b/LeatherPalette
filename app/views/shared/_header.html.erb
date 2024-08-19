@@ -1,0 +1,53 @@
+<header>
+<!-- 大きな画面用 -->
+  <div class="hidden lg:block">
+    <div class="navbar bg-orange-100 text-yellow-900">
+      <div class="flex-1">
+          <div class="btn btn-ghost text-xl"><%= link_to "Leather palette", root_path %></div>
+      </div>
+      <div class="flex-none">
+        <div>
+          <label class="btn btn-ghost"><%= link_to "ログアウト", "#", data: {turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？'} %></label>
+          <label class="btn btn-ghost"><%= link_to "マイページ", "#" %></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- 中くらいの画面用 -->
+  <div class="hidden md:block lg:hidden">
+    <div class="navbar bg-orange-100 text-yellow-900">
+      <div class="flex-1">
+          <div class="btn btn-ghost text-xl"><%= link_to "Leather palette", root_path %></div>
+      </div>
+      <div class="flex-none">
+        <div>
+          <label class="btn btn-ghost"><%= link_to "ログアウト", "#", data: {turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？'} %></label>
+          <label class="btn btn-ghost"><%= link_to "マイページ", "#" %></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- スマホ用 -->
+  <div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full bg-orange-100 text-sm py-2">
+    <nav class="max-w-[85rem] w-full mx-auto px-4 text-yellow-900" aria-label="Global">
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="btn btn-ghost text-xl"><%= link_to "Leather palette", root_path %></div>
+        </div>
+          <ul class="menu menu-horizontal px-1 max-width">
+            <li>
+              <details class="relative">
+                <summary><i class="bi bi-person-circle fa-2x"></i>menu</summary>
+                  <ul class="p-2 bg-gray-100 z-50 absolute right-0">
+                    <li><label class="btn btn-ghost"><%= link_to "ログアウト", "#", data: {turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？'} %></li>
+                    <li><label class="btn btn-ghost"><%= link_to "マイページ", "#" %></li>
+                  </ul>
+              </details>
+            </li>
+          </ul>
+      </div>
+    </nav>
+  </div>
+</header>
