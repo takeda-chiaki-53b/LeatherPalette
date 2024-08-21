@@ -19,8 +19,18 @@
   </head>
 
   <body>
-    <%= render 'shared/header' %>
-    <%= yield %>
-    <%= render 'shared/footer' %>
+    <header>
+      <%= render 'shared/header' %>
+    </header>
+    <main class="flex-grow">
+      <div class="lg:ml-64 md:ml-20 md:mb-36">
+        <%= yield %>
+      </div>
+    </main>
+    <footer class="footer footer-center p-10 text-neutral-300 mt-16 md:mt-4 sm:mt-0">
+      <div class="lg:ml-64 md:ml-20 min-[320px]:mb-14 md:mb-0">
+       <%= render 'shared/footer' %>
+      </div>
+    </footer>
   </body>
 </html>
