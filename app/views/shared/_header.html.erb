@@ -1,16 +1,27 @@
-<header>
 <!-- 大きな画面用 -->
   <div class="hidden lg:block">
-    <div class="navbar bg-neutral-100 text-yellow-900">
-      <div class="flex-1">
-          <div class="btn btn-ghost text-xl"><%= link_to "LeatherPalette", root_path %></div>
-      </div>
-      <div class="flex-none">
-        <div>
-          <label class="btn btn-ghost"><%= link_to "ログアウト", "#", data: {turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？'} %></label>
-          <label class="btn btn-ghost"><%= link_to "マイページ", "#" %></label>
+    <div id="docs-sidebar" class="fixed top-0 start-0 bottom-0 z-[60] w-60 bg-neutral-100 border-e-2 border-neutral-100 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0">
+        <div class="px-6 flex justify-start">
+          <%= link_to root_path, class: "btn btn-ghost flex-none text-xl font-bold text-yellow-900" do %>
+            <span>LeatherPalette</span>
+          <% end %>
         </div>
-      </div>
+        <nav class="hs-accordion-group p-6 w-full flex flex-col flex-wrap text-yellow-900" data-hs-accordion-always-open>
+          <ul class="space-y-2.5 font-semibold">
+            <li>
+              <%= link_to "#", class: "btn btn-ghost flex items-center text-sm rounded-lg hover:neutral-100 justify-start", data: { turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？' } do %>
+                <i class="bi bi-box-arrow-left text-xl"></i>
+                <span>ログアウト</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "#", class: "btn btn-ghost flex items-center text-sm rounded-lg hover:neutral-100 justify-start" do %>
+                <i class="bi bi-person-circle text-xl"></i>
+                <span>マイページ</span>
+              <% end %>
+            </li>
+          </ul>
+        </nav>
     </div>
   </div>
 
@@ -83,4 +94,3 @@
       <div class="grid"><!-- 右端の透明なスペース --></div>
     </div>
   </div>
-</header>
