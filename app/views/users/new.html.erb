@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto text-yellow-900">
+      <h1 class="text-xl text-center font-semibold mt-10 mb-4 pb-2">
+        新規登録
+      </h1>
+      <%= form_with model: @user do |f| %>
+        <div class="mb-3">
+          <%= f.label :name, "ニックネーム(公開されます)", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.text_field :name, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :email, "メールアドレス", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.email_field :email, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :password, "パスワード(8文字以上)", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.password_field :password, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :password_confirmation, "パスワード再入力", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.password_field :password_confirmation, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
+        </div>
+        <div class="mx-auto w-10/12 md:w-1/2">
+          <%= f.submit "登録", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] text-yellow-900" %>
+        </div>
+      <% end %>
+      <div class="text-center mt-6 text-sm">
+        <%= link_to 'ログインページへ', "#" %>
+      </div>
+    </div>
+  </div>
+</div>
