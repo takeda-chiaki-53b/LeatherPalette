@@ -20,7 +20,11 @@
 
   <body>
     <header>
-      <%= render 'shared/header' %>
+      <% if logged_in? %>
+        <%= render 'shared/header' %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+      <% end %>
     </header>
     <main class="flex-grow">
       <div class="lg:ml-64 md:ml-20 md:mb-36">

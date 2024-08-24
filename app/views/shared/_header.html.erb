@@ -39,7 +39,7 @@
             <% end %>
           </li>
           <li class="fixed bottom-4">
-            <%= link_to "#", class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white", data: { turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？' } do %>
+            <%= link_to logout_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white", data: { turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？' } do %>
               <i class="bi bi-box-arrow-left text-xl"></i>
               <span>ログアウト</span>
             <% end %>
@@ -84,7 +84,7 @@
         <% end %>
       </div>
       <div class="fixed bottom-2 hs-tooltip inline-block [--placement:right]">
-        <%= link_to "#", class:"flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: {turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？'} do %>
+        <%= link_to logout_path, class:"flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: {turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？'} do %>
           <i class="bi bi-box-arrow-left text-xl"></i>
         <% end %>
       </div>
@@ -105,7 +105,7 @@
               <summary><i class="bi bi-person-circle"></i>menu</summary>
                 <ul class="p-1 z-5 absolute right-0 shadow rounded-box w-36">
                   <li>
-                    <%= link_to "#", class: "dropdown-content flex items-center text-sm rounded-lg justify-start", data: {turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？'} do %>
+                    <%= link_to logout_path, class: "dropdown-content flex items-center text-sm rounded-lg justify-start", data: {turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？'} do %>
                       <i class="bi bi-box-arrow-left text-xl"></i>
                       <span>ログアウト</span>
                     <% end %>
