@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   # ブランドアカウントのルート
   namespace :brand_admin do
     resources :users, only: %i[new create]
-    get 'brand_admin', to: 'brand_admins#new', as: :brand_admin
+    get "brand_admi", to: "brand_admins#new", as: :brand_admin
   end
 end
