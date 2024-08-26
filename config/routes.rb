@@ -4,4 +4,10 @@ Rails.application.routes.draw do
   get "login", to: "user_sessions#new"
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
+
+  # ブランドアカウントのルート
+  namespace :brand_admin do
+    resources :users, only: %i[new create]
+    get 'brand_admin', to: 'brand_admins#new', as: :brand_admin
+  end
 end
