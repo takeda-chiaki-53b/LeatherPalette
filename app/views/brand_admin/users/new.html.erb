@@ -4,7 +4,7 @@
       <h1 class="text-xl text-center font-semibold mt-10 mb-4 pb-2">
         ブランド新規登録
       </h1>
-      <%= form_with model: @user do |f| %>
+      <%= form_with model: @user , url: brand_admin_users_path do |f| %>
         <div class="mb-3">
           <%= f.label :name, "ブランド名", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
           <%= f.text_field :name, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>

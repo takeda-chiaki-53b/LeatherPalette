@@ -3,11 +3,13 @@ class BrandAdmin::UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.role = :brand_admin  # roleを設定
   end
 
   def create
     @user = User.new(user_params)
+
+    @user.role = :brand_admin # :brand_adminを設定
+
     if @user.save
       redirect_to root_path
     else
@@ -18,6 +20,6 @@ class BrandAdmin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation).merge(role: :brand_admin)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
