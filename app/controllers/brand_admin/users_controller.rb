@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class BrandAdmin::UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
 
   def new
@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.role = :brand_admin # :brand_adminを設定
+
     if @user.save
       redirect_to login_path
     else

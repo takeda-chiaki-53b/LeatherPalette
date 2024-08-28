@@ -20,11 +20,13 @@
 
   <body>
     <header>
-      <% if logged_in? %>
-        <%= render 'shared/header' %>
-      <% else %>
-        <%= render 'shared/before_login_header' %>
-      <% end %>
+    <% if logged_in? && current_user.role == 'brand_admin' %>
+      <%= render 'brand_admin/shared/header' %> <!-- ブランド管理者用のヘッダー -->
+    <% elsif logged_in? %>
+      <%= render 'shared/header' %> <!-- 一般ユーザー用のヘッダー -->
+    <% else %>
+      <%= render 'shared/before_login_header' %>
+    <% end %>
     </header>
     <main class="flex-grow">
       <div class="lg:ml-64 md:ml-20 md:mb-36">
