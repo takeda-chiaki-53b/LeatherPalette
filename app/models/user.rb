@@ -9,4 +9,7 @@ class User < ApplicationRecord
 
   # 権限判定用
   enum role: { general: 0, brand_admin: 1, app_admin: 2 }
+
+  # アソシエーション
+  has_many :posts, dependent: :destroy
 end
