@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root "tops#index"
+
+  # 新規登録、ログイン、ログアウト
   resources :users, only: %i[new create]
   get "login", to: "user_sessions#new"
   post "login", to: "user_sessions#create"
@@ -9,4 +11,7 @@ Rails.application.routes.draw do
   namespace :brand_admin do
     resources :users, only: %i[new create]
   end
+
+  # 投稿機能関連
+  resources :posts, only: %i[index]
 end

@@ -18,6 +18,11 @@
       <h3 class="text-2xl font-semibold mb-2">投稿</h3>
       <h3 class="text-sm mb-2">自分の相棒を紹介しよう！</h3>
       <p class="text-sm text-yellow-900">使用年数やお手入れの方法が一緒に登録できるよ！素敵な相棒のエイジングの過程をみんなと共有しよう✨</p>
+      <div class="flex justify-center mt-6 mb-6">
+        <%= link_to posts_path, class: "flex items-center text-center py-3 px-4 font-semibold text-sm text-yellow-900 rounded-3xl bg-[#E6CCB585] hover:bg-[#fdba74]" do %>
+          <i class="fa-solid fa-user-plus fa-xl mr-2"></i> 新着投稿を見てみる👀
+        <% end %>
+      </div>
     </div>
 
     <div class="bg-white rounded-lg shadow-lg p-6 text-center text-yellow-900">
