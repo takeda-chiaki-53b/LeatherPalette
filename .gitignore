@@ -39,3 +39,5 @@
 
 /node_modules
 /vendor/bundle
+app/assets/images/bag_image.png
+app/assets/images/sample.jpg

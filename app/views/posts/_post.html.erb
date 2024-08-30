@@ -1,0 +1,11 @@
+<div class="card bg-base-100 shadow-xl aspect-[1/1]">
+  <div class="card-image" style="height: 84%;">
+    <%= link_to image_tag('sample.jpg', class: 'w-full h-full object-cover'), "#_path" %>
+  </div>
+  <div class="flex items-center justify-between" style="height: 16%">
+    <ul class="list-inline">
+        <li class="text-xs ml-3"><i class="bi bi-person"></i><%= post.user.name %></li>
+    </ul>
+    <i class="bi bi-heart text-base md:text-xl mr-4"></i>
+  </div>
+</div>
