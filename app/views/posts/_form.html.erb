@@ -1,0 +1,12 @@
+<%= form_with model: post do |f| %>
+  <div class="mb-3">
+    <%= f.label :post_image, "写真を選択", class: "label w-10/12 md:w-1/2 mx-auto" %>
+    <%= f.file_field :post_images, multiple: true, id: 'post-images-input', include_hidden: false, class: 'file-input file-input-bordered bg-neutral-100 form-control w-10/12 md:w-1/2 mx-auto'%>
+  </div>
+  <div id="preview-post-images" class="flex flex-wrap justify-center"></div>
+    <%= f.label :body, "投稿メッセージ",  class: "label w-10/12 md:w-1/2 mx-auto" %>
+    <%= f.text_area :body, class: "input input-bordered bg-neutral-100 form-control mb-6 w-10/12 md:w-1/2 mx-auto h-auto", rows: 5, placeholder: "アイテム購入時のエピソードや自分なりの使い方などを共有しましょう!" %>
+  <div class='mx-auto w-10/12 md:w-1/2'>
+    <%= f.submit "投稿", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74] text-yellow-900", id: "submit-button"%>
+  </div>
+<% end %>
