@@ -11,13 +11,13 @@
           <li>
             <%= link_to login_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-box-arrow-in-right text-xl"></i>
-              <span>ログイン</span>
+              <span><%= t('.login') %></span>
             <% end %>
           </li>
           <li>
             <%= link_to new_user_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-person-add text-xl"></i>
-              <span>新規登録</span>
+              <span><%= t('.sign_up') %></span>
             <% end %>
           </li>
         </ul>
@@ -63,13 +63,13 @@
                   <li>
                     <%= link_to login_path, class: "dropdown-content flex items-center text-sm rounded-lg justify-start" do %>
                       <i class="bi bi-box-arrow-in-right text-xl"></i>
-                      <span>ログイン</span>
+                      <span><%= t('.login') %></span>
                     <% end %>
                   </li>
                   <li>
                     <%= link_to new_user_path, class: "dropdown-content flex items-center text-sm rounded-lg justify-start" do %>
                       <i class="bi bi-person-add text-xl"></i>
-                      <span>新規登録</span>
+                      <span><%= t('.sign_up') %></span>
                     <% end %>
                   </li>
                 </ul>
