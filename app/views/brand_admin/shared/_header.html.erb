@@ -11,37 +11,37 @@
           <li>
             <%= link_to posts_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-house text-xl"></i>
-              <span>ホーム</span>
+              <span><%= t('.home') %></span>
             <% end %>
           </li>
           <li>
             <%= link_to "#", class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-search text-xl"></i>
-              <span>検索</span>
+              <span><%= t('.search') %></span>
             <% end %>
           </li>
           <li>
             <%= link_to new_post_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-plus-square text-xl"></i>
-              <span>投稿作成</span>
+              <span><%= t('.post_new') %></span>
             <% end %>
           </li>
           <li>
             <%= link_to "#", class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-heart text-xl"></i>
-              <span>お気に入り</span>
+              <span><%= t('.favorite') %></span>
             <% end %>
           </li>
           <li>
             <%= link_to "#", class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-person-circle text-xl"></i>
-              <span>ブランドマイページ</span>
+              <span><%= t('.mypage') %></span>
             <% end %>
           </li>
           <li class="fixed bottom-4">
             <%= link_to logout_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white", data: { turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？' } do %>
               <i class="bi bi-box-arrow-left text-xl"></i>
-              <span>ログアウト</span>
+              <span><%= t('.logout') %></span>
             <% end %>
           </li>
         </ul>
@@ -107,13 +107,13 @@
                   <li>
                     <%= link_to logout_path, class: "dropdown-content flex items-center text-sm rounded-lg justify-start", data: {turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？'} do %>
                       <i class="bi bi-box-arrow-left text-xl"></i>
-                      <span>ログアウト</span>
+                      <span><%= t('.logout') %></span>
                     <% end %>
                   </li>
                   <li>
                     <%= link_to "#", class: "dropdown-content flex items-center text-sm rounded-lg justify-start" do %>
                       <i class="bi bi-person-circle text-xl"></i>
-                      マイページ
+                      <span><%= t('.mypage') %></span>
                     <% end %>
                   </li>
                 </ul>

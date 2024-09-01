@@ -7,19 +7,19 @@
       <%= form_with model: @user , url: brand_admin_users_path do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
         <div class="mb-3">
-          <%= f.label :name, "ブランド名", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
-          <%= f.text_field :name, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
+          <%= f.label :name, class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.text_field :name, placeholder: "ブランド名をご入力ください", class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mb-3">
-          <%= f.label :email, "メールアドレス", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.label :email, class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
           <%= f.email_field :email, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mb-3">
-          <%= f.label :password, "パスワード(8文字以上)", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.label :password, class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
           <%= f.password_field :password, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mb-3">
-          <%= f.label :password_confirmation, "パスワード再入力", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.label :password_confirmation, class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
           <%= f.password_field :password_confirmation, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mx-auto w-10/12 md:w-1/2">
@@ -27,7 +27,7 @@
         </div>
       <% end %>
       <div class="text-center mt-6 text-sm">
-        <%= link_to 'ログインページへ', login_path %>
+        <%= link_to t('.to_login_page'), login_path %>
       </div>
     </div>
   </div>

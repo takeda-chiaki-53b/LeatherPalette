@@ -1,0 +1,35 @@
+ja:
+  brand_admin:
+    users:
+      new:
+        to_login_page: ログインページへ
+    shared:
+      header:
+        home: ホーム
+        search: 検索
+        post_new: 投稿作成
+        favorite: お気に入り
+        mypage: マイページ
+        logout: ログアウト
+  users:
+    new:
+      title: ユーザー登録
+      to_login_page: ログインページへ
+  user_sessions:
+    new:
+      title: ログイン
+      email: メールアドレス
+      password: パスワード
+      login: ログイン
+      password_forget: パスワードをお忘れの方はこちら
+  shared:
+    before_login_header:
+      login: ログイン
+      sign_up: 新規登録
+    header:
+      home: ホーム
+      search: 検索
+      post_new: 投稿作成
+      favorite: お気に入り
+      mypage: マイページ
+      logout: ログアウト

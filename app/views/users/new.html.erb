@@ -7,19 +7,19 @@
       <%= form_with model: @user do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
         <div class="mb-3">
-          <%= f.label :name, "ユーザーネーム(公開されます)", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.label :name, class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
           <%= f.text_field :name, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mb-3">
-          <%= f.label :email, "メールアドレス", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.label :email, class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
           <%= f.email_field :email, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mb-3">
-          <%= f.label :password, "パスワード(8文字以上)", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.label :password, class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
           <%= f.password_field :password, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mb-3">
-          <%= f.label :password_confirmation, "パスワード再入力", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.label :password_confirmation, class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
           <%= f.password_field :password_confirmation, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mx-auto w-10/12 md:w-1/2">
@@ -27,12 +27,12 @@
         </div>
       <% end %>
       <div class="flex flex-col flex-wrap flex items-center">
-        <%= link_to new_brand_admin_user_path, class: "btn btn-ghost text-center mt-1 font-semibold bg-neutral-100" do %>
-          <span>ブランドアカウント登録入口</span>
+        <%= link_to new_brand_admin_user_path, class: "btn btn-ghost text-center mt-3 leading-5 font-semibold bg-neutral-100" do %>
+          <span>ブランドアカウント登録はこちら☜<br>(ページが切り替わります)</span>
         <% end %>
       </div>
       <div class="text-center mt-6 text-sm">
-        <%= link_to 'ログインページへ', login_path %>
+        <%= link_to t('.to_login_page'), login_path %>
       </div>
     </div>
   </div>

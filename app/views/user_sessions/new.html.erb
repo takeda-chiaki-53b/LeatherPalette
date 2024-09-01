@@ -6,19 +6,19 @@
       </h1>
       <%= form_with url: login_path do |f| %>
         <div class="mb-3">
-          <%= f.label :email, "メールアドレス", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.label :email, t('.email'), class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
           <%= f.email_field :email, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mb-3">
-          <%= f.label :password, "パスワード", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.label :password, t('.password'), class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
           <%= f.password_field :password, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mx-auto w-10/12 md:w-1/2">
-          <%= f.submit "ログイン", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] text-yellow-900" %>
+          <%= f.submit t('.login'), class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] text-yellow-900" %>
         </div>
       <% end %>
       <div class="text-center mt-6 text-sm">
-        <%= link_to 'パスワードをお忘れの方', "#" %>
+        <%= link_to t('.password_forget'), "#" %>
       </div>
     </div>
   </div>

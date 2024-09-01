@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      post: 投稿
+    # model毎に定義したいattributesを記述
+    attributes:
+      user:
+        id: ID
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード(8文字以上)
+        password_confirmation: パスワード再入力
+      post:
+        body: 投稿メッセージ
+  # 全てのmodelで共通して使用するattributesを定義
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日
