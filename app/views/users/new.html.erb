@@ -5,6 +5,7 @@
         新規登録
       </h1>
       <%= form_with model: @user do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
         <div class="mb-3">
           <%= f.label :name, "ユーザーネーム(公開されます)", class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
           <%= f.text_field :name, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
