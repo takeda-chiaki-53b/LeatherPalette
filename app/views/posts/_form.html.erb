@@ -1,4 +1,5 @@
 <%= form_with model: post do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
   <div id="preview-post-images" class="flex flex-wrap justify-center"></div>
     <%= f.label :body, "投稿メッセージ",  class: "label w-10/12 md:w-1/2 mx-auto" %>
     <%= f.text_area :body, class: "input input-bordered bg-neutral-100 form-control mb-6 w-10/12 md:w-1/2 mx-auto h-auto", rows: 5, placeholder: "アイテム購入時のエピソードや自分なりの使い方などを共有しましょう!" %>
