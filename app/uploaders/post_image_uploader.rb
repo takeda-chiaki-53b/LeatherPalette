@@ -35,13 +35,13 @@ class PostImageUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process resize_to_fit: [50, 50]
   # end
-  process resize_to_fill: [1080, 1080]
+  process resize_to_fit: [ 1080, 1080 ]
 
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_allowlist
-    %w[jpg jpeg gif png heic webp]
+    %w[ jpg jpeg gif png heic webp ]
   end
 
   # Override the filename of the uploaded files:
@@ -55,13 +55,13 @@ class PostImageUploader < CarrierWave::Uploader::Base
 
   def convert_to_webp
     manipulate! do |img|
-      img.format 'webp'
+      img.format "webp"
       img
     end
   end
 
   # 拡張子を.webpで保存
   def filename
-    super.chomp(File.extname(super)) + '.webp' if original_filename.present?
+    super.chomp(File.extname(super)) + ".webp" if original_filename.present?
   end
 end
