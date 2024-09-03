@@ -12,6 +12,7 @@ ja:
         password: パスワード(8文字以上)
         password_confirmation: パスワード再入力
       post:
+        post_image: 投稿画像
         body: 投稿メッセージ
   # 全てのmodelで共通して使用するattributesを定義
   attributes:
