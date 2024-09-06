@@ -3,7 +3,7 @@
 
   <%= f.label :post_image, '写真（5枚まで）', class: 'label w-full md:w-1/2 mx-auto'%>
   <%= f.file_field :post_image, multiple: true, include_hidden: false, class: 'file-input file-input-bordered form-control w-full md:w-1/2 mx-auto'%>
-  <%= f.hidden_field :image, multiple: true %>
+  <%= f.hidden_field :post_image, multiple: true %>
 
   <%= f.label :body, class: "label w-10/12 md:w-1/2 mx-auto" %>
   <%= f.text_area :body,
