@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   end
 
   # 投稿機能関連
-  resources :posts, only: %i[index new create]
+  resources :posts, only: %i[index new create show]
 end
