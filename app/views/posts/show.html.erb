@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="w-full p-4 md:p-0 md:py-2 md:w-1/2 mx-auto">
+    <ul class="list-inline flex items-center">
+      <li class="mr-2"><%= image_tag "no_image", width: "40", height: "40", class: "rounded-full" %></li>
+      <li class="text-yellow-900"><%= @post.user.name %></li>
+    </ul>
+  </div>
+</div>
+
+<div class="relative w-full md:w-1/2 mx-auto">
+  <div class="overflow-hidden relative">
+    <div class="flex transition-transform duration-500 ease-in-out" id="carouselItems">
+      <% if @post.post_image.present? %>
+        <% @post.post_image.each_with_index do |image, index| %>
+          <div class="carousel-item <%= 'active' if index.zero? %> w-full">
+            <%= image_tag(image.url, class: 'block w-full h-auto object-contain') %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="carousel-item active w-full">
+          <%= image_tag('no_image.png', class: 'block w-full h-auto object-contain') %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% if @post.post_image.count > 1 %>
+    <!-- 画像が複数枚ある場合のみ表示 -->
+    <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-200 bg-opacity-60 shadow-md text-white w-7 h-7 rounded-full" onclick="prevSlide()">❮</button>
+    <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-200 bg-opacity-60 shadow-md text-white w-7 h-7 rounded-full" onclick="nextSlide()">❯</button>
+  <% end %>
+</div>
+
+<div class="body-content">
+  <div class="w-full p-4 md:p-0 md:pt-4 md:w-1/2 mx-auto">
+    <p class="text-yellow-900"><%= @post.body %></p>
+  </div>
+</div>
+
+<script>
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    const slides = document.querySelectorAll('.carousel-item');
+    currentIndex = (index + slides.length) % slides.length; // インデックスの範囲を調整
+
+    const offset = -currentIndex * 100;
+    document.getElementById('carouselItems').style.transform = `translateX(${offset}%)`;
+
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex)); // activeクラスの管理をシンプルに
+  }
+
+  function nextSlide() {
+    showSlide(currentIndex + 1);
+  }
+
+  function prevSlide() {
+    showSlide(currentIndex - 1);
+  }
+
+  showSlide(currentIndex); // 最初のスライドを表示
+</script>
