@@ -30,9 +30,9 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(@post), success: "投稿の編集が完了しました"
+      redirect_to post_path(@post), success: "投稿を更新しました"
     else
-      flash.now[:danger] = "投稿の編集に失敗しました"
+      flash.now[:danger] = "投稿の更新に失敗しました"
       render :edit, status: :unprocessable_entity
     end
   end
