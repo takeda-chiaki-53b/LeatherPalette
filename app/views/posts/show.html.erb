@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="w-full p-4 md:p-0 md:py-2 md:w-1/2 mx-auto">
+  <div class="w-full p-4 md:px-0 md:py-2 md:w-1/2 mx-auto">
     <ul class="list-inline flex items-center">
       <li class="mr-2"><%= image_tag 'no_image.png', width: "40", height: "40", class: "rounded-full" %></li>
       <li class="text-yellow-900"><%= @post.user.name %></li>
@@ -25,28 +25,34 @@
   </div>
   <% if @post.post_image.count > 1 %>
     <!-- 画像が複数枚ある場合のみ表示 -->
-    <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-200 bg-opacity-60 shadow-md text-white w-7 h-7 rounded-full" onclick="prevSlide()">❮</button>
-    <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-200 bg-opacity-60 shadow-md text-white w-7 h-7 rounded-full" onclick="nextSlide()">❯</button>
+    <button class="absolute left-1 top-1/2 transform -translate-y-1/2 bg-gray-200 bg-opacity-60 shadow-md text-white w-8 h-8 rounded-full" onclick="prevSlide()">❮</button>
+    <button class="absolute right-1 top-1/2 transform -translate-y-1/2 bg-gray-200 bg-opacity-60 shadow-md text-white w-8 h-8 rounded-full" onclick="nextSlide()">❯</button>
   <% end %>
 </div>
 
 <div class="body-content">
-  <div class="w-full p-4 md:p-0 md:pt-4 md:w-1/2 mx-auto">
+  <div class="w-full px-4 pt-4 pb-10 md:px-0 md:pt-4 md:pb-10 md:w-1/2 mx-auto">
     <p class="text-yellow-900"><%= @post.body %></p>
   </div>
 </div>
+
+<% if current_user.own?(@post) %>
+  <div class="w-full p-4 md:px-0 md:py-2 md:w-1/2 mx-auto flex justify-end">
+    <%= link_to "編集", edit_post_path(@post), class: "btn w-1/3 bg-[#E6CCB585] hover:bg-[#fdba74] text-yellow-900", id: "button-edit-#{@post.id}" %>
+  </div>
+<% end %>
 
 <script>
   let currentIndex = 0;
 
   function showSlide(index) {
     const slides = document.querySelectorAll('.carousel-item');
-    currentIndex = (index + slides.length) % slides.length; // インデックスの範囲を調整
+    currentIndex = (index + slides.length) % slides.length;
 
     const offset = -currentIndex * 100;
     document.getElementById('carouselItems').style.transform = `translateX(${offset}%)`;
 
-    slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex)); // activeクラスの管理をシンプルに
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex)); 
   }
 
   function nextSlide() {
@@ -56,6 +62,25 @@
   function prevSlide() {
     showSlide(currentIndex - 1);
   }
+
+  // スワイプ機能
+  const carousel = document.getElementById('carouselItems');
+  let startX;
+
+  carousel.addEventListener('touchstart', (event) => {
+    startX = event.touches[0].clientX;
+  });
+
+  carousel.addEventListener('touchend', (event) => {
+    const endX = event.changedTouches[0].clientX;
+    const distanceX = endX - startX;
+
+    if (distanceX > 50) {
+      prevSlide(); // 右スワイプ
+    } else if (distanceX < -50) {
+      nextSlide(); // 左スワイプ
+    }
+  });
 
   showSlide(currentIndex); // 最初のスライドを表示
 </script>

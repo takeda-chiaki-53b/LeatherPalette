@@ -12,4 +12,9 @@ class User < ApplicationRecord
 
   # アソシエーション
   has_many :posts, dependent: :destroy
+
+  # オブジェクトの user_idがユーザーオブジェクトのidと一致するかどうかを判定
+  def own?(object)
+    id == object&.user_id
+  end
 end
