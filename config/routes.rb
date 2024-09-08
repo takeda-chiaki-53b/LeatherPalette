@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   end
 
   # 投稿機能関連
-  resources :posts, only: %i[index new create show edit update]
+  resources :posts, only: %i[index new create show edit update destroy]
 end
