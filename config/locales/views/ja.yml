@@ -2,10 +2,11 @@ ja:
   brand_admin:
     users:
       new:
+        title: ブランド新規登録
         to_login_page: ログインページへ
     shared:
       header:
-        home: ホーム
+        home: 投稿一覧
         search: 検索
         post_new: 投稿作成
         favorite: お気に入り
@@ -13,7 +14,7 @@ ja:
         logout: ログアウト
   users:
     new:
-      title: ユーザー登録
+      title: 新規登録
       to_login_page: ログインページへ
   user_sessions:
     new:
@@ -33,3 +34,12 @@ ja:
       favorite: お気に入り
       mypage: マイページ
       logout: ログアウト
+  posts:
+    index:
+      title: 投稿一覧
+    new:
+      title: 投稿作成
+    show:
+      title: 投稿詳細
+    edit:
+      title: 投稿編集

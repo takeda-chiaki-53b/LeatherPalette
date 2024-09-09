@@ -1,3 +1,4 @@
+<% content_for(:title, t('.title')) %>
 <div class="container">
   <div class="w-full p-4 md:px-0 md:py-2 md:w-1/2 mx-auto">
     <ul class="list-inline flex items-center">
@@ -25,8 +26,8 @@
   </div>
   <% if @post.post_image.count > 1 %>
     <!-- 画像が複数枚ある場合のみ表示 -->
-    <button class="absolute left-1 top-1/2 transform -translate-y-1/2 bg-gray-200 bg-opacity-60 shadow-md text-white w-8 h-8 rounded-full" onclick="prevSlide()">❮</button>
-    <button class="absolute right-1 top-1/2 transform -translate-y-1/2 bg-gray-200 bg-opacity-60 shadow-md text-white w-8 h-8 rounded-full" onclick="nextSlide()">❯</button>
+    <button class="absolute left-1 top-1/2 transform -translate-y-1/2 bg-gray-200 bg-opacity-60 shadow-md text-white w-10 h-10 rounded-full" onclick="prevSlide()">❮</button>
+    <button class="absolute right-1 top-1/2 transform -translate-y-1/2 bg-gray-200 bg-opacity-60 shadow-md text-white w-10 h-10 rounded-full" onclick="nextSlide()">❯</button>
   <% end %>
 </div>
 
@@ -76,9 +77,9 @@
     const endX = event.changedTouches[0].clientX;
     const distanceX = endX - startX;
 
-    if (distanceX > 50) {
+    if (distanceX > 30) {
       prevSlide(); // 右スワイプ
-    } else if (distanceX < -50) {
+    } else if (distanceX < -30) {
       nextSlide(); // 左スワイプ
     }
   });
