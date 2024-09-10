@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # ブランドアカウントのルート
   namespace :brand_admin do
     resources :users, only: %i[new create]
+    resources :mypage, only: %i[index]
   end
 
   # 投稿機能関連
