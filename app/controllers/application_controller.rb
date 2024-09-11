@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def brand_admin_controller?
-    controller_path.start_with?('brand_admin/')
+    controller_path.start_with?("brand_admin/")
   end
 end
