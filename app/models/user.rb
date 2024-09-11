@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   # アソシエーション
   has_many :posts, dependent: :destroy
+  has_many :products, -> { where(role: :brand_admin) }, dependent: :destroy
 
   # オブジェクトの user_idがユーザーオブジェクトのidと一致するかどうかを判定
   def own?(object)
