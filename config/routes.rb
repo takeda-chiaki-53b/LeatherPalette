@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   namespace :brand_admin do
     resources :users, only: %i[new create]
     resource :mypage, only: %i[show]
+    resources :products, only: %i[index]
   end
 
   # 投稿機能関連
