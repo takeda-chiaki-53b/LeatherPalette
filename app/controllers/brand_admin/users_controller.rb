@@ -1,5 +1,6 @@
 class BrandAdmin::UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
+  skip_before_action :check_brand_admin, only: %i[new create]
 
   def new
     @user = User.new
