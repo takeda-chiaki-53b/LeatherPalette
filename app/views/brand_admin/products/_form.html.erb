@@ -1,28 +1,25 @@
-<%= form_with model: product do |f| %>
+<%= form_with model: @product, url: brand_admin_products_path, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :product_image, '画像を選択（1枚）', class: 'label w-10/12 md:w-1/2 mx-auto pt-4 font-medium'%>
-  <%= f.file_field :product_image, multiple: true, include_hidden: false, class: 'file-input file-input-bordered form-control w-10/12 md:w-1/2 mx-auto'%>
-  <%= f.hidden_field :product_image, multiple: true %>
+  <%= f.label :product_image, '画像を選択（1枚）', class: 'label w-10/12 md:w-1/2 mx-auto pt-4 font-medium' %>
+  <%= f.file_field :product_image, class: 'file-input file-input-bordered form-control w-10/12 md:w-1/2 mx-auto', required: true %>
 
-<!-- サムネイル表示 -->
-<div class="thumbnail w-10/12 md:w-1/2 mx-auto py-3 text-sm">
-  <% if product.product_image.present? %>
-    <p>【編集前の画像】</p>
-    <div class="flex flex-wrap">
-      <div class="thumbnail-image-wrapper m-1 w-24 h-24 overflow-hidden flex items-center justify-center border border-neutral-200">
-        <%= image_tag product.product_image.first.url, alt: "サムネイル", class: "thumbnail-image max-w-full max-h-full object-cover" %>
+  <!-- サムネイル表示 -->
+  <div class="thumbnail w-10/12 md:w-1/2 mx-auto py-3 text-sm">
+    <% if f.object.product_image.present? %>
+      <p>【編集前の画像】</p>
+      <div class="flex flex-wrap">
+        <div class="thumbnail-image-wrapper m-1 w-24 h-24 overflow-hidden flex items-center justify-center border border-neutral-200">
+          <%= image_tag f.object.product_image.url, alt: "サムネイル", class: "thumbnail-image max-w-full max-h-full object-cover" %>
+        </div>
       </div>
-    </div>
-  <% else %>
-    <p>画像を選択していない場合、以下のデフォルト画像が設定されます。</p>
-    <div class="thumbnail-image-wrapper w-24 h-24">
-      <%= image_tag 'no_image.png', alt: "デフォルト画像", class: "thumbnail-image max-w-full max-h-full object-cover" %>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-  <%= f.label :name, class: "label w-10/12 md:w-1/2 mx-auto pt-8 font-medium" %>
-  <%= f.text_field :name, placeholder: "ブランド名をご入力ください", class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
+  <%= f.label :product_name, class: "label w-10/12 md:w-1/2 mx-auto pt-8 font-medium" %>
+  <%= f.text_field :product_name, placeholder: "商品名をご入力ください", class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10", required: true %>
 
+  <div class='mx-auto w-10/12 md:w-1/2'>
+    <%= f.submit "登録", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74] text-yellow-900", id: "submit-button" %>
+  </div>
 <% end %>

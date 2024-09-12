@@ -1,8 +1,10 @@
 class Product < ApplicationRecord
-  validates :product_image, length: { maximum: 1 }
+  mount_uploader :product_image, ProductImageUploader
+
+  validates :product_name, presence: true, length: { maximum: 30 }
+  validates :product_image, presence: true
 
   # アソシエーション
   belongs_to :user
-  belongs_to :post
-  has_many :product_names
+  belongs_to :post, optional: true
 end
