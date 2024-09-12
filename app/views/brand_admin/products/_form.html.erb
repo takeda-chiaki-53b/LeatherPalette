@@ -1,0 +1,28 @@
+<%= form_with model: product do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :product_image, '画像を選択（1枚）', class: 'label w-10/12 md:w-1/2 mx-auto pt-4 font-medium'%>
+  <%= f.file_field :product_image, multiple: true, include_hidden: false, class: 'file-input file-input-bordered form-control w-10/12 md:w-1/2 mx-auto'%>
+  <%= f.hidden_field :product_image, multiple: true %>
+
+<!-- サムネイル表示 -->
+<div class="thumbnail w-10/12 md:w-1/2 mx-auto py-3 text-sm">
+  <% if product.product_image.present? %>
+    <p>【編集前の画像】</p>
+    <div class="flex flex-wrap">
+      <div class="thumbnail-image-wrapper m-1 w-24 h-24 overflow-hidden flex items-center justify-center border border-neutral-200">
+        <%= image_tag product.product_image.first.url, alt: "サムネイル", class: "thumbnail-image max-w-full max-h-full object-cover" %>
+      </div>
+    </div>
+  <% else %>
+    <p>画像を選択していない場合、以下のデフォルト画像が設定されます。</p>
+    <div class="thumbnail-image-wrapper w-24 h-24">
+      <%= image_tag 'no_image.png', alt: "デフォルト画像", class: "thumbnail-image max-w-full max-h-full object-cover" %>
+    </div>
+  <% end %>
+</div>
+
+  <%= f.label :name, class: "label w-10/12 md:w-1/2 mx-auto pt-8 font-medium" %>
+  <%= f.text_field :name, placeholder: "ブランド名をご入力ください", class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
+
+<% end %>
