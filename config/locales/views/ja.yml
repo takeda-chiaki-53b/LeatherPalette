@@ -12,6 +12,14 @@ ja:
         favorite: お気に入り
         mypage: マイページ
         logout: ログアウト
+    mypages:
+      show:
+        title: マイページ
+    products:
+      index:
+        title: 登録済商品一覧
+      new:
+        title: 商品登録
   users:
     new:
       title: 新規登録
