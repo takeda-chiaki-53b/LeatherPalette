@@ -1,4 +1,4 @@
-<%= form_with model: @product, url: brand_admin_products_path, local: true do |f| %>
+<%= form_with model: @product, url: brand_admin_product_path(@product), local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :product_image, '画像を選択（1枚）', class: 'label w-10/12 md:w-1/2 mx-auto pt-4 font-medium' %>

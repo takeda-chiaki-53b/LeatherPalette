@@ -6,6 +6,8 @@
     <ul class="list-inline">
         <li class="text-xs ml-3"><%= product.product_name %></li>
     </ul>
-    <i class="bi bi-pencil-fill text-base md:text-xl mr-4"></i>
+    <%= link_to edit_brand_admin_product_path(product) do %>
+      <i class="bi bi-pencil-fill text-base md:text-xl mr-4"></i>
+    <% end %>
   </div>
 </div>
