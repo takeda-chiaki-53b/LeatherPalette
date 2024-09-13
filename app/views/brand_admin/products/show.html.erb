@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="w-full p-4 md:px-0 md:py-2 md:w-1/2 mx-auto">
+    <ul class="list-inline flex items-center">
+      <li class="text-yellow-900"><%= @product.product_name %></li>
+    </ul>
+  </div>
+</div>
+
+<div class="relative w-full md:w-1/2 mx-auto">
+  <div class="overflow-hidden relative">
+    <%= image_tag(@product.product_image.url, class: 'block w-full h-auto object-contain') %>
+  </div>
+</div>
