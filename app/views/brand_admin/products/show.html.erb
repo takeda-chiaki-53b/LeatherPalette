@@ -14,7 +14,8 @@
 </div>
 
 <% if current_user && current_user.own?(@product) %>
-  <div class="w-full mt-10 p-4 md:px-0 md:py-2 md:w-1/2 mx-auto flex justify-end">
+  <div class="w-full mt-10 p-4 md:px-0 md:py-2 md:w-1/2 mx-auto flex justify-between items-center">
+    <%= link_to "削除", brand_admin_product_path(@product), class: "btn w-1/3 bg-[#e5e5e5] hover:bg-[#a3a3a3] text-yellow-900", id: "button-delete-#{@product.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } %>
     <%= link_to "編集", edit_brand_admin_product_path(@product), class: "btn w-1/3 bg-[#E6CCB585] hover:bg-[#fdba74] text-yellow-900", id: "button-edit-#{@product.id}" %>
   </div>
 <% end %>
