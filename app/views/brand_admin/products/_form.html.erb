@@ -2,12 +2,17 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :product_image, '画像を選択（1枚）', class: 'label w-10/12 md:w-1/2 mx-auto pt-4 font-medium' %>
-  <%= f.file_field :product_image, class: 'file-input file-input-bordered form-control w-10/12 md:w-1/2 mx-auto', required: true %>
+  <!-- 新規商品登録の場合は選択必須、編集時は未選択可 -->
+  <% if @product.new_record? %>
+    <%= f.file_field :product_image, class: 'file-input file-input-bordered form-control w-10/12 md:w-1/2 mx-auto', required: true %>
+  <% else %>
+    <%= f.file_field :product_image, class: 'file-input file-input-bordered form-control w-10/12 md:w-1/2 mx-auto', required: false %>
+  <% end %>
 
   <!-- サムネイル表示 -->
   <div class="thumbnail w-10/12 md:w-1/2 mx-auto py-3 text-sm">
     <% if f.object.product_image.present? %>
-      <p>【編集前の画像】</p>
+      <p>【編集前の画像】ファイル未選択の場合はこの画像が保持されます。</p>
       <div class="flex flex-wrap">
         <div class="thumbnail-image-wrapper m-1 w-24 h-24 overflow-hidden flex items-center justify-center border border-neutral-200">
           <%= image_tag f.object.product_image.url, alt: "サムネイル", class: "thumbnail-image max-w-full max-h-full object-cover" %>

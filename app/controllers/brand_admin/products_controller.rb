@@ -30,6 +30,11 @@ class BrandAdmin::ProductsController < ApplicationController
   def update
     @product = current_user.products.find(params[:id])
 
+    # 画像が送信されない場合、既存の画像を保持する
+    if params[:product][:product_image].blank?
+      params[:product][:product_image] = @product.product_image
+    end
+
     if @product.update(product_params)
       redirect_to brand_admin_product_path(@product), success: "商品の編集が完了しました"
     else
