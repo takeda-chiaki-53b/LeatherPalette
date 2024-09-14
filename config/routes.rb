@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   namespace :brand_admin do
     resources :users, only: %i[new create]
     resource :mypage, only: %i[show]
-    resources :products, only: %i[index new create show edit update]
+    resources :products, only: %i[index new create show edit update destroy]
   end
 
   # 投稿機能関連
