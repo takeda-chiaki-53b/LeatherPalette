@@ -6,5 +6,6 @@ class Post < ApplicationRecord
 
   # アソシエーション
   belongs_to :user
+  belongs_to :brand_admin, class_name: "User", optional: true
   has_many :products
 end
