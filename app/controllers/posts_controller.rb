@@ -34,6 +34,7 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
+    @brand_admins = User.where(role: "brand_admin") # ブランド管理者のユーザーを取得
     if @post.update(post_params)
       redirect_to post_path(@post), success: "投稿を更新しました"
     else
