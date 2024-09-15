@@ -29,6 +29,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = current_user.posts.find(params[:id])
+    @brand_admins = User.where(role: "brand_admin") # ブランド管理者のユーザーを取得
   end
 
   def update
