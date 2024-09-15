@@ -29,6 +29,11 @@
   class: "input input-bordered bg-neutral-100 form-control mb-6 w-10/12 md:w-1/2 mx-auto h-auto",
   rows: 5, placeholder: "アイテム購入時のエピソードや自分なりの使い方などを共有しましょう!" %>
 
+  <%= f.label :brand_admin_id, 'アイテムのブランドを選択', class: 'label w-10/12 md:w-1/2 mx-auto pt-4 font-medium' %>
+  <div class="mx-auto w-10/12 md:w-1/2 rounded-lg border border-neutral-200">
+    <%= f.select :brand_admin_id, @brand_admins.collect { |brand_admin| [brand_admin.name, brand_admin.id] }, { include_blank: true }, class: 'select w-full' %>
+  </div>
+
   <div class='mx-auto w-10/12 md:w-1/2'>
     <%= f.submit "投稿", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74] text-yellow-900", id: "submit-button"%>
   </div>
