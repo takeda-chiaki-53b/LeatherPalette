@@ -24,6 +24,26 @@
   <% end %>
 </div>
 
+<div class="flex items-center mx-auto w-10/12 md:w-1/2 py-3">
+  <%= f.label :used_year, '使用年数', class: 'label font-medium mr-4 w-1/2' %>
+  <div class="rounded-lg border border-neutral-200 w-full">
+    <%= f.select :used_year, [
+      ["半年未満", "半年未満"],
+      ["1年", "1年"],
+      ["1年半", "1年半"],
+      ["2年", "2年"],
+      ["2年半", "約2年半"],
+      ["3年", "3年"],
+      ["3年半", "3年半"],
+      ["4年", "4年"],
+      ["4年半", "4年半"],
+      ["5年", "5年"],
+      ["5年以上", "5年以上"],
+      ["10年以上", "10年以上"],],
+      { include_blank: "未選択" }, class: 'w-full h-7' %>
+  </div>
+</div>
+
   <%= f.label :body, class: "label w-10/12 md:w-1/2 mx-auto pt-8 font-medium" %>
   <%= f.text_area :body,
   class: "input input-bordered bg-neutral-100 form-control mb-6 w-10/12 md:w-1/2 mx-auto h-auto",
