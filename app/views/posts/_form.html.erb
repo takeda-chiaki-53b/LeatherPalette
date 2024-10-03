@@ -5,56 +5,105 @@
   <%= f.file_field :post_image, multiple: true, include_hidden: false, class: 'file-input file-input-bordered form-control w-10/12 md:w-1/2 mx-auto'%>
   <%= f.hidden_field :post_image, multiple: true %>
 
-<!-- サムネイル表示 -->
-<div class="thumbnail w-10/12 md:w-1/2 mx-auto py-3 text-sm">
-  <% if post.post_image.any? %>
-    <p>【編集前の画像】　※画像の追加・変更の場合も、登録する画像すべてを選択してください。</p>
-    <div class="flex flex-wrap">
-      <% post.post_image.each do |image| %>
-        <div class="thumbnail-image-wrapper m-1 w-24 h-24 overflow-hidden flex items-center justify-center border border-neutral-200">
-          <%= image_tag image.url, alt: "サムネイル", class: "thumbnail-image max-w-full max-h-full object-cover" %>
-        </div>
-      <% end %>
-    </div>
-  <% else %>
-    <p>画像を選択していない場合、以下のデフォルト画像が設定されます。</p>
-    <div class="thumbnail-image-wrapper w-24 h-24">
-      <%= image_tag 'no_image.png', alt: "デフォルト画像", class: "thumbnail-image max-w-full max-h-full object-cover" %>
-    </div>
-  <% end %>
-</div>
-
-<div class="flex items-center mx-auto w-10/12 md:w-1/2 py-3">
-  <%= f.label :used_year, '使用年数', class: 'label font-medium mr-4 w-1/2' %>
-  <div class="rounded-lg border border-neutral-200 w-full">
-    <%= f.select :used_year, [
-      ["半年未満", "半年未満"],
-      ["1年", "1年"],
-      ["1年半", "1年半"],
-      ["2年", "2年"],
-      ["2年半", "約2年半"],
-      ["3年", "3年"],
-      ["3年半", "3年半"],
-      ["4年", "4年"],
-      ["4年半", "4年半"],
-      ["5年", "5年"],
-      ["5年以上", "5年以上"],
-      ["10年以上", "10年以上"],],
-      { include_blank: "未選択" }, class: 'w-full h-7' %>
+  <!-- サムネイル表示 -->
+  <div class="thumbnail w-10/12 md:w-1/2 mx-auto py-3 text-sm">
+    <% if post.post_image.any? %>
+      <p>【編集前の画像】　※画像の追加・変更の場合も、登録する画像すべてを選択してください。</p>
+      <div class="flex flex-wrap">
+        <% post.post_image.each do |image| %>
+          <div class="thumbnail-image-wrapper m-1 w-24 h-24 overflow-hidden flex items-center justify-center border border-neutral-200">
+            <%= image_tag image.url, alt: "サムネイル", class: "thumbnail-image max-w-full max-h-full object-cover" %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>画像を選択していない場合、以下のデフォルト画像が設定されます。</p>
+      <div class="thumbnail-image-wrapper w-24 h-24">
+        <%= image_tag 'no_image.png', alt: "デフォルト画像", class: "thumbnail-image max-w-full max-h-full object-cover" %>
+      </div>
+    <% end %>
   </div>
-</div>
 
-  <%= f.label :body, class: "label w-10/12 md:w-1/2 mx-auto pt-8 font-medium" %>
+  <!-- 投稿メッセージ -->
+  <%= f.label :body, class: "label w-10/12 md:w-1/2 mx-auto pt-4 font-medium" %>
   <%= f.text_area :body,
   class: "input input-bordered bg-neutral-100 form-control mb-6 w-10/12 md:w-1/2 mx-auto h-auto",
-  rows: 5, placeholder: "アイテム購入時のエピソードや自分なりの使い方などを共有しましょう!" %>
+  rows: 5, placeholder: "2000字以内
+  アイテム購入時のエピソードや自分なりの使い方などを共有しましょう!" %>
 
-  <%= f.label :brand_admin_id, 'アイテムのブランドを選択', class: 'label w-10/12 md:w-1/2 mx-auto pt-4 font-medium' %>
-  <div class="mx-auto w-10/12 md:w-1/2 rounded-lg border border-neutral-200">
-    <%= f.select :brand_admin_id, @brand_admins.collect { |brand_admin| [brand_admin.name, brand_admin.id] }, { include_blank: true }, class: 'select w-full' %>
+
+  <div class="flex items-center mx-auto w-10/12 md:w-1/2 pt-10">
+    <h3 class="font-semibold text-yellow-900" >■アイテム情報</h3>
   </div>
 
+  <!-- 使用年数選択 -->
+  <div class="flex items-center mx-auto w-10/12 md:w-1/2 pt-4">
+    <%= f.label :used_year, '使用年数', class: 'label font-medium mr-4 w-1/2' %>
+    <div class="rounded-lg border border-neutral-200 w-full">
+      <%= f.select :used_year, [
+        ["半年未満", "半年未満"],
+        ["1年", "1年"],
+        ["1年半", "1年半"],
+        ["2年", "2年"],
+        ["2年半", "約2年半"],
+        ["3年", "3年"],
+        ["3年半", "3年半"],
+        ["4年", "4年"],
+        ["4年半", "4年半"],
+        ["5年", "5年"],
+        ["5年以上", "5年以上"],
+        ["10年以上", "10年以上"],],
+        { include_blank: "使用年数を選択" }, class: 'select rounded-lg w-full' %>
+    </div>
+  </div>
+
+  <!-- ブランド選択 -->
+  <div class="flex items-center mx-auto w-10/12 md:w-1/2 pt-4">
+    <%= f.label :brand_admin_id, 'ブランド', class: 'label font-medium mr-4 w-1/2' %>
+    <div class="rounded-lg border border-neutral-200 w-full">
+      <%= f.select :brand_admin_id, @brand_admins.collect { |brand_admin| [brand_admin.name, brand_admin.id] }, { include_blank: "ブランドを選択" }, class: 'select w-full' %>
+    </div>
+  </div>
+
+  <div class="flex items-center mx-auto w-10/12 md:w-1/2 pt-10">
+    <h3 class="font-semibold text-yellow-900" >■お手入れ情報</h3>
+  </div>
+
+  <!-- ケア頻度 -->
+  <div class="flex items-center mx-auto w-10/12 md:w-1/2 pt-4">
+    <%= f.label :care_frequency, 'ケア頻度', class: 'label font-medium mr-4 w-1/2' %>
+    <div class="rounded-lg border border-neutral-200 w-full">
+      <%= f.select :care_frequency, [
+        ["特に何もしない", "特に何もしない"],
+        ["水濡れや汚れた時", "水濡れや汚れた時"],
+        ["毎日", "毎日"],
+        ["2～3日に1回", "2～3日に1回"],
+        ["1週間に1回", "1週間に1回"],
+        ["半月に1回", "半月に1回"],
+        ["1ヶ月に1回", "1ヶ月に1回"],
+        ["2～3ヶ月に1回", "2～3ヶ月に1回"],
+        ["半年に1回", "半年に1回"],
+        ["1年に1回", "1年に1回"]],
+        { include_blank: "未選択" }, class: 'select rounded-lg w-full' %>
+    </div>
+  </div>
+
+  <!-- ケアアイテム入力 -->
+  <%= f.label :care_item, 'ケア用品', class: "label w-10/12 md:w-1/2 mx-auto pt-4 font-medium" %>
+  <%= f.text_area :care_item,
+  class: "input input-bordered bg-neutral-100 form-control w-10/12 md:w-1/2 mx-auto h-auto",
+  rows: 3, placeholder: "700字以内
+例：馬毛ブラシ、綿の布(ハンカチ)" %>
+
+  <!-- ケア方法入力 -->
+  <%= f.label :care_howto, 'ケア方法', class: "label w-10/12 md:w-1/2 mx-auto pt-4 font-medium" %>
+  <%= f.text_area :care_howto,
+  class: "input input-bordered bg-neutral-100 form-control w-10/12 md:w-1/2 mx-auto h-auto",
+  rows: 4, placeholder: "1000字以内　
+例：水に濡れた時は全体を固く絞った布で水拭きして、乾いてから乾拭きしてます！" %>
+
+
   <div class='mx-auto w-10/12 md:w-1/2'>
-    <%= f.submit "投稿", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74] text-yellow-900", id: "submit-button"%>
+    <%= f.submit "投稿", class: "btn mt-8 w-full mt-20 mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74] text-yellow-900", id: "submit-button"%>
   </div>
 <% end %>
