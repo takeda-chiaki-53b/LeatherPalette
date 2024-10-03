@@ -13,7 +13,7 @@ ja:
         password_confirmation: パスワード再入力
       post:
         post_image: 投稿画像
-        body: 投稿メッセージ
+        body: 投稿メッセージ(必須)
       product:
         product_image: 商品画像
         product_name: 商品名
