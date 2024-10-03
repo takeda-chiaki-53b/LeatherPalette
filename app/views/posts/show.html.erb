@@ -1,6 +1,6 @@
 <% content_for(:title, t('.title')) %>
 <div class="container">
-  <div class="w-full p-4 md:px-0 md:py-2 md:w-1/2 mx-auto">
+  <div class="w-full p-4 md:px-0 md:py-2 md:w-1/2 mx-auto border-b">
     <ul class="list-inline flex items-center">
       <li class="mr-2"><%= image_tag 'no_image.png', width: "40", height: "40", class: "rounded-full" %></li>
       <li class="text-yellow-900"><%= @post.user.name %></li>
@@ -31,28 +31,74 @@
   <% end %>
 </div>
 
+<!-- 投稿本文 -->
+<div class="body-content">
+  <div class="w-full px-4 pt-4 pb-4 md:px-0 md:pt-4 md:pb-4 md:w-1/2 mx-auto text-yellow-900 border-t">
+    <p><%= simple_format(@post.body) %></p>
+  </div>
+</div>
+
+<!-- アイテム情報 -->
+<div class="flex items-center w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto border-t">
+<h3 class="font-semibold text-yellow-900" >■アイテム情報</h3>
+</div>
+
+<!-- 使用年数 -->
 <div class="used_year">
-  <div class="w-full px-4 pt-4 pb-10 md:px-0 md:pt-4 md:pb-10 md:w-1/2 mx-auto">
+  <div class="w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto text-yellow-900">
     <% if @post.used_year %>
-      <p class="text-yellow-900">使用年数： <%= @post.used_year %></p>
+      <p>使用年数： <%= @post.used_year %></p>
     <% else %>
-      <p class="text-yellow-900">使用年数：未登録</p>
+      <p>使用年数：未登録</p>
     <% end %>
   </div>
 </div>
 
-<div class="body-content">
-  <div class="w-full px-4 pt-4 pb-10 md:px-0 md:pt-4 md:pb-10 md:w-1/2 mx-auto">
-    <p class="text-yellow-900"><%= @post.body %></p>
-  </div>
-</div>
-
+<!-- ブランド -->
 <div class="brand">
   <div class="w-full px-4 pt-4 pb-10 md:px-0 md:pt-4 md:pb-10 md:w-1/2 mx-auto">
     <% if @brand_admin %>
-      <p class="text-yellow-900">ブランド： <%= @brand_admin.name %></p>
+      <p class="text-yellow-900">ブランド　： <%= @brand_admin.name %></p>
     <% else %>
-      <p class="text-yellow-900">ブランド情報はありません</p>
+      <p class="text-yellow-900">ブランド　：未登録</p>
+    <% end %>
+  </div>
+</div>
+
+<!-- お手入れ情報 -->
+<div class="flex items-center w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto border-t">
+<h3 class="font-semibold text-yellow-900" >■お手入れ情報</h3>
+</div>
+
+<!-- 頻度 -->
+<div class="care_frequency">
+  <div class="w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto text-yellow-900">
+    <% if @post.care_frequency %>
+      <p>ケア頻度： <%= @post.care_frequency %></p>
+    <% else %>
+      <p>ケア頻度：未登録</p>
+    <% end %>
+  </div>
+</div>
+
+<!-- ケアアイテム -->
+<div class="care_item">
+  <div class="w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto text-yellow-900">
+    <% if @post.care_item %>
+      <p>ケア用品： <%= simple_format(@post.care_item) %></p>
+    <% else %>
+      <p class="text-yellow-900">ケア用品：未登録</p>
+    <% end %>
+  </div>
+</div>
+
+<!-- ケア方法 -->
+<div class="care_howto">
+  <div class="w-full px-4 pt-4 pb-10 md:px-0 md:pt-4 md:pb-10 md:w-1/2 mx-auto text-yellow-900">
+    <% if @post.care_howto %>
+      <p>ケア方法： <%= simple_format(@post.care_howto) %></p>
+    <% else %>
+      <p>ケア方法：未登録</p>
     <% end %>
   </div>
 </div>
