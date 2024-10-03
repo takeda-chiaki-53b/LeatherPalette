@@ -28,7 +28,8 @@
   <%= f.label :body, class: "label w-10/12 md:w-1/2 mx-auto pt-4 font-medium" %>
   <%= f.text_area :body,
   class: "input input-bordered bg-neutral-100 form-control mb-6 w-10/12 md:w-1/2 mx-auto h-auto",
-  rows: 5, placeholder: "アイテム購入時のエピソードや自分なりの使い方などを共有しましょう!" %>
+  rows: 5, placeholder: "2000字以内
+  アイテム購入時のエピソードや自分なりの使い方などを共有しましょう!" %>
 
 
   <div class="flex items-center mx-auto w-10/12 md:w-1/2 pt-10">
@@ -74,7 +75,7 @@
     <div class="rounded-lg border border-neutral-200 w-full">
       <%= f.select :care_frequency, [
         ["特に何もしない", "特に何もしない"],
-        ["水濡れや汚れの気になった時だけ", "水濡れや汚れの気になった時だけ"],
+        ["水濡れや汚れた時", "水濡れや汚れた時"],
         ["毎日", "毎日"],
         ["2～3日に1回", "2～3日に1回"],
         ["1週間に1回", "1週間に1回"],
@@ -91,15 +92,15 @@
   <%= f.label :care_item, 'ケア用品', class: "label w-10/12 md:w-1/2 mx-auto pt-4 font-medium" %>
   <%= f.text_area :care_item,
   class: "input input-bordered bg-neutral-100 form-control w-10/12 md:w-1/2 mx-auto h-auto",
-  rows: 2, placeholder: "メンテナンスで使用したケア用品を入力
-  例：馬毛のブラシ、自宅にあった綿の布(ハンカチ)" %>
+  rows: 3, placeholder: "700字以内
+例：馬毛ブラシ、綿の布(ハンカチ)" %>
 
   <!-- ケア方法入力 -->
   <%= f.label :care_howto, 'ケア方法', class: "label w-10/12 md:w-1/2 mx-auto pt-4 font-medium" %>
   <%= f.text_area :care_howto,
   class: "input input-bordered bg-neutral-100 form-control w-10/12 md:w-1/2 mx-auto h-auto",
-  rows: 4, placeholder: "ケア方法を入力　
-  例：水に濡れた時は全体を固く絞った布で水拭きして、乾いてから乾拭きしてます！" %>
+  rows: 4, placeholder: "1000字以内　
+例：水に濡れた時は全体を固く絞った布で水拭きして、乾いてから乾拭きしてます！" %>
 
 
   <div class='mx-auto w-10/12 md:w-1/2'>
