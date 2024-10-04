@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :products, dependent: :destroy
 
+  # スコープ
+  scope :brand_admins, -> { where(role: "brand_admin") }
+
   # オブジェクトの user_idがユーザーオブジェクトのidと一致するかどうかを判定
   def own?(object)
     id == object&.user_id
