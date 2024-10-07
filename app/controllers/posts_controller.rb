@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @brand_admins = User.where(role: "brand_admin") # ブランド管理者のユーザーを取得
+    @brand_admins = User.brand_admins # スコープでブランド管理者のユーザーを取得
   end
 
   def create
@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, success: "投稿が完了しました"
     else
-      @brand_admins = User.where(role: "brand_admin") # newビューを再表示する際に、@brand_adminsを再度取得
+      @brand_admins = User.brand_admins # newビューを再表示する際に、スコープでブランド管理者のユーザーを再度取得
       flash.now[:danger] = "投稿に失敗しました"
       render :new, status: :unprocessable_entity
     end
@@ -29,12 +29,12 @@ class PostsController < ApplicationController
 
   def edit
     @post = current_user.posts.find(params[:id])
-    @brand_admins = User.where(role: "brand_admin") # ブランド管理者のユーザーを取得
+    @brand_admins = User.brand_admins # スコープ
   end
 
   def update
     @post = current_user.posts.find(params[:id])
-    @brand_admins = User.where(role: "brand_admin") # ブランド管理者のユーザーを取得
+    @brand_admins = User.brand_admins # スコープ
     if @post.update(post_params)
       redirect_to post_path(@post), success: "投稿を更新しました"
     else
