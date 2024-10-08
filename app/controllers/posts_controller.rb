@@ -65,11 +65,11 @@ class PostsController < ApplicationController
 
     if @post.update(post_params)
       if @post.draft?
-        redirect_to posts_path(@post), success: "下書きに保存しました"
+        redirect_to post_path(@post), success: "下書きに保存しました"
       elsif @post.unpublished?
-        redirect_to posts_path(@post), success: "非公開で投稿を更新しました"
+        redirect_to post_path(@post), success: "非公開で投稿を更新しました"
       else
-        redirect_to posts_path(@post), success: "投稿を更新しました"
+        redirect_to post_path(@post), success: "投稿を更新しました"
       end
     else
       flash.now[:danger] = "投稿メッセージを入力していないと投稿できません"
