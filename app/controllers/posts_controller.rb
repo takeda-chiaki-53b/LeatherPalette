@@ -43,8 +43,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @brand_admin = User.find(@post.brand_admin_id) if @post.brand_admin_id.present? # 投稿にブランドが設定されている場合、その情報を取得
 
+    # 自分の投稿ならそのまま表示し、他ユーザーの投稿であれば、公開ステータスだけを表示する
     if
-      @post.user == current_user # 自分の投稿なら、すべてのステータスの投稿を表示
+      @post.user == current_user # 現在のユーザーがその投稿の作成者かどうかをチェック
     else
       @post = Post.published.find(params[:id]) # 自分以外の投稿なら、公開ステータスの投稿のみを表示
     end
