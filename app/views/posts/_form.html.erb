@@ -110,8 +110,19 @@
   rows: 4, placeholder: "1000字以内　
 例：水に濡れた時は全体を固く絞った布で水拭きして、乾いてから乾拭きしてます！" %>
 
+  <!-- 投稿関連のボタン -->
+  <div class="mx-auto w-10/12 md:w-1/2 mt-20 flex justify-between items-center">
+    <div class='mx-auto w-10/12 md:w-1/2 mr-1'>
+      <%= f.submit "下書きに保存", name: "draft", class: "btn w-full mx-auto h-10 bg-[#d4d4d4] hover:bg-[#fdba74] text-yellow-900", id: "submit-button-draft"%>
+    </div>
+
+    <div class='mx-auto w-10/12 md:w-1/2 ml-1'>
+      <%= f.submit "非公開で投稿", name: "unpublished", class: "btn w-full mx-auto h-10 bg-[#d4d4d4] hover:bg-[#fdba74] text-yellow-900", id: "submit-button-unpublished"%>
+    </div>
+  </div>
 
   <div class='mx-auto w-10/12 md:w-1/2'>
-    <%= f.submit "投稿", class: "btn mt-8 w-full mt-20 mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74] text-yellow-900", id: "submit-button"%>
+    <%= f.submit "投稿(公開)", name: "published", class: "btn mt-10 w-full mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74] text-yellow-900", id: "submit-button-published"%>
   </div>
+
 <% end %>
