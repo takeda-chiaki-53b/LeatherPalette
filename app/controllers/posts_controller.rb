@@ -28,7 +28,7 @@ class PostsController < ApplicationController
       if @post.draft?
         redirect_to posts_path, success: "下書きに保存しました"
       elsif @post.unpublished?
-        redirect_to posts_path, success: "非公開で投稿しました"
+        redirect_to posts_path, success: "非公開の投稿に保存しました"
       else
         redirect_to posts_path, success: "投稿を公開しました"
       end
@@ -40,8 +40,14 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.published.find(params[:id])
+    @post = Post.find(params[:id])
     @brand_admin = User.find(@post.brand_admin_id) if @post.brand_admin_id.present? # 投稿にブランドが設定されている場合、その情報を取得
+
+    if
+      @post.user == current_user # 自分の投稿なら、すべてのステータスの投稿を表示
+    else
+      @post = Post.published.find(params[:id]) # 自分以外の投稿なら、公開ステータスの投稿のみを表示
+    end
   end
 
   def edit
@@ -67,7 +73,7 @@ class PostsController < ApplicationController
       if @post.draft?
         redirect_to post_path(@post), success: "下書きに保存しました"
       elsif @post.unpublished?
-        redirect_to post_path(@post), success: "非公開で投稿を更新しました"
+        redirect_to post_path(@post), success: "非公開の投稿に保存しました"
       else
         redirect_to post_path(@post), success: "投稿を更新しました"
       end
