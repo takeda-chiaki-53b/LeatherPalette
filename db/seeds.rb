@@ -22,6 +22,7 @@ user_ids = User.ids
 20.times do |index|
   user = User.find(user_ids.sample)
   user.posts.create!(
-    body: "本文#{index}"
+    body: "本文#{index}",
+    status: "published"
     )
 end
