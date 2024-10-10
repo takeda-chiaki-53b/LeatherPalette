@@ -92,12 +92,60 @@
   </div>
 </div>
 
-<div class="flex flex-wrap m-4">
-    <% if @posts.present? %>
-      <div class="grid min-[320px]:grid-cols-2 min-[320px]:m-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center md:m-10">
-        <%= render @posts %>
-      </div>
-    <% else %>
-        <div class= 'text-lg m-auto'>投稿はありません</div>
-    <% end %>
+<!-- ステータス別投稿表示エリア -->
+<div data-controller="tabber">
+  <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 items-center w-10/12 mx-auto">
+    <ul class="flex flex-wrap -mb-px">
+      <li class="me-2">
+        <%= link_to '公開中', 'javascript:void(0)', class: 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 is-active', aria: { current: "page" }, data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
+      </li>
+      <li class="me-2">
+        <%= link_to '非公開', 'javascript:void(0)', class: 'inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 not-active', data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
+      </li>
+      <li class="me-2">
+        <%= link_to '下書き', 'javascript:void(0)', class: 'inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 not-active', data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ステータス別の投稿表示部分 -->
+  <div>
+  <div data-tabber-target="content">
+    <!-- 公開中の投稿 -->
+    <div class="flex flex-wrap m-4">
+      <% if @posts_published.present? %>
+        <div class="grid min-[320px]:grid-cols-2 min-[320px]:m-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center md:m-10">
+          <%= render @posts_published %>
+        </div>
+      <% else %>
+        <div class='text-lg m-auto'>公開中の投稿はありません</div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="hidden" data-tabber-target="content">
+    <!-- 非公開の投稿 -->
+    <div class="flex flex-wrap m-4">
+      <% if @posts_unpublished.present? %>
+        <div class="grid min-[320px]:grid-cols-2 min-[320px]:m-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center md:m-10">
+          <%= render @posts_unpublished %>
+        </div>
+      <% else %>
+        <div class='text-lg m-auto'>非公開の投稿はありません</div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="hidden" data-tabber-target="content">
+    <!-- 下書きの投稿 -->
+    <div class="flex flex-wrap m-4">
+      <% if @posts_draft.present? %>
+        <div class="grid min-[320px]:grid-cols-2 min-[320px]:m-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center md:m-10">
+          <%= render @posts_draft %>
+        </div>
+      <% else %>
+        <div class='text-lg m-auto'>下書きの投稿はありません</div>
+      <% end %>
+    </div>
+  </div>
 </div>
