@@ -14,6 +14,8 @@ class Post < ApplicationRecord
   # 投稿のステータス（下書き,公開,非公開）
   enum status: { draft: 0, published: 1, unpublished: 2 }
 
-  # 公開ステータスの投稿のみ取得するスコープ
+  # ステータスごとに投稿を取得するスコープ
   scope :published, -> { where(status: :published) }
+  scope :unpublished, -> { where(status: :unpublished) }
+  scope :draft, -> { where(status: :draft) }
 end
