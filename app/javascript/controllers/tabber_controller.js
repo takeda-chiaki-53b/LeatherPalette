@@ -12,24 +12,20 @@ export default class extends Controller {
 
     // 初期化（全てのタブを非アクティブにし、コンテンツを隠す）
     tab_menus.forEach((tab_menu, index) => {
-      tab_menu.classList.remove("is-active", "active-tab")
-      tab_menu.classList.add("not-active")
-      tab_menu.classList.remove("text-blue-600", "border-blue-600")
-      tab_menu.classList.add("text-gray-500", "border-transparent")
+      tab_menu.classList.remove("is-active", "active-tab", "text-blue-600", "border-blue-600")
+      tab_menu.classList.add("not-active", "text-gray-500", "border-transparent")
       contents[index].classList.add("hidden")
     })
 
     // クリックしたタブをアクティブにし、対応するコンテンツを表示する
-    current.classList.remove("not-active")
-    current.classList.add("is-active", "active-tab")
-    current.classList.add("text-blue-600", "border-blue-600")
-    current.classList.remove("text-gray-500", "border-transparent")
+    current.classList.remove("not-active", "text-gray-500", "border-transparent")
+    current.classList.add("is-active", "active-tab", "text-blue-600", "border-blue-600")
     contents[currentIndex].classList.remove("hidden") // クリックした要素のコンテンツを表示する
 
     // ホバーのスタイルを選択時に無効にする
     tab_menus.forEach(tab_menu => {
       if (!tab_menu.classList.contains("is-active")) {
-        tab_menu.classList.add("hover:text-gray-600", "hover:border-gray-300")
+        tab_menu.classList.add("hover:text-blue-600", "hover:border-blue-600")
       }
     })
   }
