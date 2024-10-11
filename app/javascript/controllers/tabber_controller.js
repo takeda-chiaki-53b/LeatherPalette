@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["tab_menu", "content"]
+  static targets = ["tab_menu", "content"] //HTMLの中でこのクラスが管理する要素の名前
 
   tab_menuClick(event) {
     event.preventDefault() // デフォルトの動作(ページのリロードやスクロール位置のリセット)を防ぐ
@@ -12,21 +12,22 @@ export default class extends Controller {
 
     // 初期化（全てのタブを非アクティブにし、コンテンツを隠す）
     tab_menus.forEach((tab_menu, index) => {
-      tab_menu.classList.remove("is-active", "active-tab", "text-blue-600", "border-blue-600")
-      tab_menu.classList.add("not-active", "text-gray-500", "border-transparent")
+      tab_menu.classList.remove("active-tab", "text-blue-600", "border-b-2", "border-blue-600")
+      tab_menu.classList.add("not-active", "text-gray-500", "border-b-2", "border-transparent", "hover:text-gray-600", "hover:border-gray-300")
       contents[index].classList.add("hidden")
     })
+    // tab_menusの中にある全てのタブメニューに対して、ひとつずつ処理を行う
+    // 現在のタブからactive-tabクラスを削除
+    // 取り除いたクラスの代わりにnot-activeクラスを追加
+    // 現在のタブに対応するコンテンツを隠す
+
 
     // クリックしたタブをアクティブにし、対応するコンテンツを表示する
-    current.classList.remove("not-active", "text-gray-500", "border-transparent")
-    current.classList.add("is-active", "active-tab", "text-blue-600", "border-blue-600")
-    contents[currentIndex].classList.remove("hidden") // クリックした要素のコンテンツを表示する
-
-    // ホバーのスタイルを選択時に無効にする
-    tab_menus.forEach(tab_menu => {
-      if (!tab_menu.classList.contains("is-active")) {
-        tab_menu.classList.add("hover:text-blue-600", "hover:border-blue-600")
-      }
-    })
+    current.classList.remove("not-active", "text-gray-500", "border-b-2", "border-transparent", "hover:text-gray-600", "hover:border-gray-300")
+    current.classList.add("active-tab", "text-blue-600", "border-b-2", "border-blue-600")
+    contents[currentIndex].classList.remove("hidden")
+    // 現在選択されているタブ（current）から、not-activeクラスを削除する
+    // 現在のタブにactive-tabクラスを追加してアクティブである（選択されている）ことを示す
+    // 現在選択されているタブに対応するコンテンツを表示するための処理
   }
 }
