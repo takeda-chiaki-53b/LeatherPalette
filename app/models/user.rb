@@ -13,6 +13,9 @@ class User < ApplicationRecord
   # アソシエーション
   has_many :posts, dependent: :destroy
   has_many :products, dependent: :destroy
+  has_many :favorites, dependent: :destroy # ユーザーが複数のお気に入りを持つことを定義
+  has_many :favorite_posts, through: :favorites, source: :post # そのお気に入りを通じて関連する投稿を取得する定義
+  # これにより、ユーザーがお気に入り登録した全ての投稿を user.favorite_posts というメソッドで簡単に取得できるようになる。
 
   # スコープ
   scope :brand_admins, -> { where(role: "brand_admin") }
