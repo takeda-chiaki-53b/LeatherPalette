@@ -83,15 +83,15 @@
 <!-- ステータス別投稿表示エリア -->
 <div data-controller="tabber">
   <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 items-center w-10/12 mx-auto">
-    <ul class="flex flex-wrap -mb-px">
-      <li class="me-2">
-        <%= link_to '公開中', 'javascript:void(0)', class: 'inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 active-tab', aria: { current: "page" }, data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
+    <ul class="flex w-full">
+      <li class="flex-1  w-full">
+        <%= link_to '公開中', 'javascript:void(0)', class: 'block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 active-tab', aria: { current: "page" }, data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
       </li>
-      <li class="me-2">
-        <%= link_to '非公開', 'javascript:void(0)', class: 'inline-block p-4 rounded-t-lg dark:hover:text-gray-300 not-active', data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
+      <li class="flex-1  w-full">
+        <%= link_to '非公開', 'javascript:void(0)', class: 'block p-4 rounded-t-lg not-active', data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
       </li>
-      <li class="me-2">
-        <%= link_to '下書き', 'javascript:void(0)', class: 'inline-block p-4 rounded-t-lg dark:hover:text-gray-300 not-active', data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
+      <li class="flex-1  w-full">
+        <%= link_to '下書き', 'javascript:void(0)', class: 'block p-4 rounded-t-lg not-active', data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
       </li>
     </ul>
   </div>
