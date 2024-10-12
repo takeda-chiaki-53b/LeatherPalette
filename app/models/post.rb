@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :brand_admin, class_name: "User", optional: true
   has_many :products
+  has_many :favorites, dependent: :destroy
 
   # 投稿のステータス（下書き,公開,非公開）
   enum status: { draft: 0, published: 1, unpublished: 2 }
