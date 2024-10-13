@@ -19,6 +19,8 @@
           <%= link_to edit_post_path(post) do %>
             <i class="bi bi-pencil text-base md:text-xl mr-4"></i>
           <% end %>
+        <% else %>
+          <%= render 'favorite_buttons', { post: post } %>
         <% end %>
       </div>
     <% end %>
