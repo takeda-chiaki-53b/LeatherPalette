@@ -15,5 +15,12 @@ Rails.application.routes.draw do
   end
 
   # 投稿機能関連
-  resources :posts, only: %i[index new create show edit update destroy]
+  resources :posts, only: %i[index new create show edit update destroy] do
+    collection do
+      get :favorites
+    end
+  end
+
+  # お気に入り機能関連
+  resources :favorites, only: %i[create destroy]
 end

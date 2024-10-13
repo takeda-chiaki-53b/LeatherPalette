@@ -10,6 +10,11 @@
     <ul class="list-inline">
         <li class="text-xs ml-3"><i class="bi bi-person"></i><%= post.user.name %></li>
     </ul>
-    <i class="bi bi-heart text-base md:text-xl mr-4"></i>
+
+    <% if current_user.own?(post) %>
+      <%= link_to edit_post_path(post) do %>
+        <i class="bi bi-pencil text-base md:text-xl mr-4"></i>
+      <% end %>
+    <% end %>
   </div>
 </div>
