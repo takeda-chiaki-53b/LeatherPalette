@@ -90,6 +90,10 @@ class PostsController < ApplicationController
     redirect_to posts_path, success: "投稿を削除しました", status: :see_other
   end
 
+  def favorites
+    @favorite_posts = current_user.favorite_posts.published.includes(:user).order(created_at: :desc)
+  end
+
   private
 
   def post_params
