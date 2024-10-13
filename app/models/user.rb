@@ -24,4 +24,19 @@ class User < ApplicationRecord
   def own?(object)
     id == object&.user_id
   end
+
+  # お気に入りに追加する
+  def favorite(post)
+    favorite_posts << post
+  end
+
+  # お気に入りを外す
+  def unfavorite(post)
+    favorite_posts.destroy(post)
+  end
+
+  # お気に入り登録をしているか判定する
+  def favorite?(post)
+    favorite_posts.include?(post)
+  end
 end
