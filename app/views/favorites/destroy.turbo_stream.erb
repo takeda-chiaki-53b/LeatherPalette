@@ -1,0 +1,5 @@
+<%= turbo_stream.replace "unfavorite-button-for-post-#{@post.id}" do %>
+  <%= render 'posts/favorite', post: @post %>
+<% end %>
+<!-- favorites#destroyが実行されると、unfavorite-button-for-post-#{@post.id}のidの値探し、対象のDOMをブロック内のものと置き換え（replace） -->
+<!-- つまりapp/views/posts/_unfavorite.html.erbのlink_toのブロックを、app/views/posts/_favorite.html.erbに置き換える。(♥から♡に変化させる) -->
