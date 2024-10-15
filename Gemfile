@@ -48,7 +48,7 @@ gem "rails-i18n", "~> 7.0.0"
 gem "carrierwave", "~> 3.0"
 
 # production_upload_images
-gem "fog-aws", "3.27.0"
+gem "fog-aws", "3.28.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
