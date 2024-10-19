@@ -15,7 +15,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "#", class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
+            <%= link_to searches_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-search text-xl"></i>
               <span><%= t('.search') %></span>
             <% end %>
@@ -64,7 +64,7 @@
         <% end %>
       </div>
       <div class="hs-tooltip inline-block [--placement:right]">
-        <%= link_to "#", class:"flex items-center gap-x-4.5 py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
+        <%= link_to searches_path, class:"flex items-center gap-x-4.5 py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
           <i class="bi bi-search text-xl"></i>
         <% end %>
       </div>
@@ -134,7 +134,7 @@
       <% end %>
     </div>
     <div class="hs-tooltip inline-block [--placement:right]">
-      <%= link_to "#_path", class:"flex items-center gap-x-3.5 py-2 px-3 text-sm rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
+      <%= link_to searches_path, class:"flex items-center gap-x-3.5 py-2 px-3 text-sm rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
         <i class="bi bi-search text-xl"></i>
       <% end %>
     </div>
