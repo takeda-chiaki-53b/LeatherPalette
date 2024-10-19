@@ -23,4 +23,7 @@ Rails.application.routes.draw do
 
   # お気に入り機能関連
   resources :favorites, only: %i[create destroy]
+
+  # 検索機能関連
+  resources :searches, only: %i[index]
 end

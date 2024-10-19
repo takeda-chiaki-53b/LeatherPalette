@@ -54,3 +54,6 @@ ja:
       title: 投稿編集
     favorites:
       title: お気に入り
+  searches:
+    index:
+      title: 検索
