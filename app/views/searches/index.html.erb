@@ -5,68 +5,126 @@
 
 <div class="flex justify-between items-center w-10/12 mx-auto text-yellow-900 py-5">
   <div class="text-left">
-    <h2 class="text-xl font-semibold" ></h2>
+    <h2 class="text-xl font-semibold" >検索方法を選択</h2>
   </div>
 </div>
 
-<!-- 大きな画面用 -->
-<div class="hidden md:block lg:block">
-  <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto mb-6">
-    <div class="flex flex-col items-center">
-    <%= link_to '#', class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-      <i class="bi bi-tag text-2xl"></i>
-    <% end %>
-      <span class="mt-2 text-sm text-center">ブランド</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <%= link_to "#", class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-        <i class="bi bi-clock-history text-2xl"></i>
+<!-- 検索方法選択エリア -->
+<div data-controller="search">
+  <!-- 大きな画面用 -->
+  <div class="hidden md:block lg:block">
+    <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto mb-6">
+      <div class="flex flex-col items-center">
+      <%= link_to '#', class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]",
+      data: { action: "click->search#select", condition: "brand" } do %>
+        <i class="bi bi-tag text-2xl"></i>
       <% end %>
-      <span class="mt-2 text-sm text-center">使用年数</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <%= link_to "#", class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-        <i class="bi bi-palette text-2xl"></i>
-      <% end %>
-      <span class="mt-2 text-sm text-center">カラー</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <%= link_to '#', class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-        <i class="bi bi-sliders text-2xl "></i>
-      <% end %>
-      <span class="mt-2 text-sm text-center">絞り込み</span>
+        <span class="mt-2 text-sm text-center">ブランド</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <%= link_to "#", class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]",
+        data: { action: "click->search#select", condition: "used_year" } do %>
+          <i class="bi bi-clock-history text-2xl"></i>
+        <% end %>
+        <span class="mt-2 text-sm text-center">使用年数</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <%= link_to "#", class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]",
+        data: { action: "click->search#select", condition: "color" } do %>
+          <i class="bi bi-palette text-2xl"></i>
+        <% end %>
+        <span class="mt-2 text-sm text-center">カラー</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <%= link_to '#', class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
+          <i class="bi bi-sliders text-2xl "></i>
+        <% end %>
+        <span class="mt-2 text-sm text-center">絞り込み</span>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- スマホ用 -->
-<div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full py-5">
-  <nav class="max-w-[85rem] w-full mx-auto text-yellow-900" aria-label="Global">
-    <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto">
-      <div class="flex flex-col items-center">
-        <%= link_to '#', class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-          <i class="bi bi-tag text-xl"></i>
-        <% end %>
-        <span class="mt-2 text-xs text-center">ブランド</span>
+  <!-- スマホ用 -->
+  <div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full py-5">
+    <nav class="max-w-[85rem] w-full mx-auto text-yellow-900" aria-label="Global">
+      <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto">
+        <div class="flex flex-col items-center">
+          <%= link_to '#', class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]",
+          data: { action: "click->search#select", condition: "brand" } do %>
+            <i class="bi bi-tag text-xl"></i>
+          <% end %>
+          <span class="mt-2 text-xs text-center">ブランド</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <%= link_to "#", class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]",
+          data: { action: "click->search#select", condition: "used_year" } do %>
+            <i class="bi bi-clock-history text-xl"></i>
+          <% end %>
+          <span class="mt-2 text-xs text-center">使用年数</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <%= link_to "#", class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]",
+          data: { action: "click->search#select", condition: "color" } do %>
+            <i class="bi bi-palette text-xl"></i>
+          <% end %>
+          <span class="mt-2 text-xs text-center">カラー</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <%= link_to '#', class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
+            <i class="bi bi-sliders text-xl "></i>
+          <% end %>
+          <span class="mt-2 text-xs text-center">絞り込み</span>
+        </div>
       </div>
-      <div class="flex flex-col items-center">
-        <%= link_to "#", class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-          <i class="bi bi-clock-history text-xl"></i>
+    </nav>
+  </div>
+
+  <!-- 検索方法別の条件指定部分 -->
+  <!-- ブランド(ユーザー名)の選択肢表示 -->
+  <div class="brand_search" data-search-target="condition" data-condition="brand">
+    <div class="bg-white rounded-xl shadow-md p-6 text-center w-10/12 mx-auto text-yellow-900">
+      <table class="table">
+        <tr>
+          <th>ブランドを選択</th>
+        </tr>
+
+        <%= form_with url: "#_path", method: :get do |f| %>
+            <tbody>
+              <% @brand_admins.each do |admin| %>
+                <tr>
+                  <td><%= link_to admin.name, "#_path(user_id: admin.id)", method: :get %></td>
+                </tr>
+              <% end %>
+            </tbody>
         <% end %>
-        <span class="mt-2 text-xs text-center">使用年数</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <%= link_to "#", class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-          <i class="bi bi-palette text-xl"></i>
-        <% end %>
-        <span class="mt-2 text-xs text-center">カラー</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <%= link_to '#', class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-          <i class="bi bi-sliders text-xl "></i>
-        <% end %>
-        <span class="mt-2 text-xs text-center">絞り込み</span>
-      </div>
+
+      </table>
     </div>
-  </nav>
+  </div>
+
+
+  <!-- 使用年数の選択肢表示 -->
+  <div class="hidden" data-search-target="condition" data-condition="used_year">
+    <div class="bg-white rounded-xl shadow-md p-6 text-center w-10/12 mx-auto text-yellow-900">
+      <table class="table">
+        <tr>
+          <th>使用年数検索</th>
+        </tr>
+        <!-- 使用年数検索の条件 -->
+      </table>
+    </div>
+  </div>
+
+
+  <!-- カラーの選択肢表示 -->
+  <div class="hidden" data-search-target="condition" data-condition="color">
+    <div class="bg-white rounded-xl shadow-md p-6 text-center w-10/12 mx-auto text-yellow-900">
+      <table class="table">
+        <tr>
+          <th>カラー検索</th>
+        </tr>
+        <!-- カラー検索の条件 -->
+      </table>
+    </div>
+  </div>
 </div>
