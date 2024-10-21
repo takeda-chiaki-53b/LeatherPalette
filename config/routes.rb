@@ -25,5 +25,9 @@ Rails.application.routes.draw do
   resources :favorites, only: %i[create destroy]
 
   # 検索機能関連
-  resources :searches, only: %i[index]
+  resources :searches, only: %i[index] do
+    collection do
+      get :result  # collectionを使い、リソース全体に対してのアクションとして扱う
+    end
+  end
 end
