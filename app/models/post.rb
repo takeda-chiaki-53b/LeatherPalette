@@ -19,4 +19,8 @@ class Post < ApplicationRecord
   scope :published, -> { where(status: :published) }
   scope :unpublished, -> { where(status: :unpublished) }
   scope :draft, -> { where(status: :draft) }
+
+  # 検索画面に関するスコープ
+  # 指定のブランドの投稿を取得する
+  scope :brand_post_search, ->(search_brand_id) { where(brand_admin_id: search_brand_id) }
 end
