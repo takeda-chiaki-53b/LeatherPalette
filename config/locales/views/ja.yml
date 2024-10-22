@@ -57,3 +57,5 @@ ja:
   searches:
     index:
       title: 検索
+    result:
+      title: 検索結果
