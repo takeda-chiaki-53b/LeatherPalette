@@ -7,8 +7,7 @@ class SearchesController < ApplicationController
 
   def result
     search_brand_id = brand_search_params[:user_id]  # ストロングパラメーターを使用
-    @posts = Post.published.brand_post_search(saerch_brand_id).includes(:user).order(created_at: :desc)
-    #
+    @posts = Post.published.brand_post_search(search_brand_id).includes(:user).order(created_at: :desc)
   end
 
   private

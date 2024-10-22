@@ -22,5 +22,5 @@ class Post < ApplicationRecord
 
   # 検索画面に関するスコープ
   # 指定のブランドの投稿を取得する
-  scope :brand_post_search, ->(search_brand_id) { where(brand_admin_id: search_brand_id) }
+  scope :brand_post_search, ->(search_brand_id) { where(user_id: search_brand_id) }
 end

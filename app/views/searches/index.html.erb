@@ -87,17 +87,13 @@
         <tr>
           <th>ブランドを選択</th>
         </tr>
-
-        <%= form_with url: "#_path", method: :get do |f| %>
-            <tbody>
-              <% @brand_admins.each do |admin| %>
-                <tr>
-                  <td><%= link_to admin.name, "#_path(user_id: admin.id)", method: :get %></td>
-                </tr>
-              <% end %>
-            </tbody>
-        <% end %>
-
+        <tbody>
+          <% @brand_admins.each do |brand| %>
+            <tr>
+              <td><%= link_to brand.name, result_searches_path(post: { user_id: brand.id }) %></td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>
