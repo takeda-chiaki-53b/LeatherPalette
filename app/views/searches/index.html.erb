@@ -100,13 +100,33 @@
 
 
   <!-- 使用年数の選択肢表示 -->
-  <div class="hidden" data-search-target="condition" data-condition="used_year">
+  <div class="used_year_search" data-search-target="condition" data-condition="used_year">
     <div class="bg-white rounded-xl shadow-md p-6 text-center w-10/12 mx-auto text-yellow-900">
       <table class="table">
         <tr>
-          <th>使用年数検索</th>
+          <th>使用年数を選択</th>
         </tr>
-        <!-- 使用年数検索の条件 -->
+        <tbody>
+          <% year_choices = [
+            ["半年未満", "半年未満"],
+            ["1年", "1年"],
+            ["1年半", "1年半"],
+            ["2年", "2年"],
+            ["2年半", "約2年半"],
+            ["3年", "3年"],
+            ["3年半", "3年半"],
+            ["4年", "4年"],
+            ["4年半", "4年半"],
+            ["5年", "5年"],
+            ["5年以上", "5年以上"],
+            ["10年以上", "10年以上"],
+          ] %>
+          <% year_choices.each do |display_text| %>
+            <tr class="hover:bg-[#fdba74]">
+              <td><%= link_to display_text[0], result_searches_path(post: { used_year: display_text[0] }) %></td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>
