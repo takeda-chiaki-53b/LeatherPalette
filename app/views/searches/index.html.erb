@@ -90,7 +90,7 @@
         <tbody>
           <% @brand_admins.each do |brand| %>
             <tr class="hover:bg-[#fdba74]">
-              <td><%= link_to brand.name, result_searches_path(post: { user_id: brand.id }) %></td>
+              <td><%= link_to brand.name, result_searches_path(post: { user_id: brand.id }), class: "block w-full" %></td>
             </tr>
           <% end %>
         </tbody>
@@ -123,7 +123,7 @@
           ] %>
           <% year_choices.each do |display_text| %>
             <tr class="hover:bg-[#fdba74]">
-              <td><%= link_to display_text[0], result_searches_path(post: { used_year: display_text[0] }) %></td>
+              <td><%= link_to display_text[0], result_searches_path(post: { used_year: display_text[0] }), class: "block w-full" %></td>
             </tr>
           <% end %>
         </tbody>
