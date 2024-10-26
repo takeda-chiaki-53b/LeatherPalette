@@ -21,8 +21,8 @@ class Post < ApplicationRecord
   scope :draft, -> { where(status: :draft) }
 
   # 検索画面に関するスコープ
-  # 指定のブランドの投稿を取得する
-  scope :brand_post_search, ->(search_brand_id) { where(user_id: search_brand_id) }
+  # 指定のブランドをbrand_admin_idカラムに含む投稿を取得する
+  scope :brand_post_search, ->(brand_admin_id) { where(brand_admin_id: brand_admin_id, status: :published) }
   # 選択した使用年数を含み、且つ公開ステータスの投稿を取得
   scope :used_year_post_search, ->(used_year) { where(used_year: used_year, status: :published) }
 end
