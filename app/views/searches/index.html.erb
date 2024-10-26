@@ -90,7 +90,7 @@
         <tbody>
           <% @brand_admins.each do |brand| %>
             <tr class="hover:bg-[#fdba74]">
-              <td><%= link_to brand.name, result_searches_path(post: { user_id: brand.id }), class: "block w-full" %></td>
+              <td><%= link_to brand.name, result_searches_path(post: { brand_name: brand.name }), class: "block w-full" %></td>
             </tr>
           <% end %>
         </tbody>
