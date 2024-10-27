@@ -9,8 +9,8 @@
   </div>
 </div>
 
-<!-- 検索方法選択エリア -->
 <div data-controller="search">
+  <!-- 検索方法選択エリア -->
   <!-- 大きな画面用 -->
   <div class="hidden md:block lg:block">
     <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto mb-6">
@@ -147,4 +147,17 @@
       </table>
     </div>
   </div>
+
+  <!-- 絞り込み条件表示 -->
+  <div class="hidden" data-search-target="condition" data-condition="refine">
+    <div class="bg-white rounded-xl shadow-md p-6 text-center w-10/12 mx-auto text-yellow-900">
+      <table class="table">
+        <tr>
+          <th>絞り込み条件を指定</th>
+        </tr>
+        <!-- 絞り込み検索の条件 -->
+      </table>
+    </div>
+  </div>
+
 </div>
