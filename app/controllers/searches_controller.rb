@@ -2,7 +2,7 @@ class SearchesController < ApplicationController
   skip_before_action :require_login, only: %i[index result]
 
   def index
-    @brand_admins = User.brand_admins # スコープでブランド管理者のユーザーを取得
+    @brand_admins = User.brand_admins.order(name: :asc) # スコープでブランド管理者のユーザーを取得
   end
 
   def result
