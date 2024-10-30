@@ -86,7 +86,7 @@
   <!-- 検索方法別の条件指定部分 -->
   <!-- ブランド(ユーザー名)の選択肢表示 -->
   <div class="brand_search" data-search-target="condition" data-condition="brand">
-    <div class="bg-white rounded-xl shadow-md p-4 text-center w-10/12 mx-auto text-yellow-900">
+    <div class="bg-white rounded-xl shadow-md p-4 w-10/12 mx-auto text-yellow-900">
       <table class="table">
         <tr>
           <th>ブランドを選択</th>
@@ -94,7 +94,12 @@
         <tbody>
           <% @brand_admins.each do |brand| %>
             <tr class="hover:bg-[#fdba74]">
-              <td><%= link_to brand.name, result_searches_path(post: { brand_name: brand.name }), class: "block w-full" %></td>
+              <td>
+              <%= form_with url: result_searches_path, method: :post, data: { turbo: false } do |f| %>
+                <%= f.hidden_field :brand_name, value: brand.name %>
+                <%= f.submit brand.name, class: "block w-full text-left cursor-pointer" %>
+              <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
@@ -127,7 +132,12 @@
           ] %>
           <% year_choices.each do |display_text| %>
             <tr class="hover:bg-[#fdba74]">
-              <td><%= link_to display_text[0], result_searches_path(post: { used_year: display_text[0] }), class: "block w-full" %></td>
+              <td>
+                <%= form_with url: result_searches_path, method: :post, data: { turbo: false } do |f| %>
+                  <%= f.hidden_field :used_year, value: display_text[0] %>
+                  <%= f.submit display_text[0], class: "block w-full text-left cursor-pointer" %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
@@ -157,7 +167,7 @@
         </tr>
       </table>
 
-      <%= form_with url: result_searches_path, method: :post, local: true do |f| %>
+      <%= form_with url: result_searches_path, method: :post, data: { turbo: false } do |f| %>
         <!-- ブランド選択 -->
         <div class="mx-auto w-11/12 md:w-1/2 pt-3">
           <%= f.label 'post[brand_name]', 'ブランド', class: 'label text-xs font-medium' %>

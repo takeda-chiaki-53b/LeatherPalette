@@ -26,6 +26,6 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    params.require(:post).permit(:brand_name, :used_year)
+    params.permit(:brand_name, :used_year)
   end
 end
