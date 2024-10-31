@@ -9,6 +9,10 @@ class SearchesController < ApplicationController
     brand_name = search_params[:brand_name]
     used_year = search_params[:used_year]
 
+    # 選択されたパラメータをインスタンス変数にセット(検索結果に条件を表示させるため)
+    @selected_brand_name = brand_name
+    @selected_used_year = used_year
+
     # パラメーターで受け取ったブランド名と一致する、brand_admin権限を持つユーザーを探す。
     brand_admin = User.brand_admins.find_by(name: brand_name)
 
