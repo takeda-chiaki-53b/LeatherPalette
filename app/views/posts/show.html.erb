@@ -57,25 +57,52 @@
 
 <!-- 使用年数 -->
 <div class="used_year">
-  <div class="w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto text-yellow-900">
-    <% if @post.used_year %>
-      <p>使用年数： <%= @post.used_year %></p>
-    <% else %>
-      <p>使用年数：未登録</p>
-    <% end %>
+  <div class="flex w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto text-yellow-900">
+    <div class="w-1/5">
+      <p>使用年数 </p>
+    </div>
+    <div class="w-4/5">
+      <% if @post.used_year %>
+        <p><%= @post.used_year %></p>
+      <% else %>
+        <p>未登録</p>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <!-- ブランド -->
 <div class="brand">
-  <div class="w-full px-4 pt-4 pb-10 md:px-0 md:pt-4 md:pb-10 md:w-1/2 mx-auto">
-    <% if @brand_admin %>
-      <p class="text-yellow-900">ブランド　： <%= @brand_admin.name %></p>
-    <% else %>
-      <p class="text-yellow-900">ブランド　：未登録</p>
-    <% end %>
+  <div class="flex w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto text-yellow-900">
+    <div class="w-1/5">
+      <p>ブランド </p>
+    </div>
+    <div class="w-4/5">
+      <% if @brand_admin %>
+        <p><%= @brand_admin.name %></p>
+      <% else %>
+        <p>未登録</p>
+      <% end %>
+    </div>
   </div>
 </div>
+
+<!-- カラー -->
+<div class="color">
+  <div class="flex w-full px-4 pt-4 pb-10 md:px-0 md:pt-4 md:pb-10 md:w-1/2 mx-auto text-yellow-900">
+    <div class="w-1/5">
+      <p>カラー </p>
+    </div>
+    <div class="w-4/5">
+      <% if @post.color %>
+        <p><%= @post.color %></p>
+      <% else %>
+        <p>未登録</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 
 <!-- お手入れ情報 -->
 <div class="flex items-center w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto border-t">
@@ -84,34 +111,59 @@
 
 <!-- 頻度 -->
 <div class="care_frequency">
-  <div class="w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto text-yellow-900">
-    <% if @post.care_frequency %>
-      <p>ケア頻度： <%= @post.care_frequency %></p>
-    <% else %>
-      <p>ケア頻度：未登録</p>
-    <% end %>
+  <div class="flex w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto text-yellow-900">
+    <div class="w-1/5">
+      <p>ケア頻度 </p>
+    </div>
+    <div class="w-4/5">
+      <% if @post.care_frequency.present? %>
+        <p><%= @post.care_frequency %></p>
+      <% else %>
+        <div class="w-4/5">
+          <p>未登録</p>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <!-- ケアアイテム -->
 <div class="care_item">
-  <div class="w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto text-yellow-900">
-    <% if @post.care_item %>
-      <p>ケア用品： <%= simple_format(@post.care_item) %></p>
-    <% else %>
-      <p class="text-yellow-900">ケア用品：未登録</p>
-    <% end %>
+  <div class="w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto text-yellow-900 flex items-start">
+    <div class="w-1/5">
+      <p>ケア用品 </p>
+    </div>
+    <div class="w-4/5">
+      <% if @post.care_item.present? %>
+        <div class="rounded-lg border border-neutral-200 p-2 w-full">
+          <p><%= simple_format(@post.care_item) %></p>
+        </div>
+      <% else %>
+        <div class="w-4/5">
+          <p>未登録</p>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <!-- ケア方法 -->
 <div class="care_howto">
-  <div class="w-full px-4 pt-4 pb-10 md:px-0 md:pt-4 md:pb-10 md:w-1/2 mx-auto text-yellow-900">
-    <% if @post.care_howto %>
-      <p>ケア方法： <%= simple_format(@post.care_howto) %></p>
-    <% else %>
-      <p>ケア方法：未登録</p>
-    <% end %>
+  <div class="w-full px-4 pt-4 pb-10 md:px-0 md:pt-4 md:pb-10 md:w-1/2 mx-auto text-yellow-900 flex items-start">
+    <div class="w-1/5">
+      <p>ケア方法 </p>
+    </div>
+    <div class="w-4/5">
+      <% if @post.care_howto.present? %>
+        <div class="rounded-lg border border-neutral-200 p-2 w-full">
+          <p><%= simple_format(@post.care_howto) %></p>
+        </div>
+      <% else %>
+        <div class="w-4/5">
+          <p>未登録</p>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
