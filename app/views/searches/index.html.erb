@@ -131,12 +131,12 @@
             ["5年以上", "5年以上"],
             ["10年以上", "10年以上"],
           ] %>
-          <% year_choices.each do |display_text| %>
+          <% year_choices.each do |year_text| %>
             <tr class="hover:bg-[#fdba74]">
               <td>
                 <%= form_with url: result_searches_path, method: :post, data: { turbo: false } do |f| %>
-                  <%= f.hidden_field :used_year, value: display_text[0] %>
-                  <%= f.submit display_text[0], class: "block w-full text-left cursor-pointer" %>
+                  <%= f.hidden_field :used_year, value: year_text[0] %>
+                  <%= f.submit year_text[0], class: "block w-full text-left cursor-pointer" %>
                 <% end %>
               </td>
             </tr>
@@ -148,13 +148,38 @@
 
 
   <!-- カラーの選択肢表示 -->
-  <div class="hidden" data-search-target="condition" data-condition="color">
+  <div class="color_search" data-search-target="condition" data-condition="color">
     <div class="bg-white rounded-xl shadow-md p-4 text-center w-10/12 mx-auto text-yellow-900">
       <table class="table">
         <tr>
-          <th>カラー検索</th>
+          <th>カラーを選択</th>
         </tr>
-        <!-- カラー検索の条件 -->
+        <tbody>
+          <% color_choices = [
+            ["ブラック系", "ブラック系"],
+            ["ブラウン系", "ブラウン系"],
+            ["キャメル系", "キャメル系"],
+            ["ベージュ系", "ベージュ系"],
+            ["グレー系", "グレー系"],
+            ["レッド系", "レッド系"],
+            ["ピンク系", "ピンク系"],
+            ["オレンジ系", "オレンジ系"],
+            ["イエロー系", "イエロー系"],
+            ["グリーン系", "グリーン系"],
+            ["ブルー系", "ブルー系"],
+            ["パープル系", "パープル系"],
+          ] %>
+          <% color_choices.each do |color_text| %>
+            <tr class="hover:bg-[#fdba74]">
+              <td>
+                <%= form_with url: result_searches_path, method: :post, data: { turbo: false } do |f| %>
+                  <%= f.hidden_field :color, value: color_text[0] %>
+                  <%= f.submit color_text[0], class: "block w-full text-left cursor-pointer" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>
@@ -191,6 +216,25 @@
             ["5年", "5年"],
             ["5年以上", "5年以上"],
             ["10年以上", "10年以上"],
+          ], { include_blank: "未選択" }, class: 'select rounded-lg border border-neutral-200 w-full' %>
+        </div>
+
+        <!-- カラー選択 -->
+        <div class="mx-auto w-11/12 md:w-1/2 pt-3">
+          <%= f.label :color, 'カラー', class: 'label text-xs font-medium' %>
+          <%= f.select :color, [
+            ["ブラック系", "ブラック系"],
+            ["ブラウン系", "ブラウン系"],
+            ["キャメル系", "キャメル系"],
+            ["ベージュ系", "ベージュ系"],
+            ["グレー系", "グレー系"],
+            ["レッド系", "レッド系"],
+            ["ピンク系", "ピンク系"],
+            ["オレンジ系", "オレンジ系"],
+            ["イエロー系", "イエロー系"],
+            ["グリーン系", "グリーン系"],
+            ["ブルー系", "ブルー系"],
+            ["パープル系", "パープル系"],
           ], { include_blank: "未選択" }, class: 'select rounded-lg border border-neutral-200 w-full' %>
         </div>
 
