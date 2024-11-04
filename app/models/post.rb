@@ -25,4 +25,6 @@ class Post < ApplicationRecord
   scope :brand_post_search, ->(brand_admin_id) { where(brand_admin_id: brand_admin_id, status: :published) }
   # 選択した使用年数を含み、且つ公開ステータスの投稿を取得
   scope :used_year_post_search, ->(used_year) { where(used_year: used_year, status: :published) }
+  # 選択したカラーを含み、且つ公開ステータスの投稿を取得
+  scope :color_post_search, ->(color) { where(color: color, status: :published) }
 end
