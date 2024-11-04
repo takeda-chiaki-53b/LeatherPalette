@@ -10,14 +10,20 @@
     <ul class="text-left pt-2">
       <% if @selected_brand_name.present? %>
         <li class="flex">
-          <span class="w-7/25 text-left">ブ ラ ン ド ：</span>
-          <strong class="w-18/25 text-left"><%= @selected_brand_name %></strong>
+          <span class="w-1/4">ブランド：</span>
+          <strong class="w-3/4"><%= @selected_brand_name %></strong>
         </li>
       <% end %>
       <% if @selected_used_year.present? %>
         <li class="flex">
-          <span class="w-7/25 text-left">使用年数：</span>
-          <strong class="w-18/25 text-left"><%= @selected_used_year %></strong>
+          <span class="w-1/4">使用年数：</span>
+          <strong class="w-3/4"><%= @selected_used_year %></strong>
+        </li>
+      <% end %>
+      <% if @selected_color.present? %>
+        <li class="flex">
+          <span class="w-1/4">カラー：</span>
+          <strong class="w-3/4"><%= @selected_color %></strong>
         </li>
       <% end %>
     </ul>
