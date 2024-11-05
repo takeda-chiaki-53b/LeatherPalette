@@ -30,4 +30,7 @@ Rails.application.routes.draw do
       post :result  # collectionを使い、リソース全体に対してのアクションとして扱う
     end
   end
+
+  # マイページ（一般ユーザー用）
+  resource :mypage, only: %i[show]
 end
