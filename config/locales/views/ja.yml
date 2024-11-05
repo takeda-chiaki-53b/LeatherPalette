@@ -59,3 +59,6 @@ ja:
       title: 検索
     result:
       title: 検索結果
+  mypages:
+    show:
+      title: マイページ
