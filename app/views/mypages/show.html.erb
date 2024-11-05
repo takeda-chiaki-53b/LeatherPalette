@@ -1,0 +1,117 @@
+<% content_for(:title, t('.title')) %>
+<div class="flex justify-center mt-5 mb-5">
+  <h1 class="text-2xl font-semibold text-yellow-900" >マイページ</h1>
+</div>
+
+<div class="flex justify-between items-center w-10/12 mx-auto text-yellow-900 py-5">
+  <div class="text-left">
+    <h2 class="text-xl font-semibold" ><%= @user.name %></h2>
+  </div>
+</div>
+
+<!-- 大きな画面用 -->
+<div class="hidden md:block lg:block">
+  <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto mb-6">
+    <div class="flex flex-col items-center">
+    <%= link_to '#', class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
+      <i class="bi bi-person-gear text-2xl"></i>
+    <% end %>
+      <span class="mt-2 text-sm text-center">アカウント</span>
+    </div>
+    <!-- 追加するか検討中の機能の為、一旦コメントアウト -->
+    <!-- <div class="flex flex-col items-center">  -->
+    <!--   <%= link_to '#', class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>  -->
+    <!--     <i class="bi bi-journals text-2xl "></i>  -->
+    <!--   <% end %>  -->
+    <!--   <span class="mt-2 text-sm text-center">ダイアリー</span>  -->
+    <!-- </div>  -->
+  </div>
+</div>
+
+<!-- スマホ用 -->
+<div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full py-5">
+  <nav class="max-w-[85rem] w-full mx-auto text-yellow-900" aria-label="Global">
+    <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto">
+      <div class="flex flex-col items-center">
+        <%= link_to '#', class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
+          <i class="bi bi-person-gear text-xl"></i>
+        <% end %>
+        <span class="mt-2 text-xs text-center">アカウント</span>
+      </div>
+      <!-- 追加するか検討中の機能の為、一旦コメントアウト -->
+      <!-- <div class="flex flex-col items-center"> -->
+      <!--   <%= link_to '#', class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %> -->
+      <!--     <i class="bi bi-journals text-xl "></i> -->
+      <!--   <% end %> -->
+      <!--   <span class="mt-2 text-xs text-center">ダイアリー</span> -->
+      <!-- </div> -->
+    </div>
+  </nav>
+</div>
+
+<div class="border-t-2 border-neutral-100 my-5">
+ <!-- 余白 -->
+</div>
+<div class="flex justify-between items-center justify-center w-10/12 mx-auto text-yellow-900  py-5">
+  <div class="text-left">
+    <h2 class="text-xl font-semibold" ><%= @user.name %>の投稿</h2>
+  </div>
+</div>
+
+<!-- ステータス別投稿表示エリア -->
+<div data-controller="tabber">
+  <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 items-center w-10/12 mx-auto">
+    <ul class="flex w-full">
+      <li class="flex-1  w-full">
+        <%= link_to '公開中', 'javascript:void(0)', class: 'block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 active-tab', aria: { current: "page" }, data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
+      </li>
+      <li class="flex-1  w-full">
+        <%= link_to '非公開', 'javascript:void(0)', class: 'block p-4 rounded-t-lg not-active', data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
+      </li>
+      <li class="flex-1  w-full">
+        <%= link_to '下書き', 'javascript:void(0)', class: 'block p-4 rounded-t-lg not-active', data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ステータス別の投稿表示部分 -->
+  <div>
+  <div data-tabber-target="content">
+    <!-- 公開中の投稿 -->
+    <div class="flex flex-wrap m-4">
+      <% if @posts_published.present? %>
+        <div class="grid min-[320px]:grid-cols-2 min-[320px]:m-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center md:m-10">
+          <%= render @posts_published %>
+        </div>
+      <% else %>
+        <div class='text-lg m-auto'>公開中の投稿はありません</div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="hidden" data-tabber-target="content">
+    <!-- 非公開の投稿 -->
+    <div class="flex flex-wrap m-4">
+      <% if @posts_unpublished.present? %>
+        <div class="grid min-[320px]:grid-cols-2 min-[320px]:m-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center md:m-10">
+          <%= render @posts_unpublished %>
+        </div>
+      <% else %>
+        <div class='text-lg m-auto'>非公開の投稿はありません</div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="hidden" data-tabber-target="content">
+    <!-- 下書きの投稿 -->
+    <div class="flex flex-wrap m-4">
+      <% if @posts_draft.present? %>
+        <div class="grid min-[320px]:grid-cols-2 min-[320px]:m-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center md:m-10">
+          <%= render @posts_draft %>
+        </div>
+      <% else %>
+        <div class='text-lg m-auto'>下書きの投稿はありません</div>
+      <% end %>
+    </div>
+  </div>
+</div>
