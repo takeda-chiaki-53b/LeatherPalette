@@ -3,60 +3,80 @@
   <h1 class="text-2xl font-semibold text-yellow-900" >マイページ</h1>
 </div>
 
-<div class="flex justify-between items-center w-10/12 mx-auto text-yellow-900 py-5">
-  <div class="text-left">
-    <h2 class="text-xl font-semibold" ><%= @user.name %></h2>
-  </div>
-</div>
-
 <!-- 大きな画面用 -->
 <div class="hidden md:block lg:block">
-  <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto mb-6">
-    <div class="flex flex-col items-center">
-    <%= link_to '#', class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-      <i class="bi bi-person-gear text-2xl"></i>
-    <% end %>
-      <span class="mt-2 text-sm text-center">アカウント</span>
+
+  <%= link_to profile_path do %>
+    <div class="bg-white rounded-xl shadow-md border border-neutral-200 p-6 text-yellow-900 w-1/2 mx-auto">
+      <div class="flex justify-center">
+        <%= image_tag('no_image.png', class: 'rounded-full h-24 w-24 object-contain') %>
+      </div>
+      <div class="flex justify-center mt-4 text-bace font-semibold">
+        <%= current_user.name %>
+      </div>
     </div>
-    <!-- 追加するか検討中の機能の為、一旦コメントアウト -->
+  <% end %>
+
+  <!-- 追加するか検討中の機能の為、一旦コメントアウト -->
+  <!-- <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto mb-6"> -->
+    <!-- <div class="flex flex-col items-center">
+    <!--   <%= link_to '#', class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %> -->
+    <!--     <i class="bi bi-person-gear text-2xl"></i> -->
+    <!--   <% end %> -->
+    <!--   <span class="mt-2 text-sm text-center">アカウント</span> -->
+    <!-- </div> -->
+
     <!-- <div class="flex flex-col items-center">  -->
     <!--   <%= link_to '#', class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>  -->
     <!--     <i class="bi bi-journals text-2xl "></i>  -->
     <!--   <% end %>  -->
     <!--   <span class="mt-2 text-sm text-center">ダイアリー</span>  -->
     <!-- </div>  -->
-  </div>
+  <!-- </div>  -->
+
 </div>
+
 
 <!-- スマホ用 -->
 <div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full py-5">
   <nav class="max-w-[85rem] w-full mx-auto text-yellow-900" aria-label="Global">
-    <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto">
-      <div class="flex flex-col items-center">
-        <%= link_to '#', class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-          <i class="bi bi-person-gear text-xl"></i>
-        <% end %>
-        <span class="mt-2 text-xs text-center">アカウント</span>
+
+  <%= link_to profile_path do %>
+    <div class="bg-white rounded-xl shadow-md border border-neutral-200 p-6 text-yellow-900 w-10/12 mx-auto">
+      <div class="flex justify-center">
+        <%= image_tag('no_image.png', class: 'rounded-full h-24 w-24 object-contain') %>
       </div>
-      <!-- 追加するか検討中の機能の為、一旦コメントアウト -->
+      <div class="flex justify-center mt-4 text-bace font-semibold">
+        <%= current_user.name %>
+      </div>
+    </div>
+  <% end %>
+
+    <!-- 追加するか検討中の機能の為、一旦コメントアウト -->
+    <!-- <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto"> -->
+      <!-- <div class="flex flex-col items-center"> -->
+      <!--   <%= link_to '#', class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %> -->
+      <!--     <i class="bi bi-person-gear text-xl"></i> -->
+      <!--   <% end %> -->
+      <!--   <span class="mt-2 text-xs text-center">アカウント</span> -->
+      <!-- </div> -->
+
       <!-- <div class="flex flex-col items-center"> -->
       <!--   <%= link_to '#', class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %> -->
       <!--     <i class="bi bi-journals text-xl "></i> -->
       <!--   <% end %> -->
       <!--   <span class="mt-2 text-xs text-center">ダイアリー</span> -->
       <!-- </div> -->
-    </div>
+    <!-- </div> -->
+
   </nav>
 </div>
+
 
 <div class="border-t-2 border-neutral-100 my-5">
  <!-- 余白 -->
 </div>
-<div class="flex justify-between items-center justify-center w-10/12 mx-auto text-yellow-900  py-5">
-  <div class="text-left">
-    <h2 class="text-xl font-semibold" ><%= @user.name %>の投稿</h2>
-  </div>
-</div>
+
 
 <!-- ステータス別投稿表示エリア -->
 <div data-controller="tabber">

@@ -33,4 +33,7 @@ Rails.application.routes.draw do
 
   # マイページ（一般ユーザー用）
   resource :mypage, only: %i[show]
+
+  # プロフィール
+  resource :profile, only: %i[show edit update]
 end
