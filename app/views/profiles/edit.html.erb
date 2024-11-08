@@ -1,0 +1,33 @@
+<% content_for(:title, t('.title')) %>
+<div class="flex justify-center mt-5 mb-5">
+  <h1 class="text-2xl font-semibold text-yellow-900" >アカウント編集</h1>
+</div>
+
+<div class="bg-white rounded-xl shadow-md border border-neutral-200 p-6 text-center text-yellow-900 w-10/12 mx-auto">
+  <%= form_with model: @user, url: profile_path, method: :put do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="w-full md:w-1/2 mx-auto text-yellow-900 h-full">
+
+      <div class="flex justify-center mb-4">
+        <%= image_tag('no_image.png', class: 'rounded-full h-40 w-40 object-contain') %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :name, class: "label w-full mx-auto text-sm" %>
+        <%= f.text_field :name, class: "input input-bordered form-control w-full mx-auto h-10" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :email, class: "label w-full mx-auto text-sm" %>
+        <%= f.email_field :email, class: "input input-bordered form-control w-full mx-auto h-10" %>
+      </div>
+
+      <div>
+        <%= f.submit "登録", class: "btn mt-8 mb-5 w-full mx-auto h-10 bg-[#E6CCB585] text-yellow-900" %>
+      </div>
+
+    </div>
+
+  <% end %>
+</div>
