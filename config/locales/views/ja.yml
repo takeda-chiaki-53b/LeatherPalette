@@ -62,3 +62,8 @@ ja:
   mypages:
     show:
       title: マイページ
+  profiles:
+    show:
+     title: ユーザー情報
+    edit:
+     title: ユーザー情報編集
