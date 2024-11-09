@@ -9,8 +9,14 @@
 
     <div class="w-full md:w-1/2 mx-auto text-yellow-900 h-full">
 
-      <div class="flex justify-center mt-4 mb-4">
-        <%= image_tag('no_image.png', class: 'rounded-full h-40 w-40 object-contain') %>
+      <div class="mb-3">
+        <div class="flex justify-center mt-4 mb-4">
+          <%= image_tag @user.avatar.url, class: 'rounded-full h-40 w-40 border-2 object-contain', id: 'preview' %>
+        </div>
+
+        <%= f.label :avatar, class: "label w-full mx-auto text-sm" %>
+        <%= f.file_field :avatar, class: 'file-input file-input-bordered file-input-ghost form-control w-full mx-auto', accept: 'image/*' %>
+        <%= f.hidden_field :avatar_cache %>
       </div>
 
       <div class="mb-3">

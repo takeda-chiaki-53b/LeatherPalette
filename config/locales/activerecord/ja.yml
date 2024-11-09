@@ -11,6 +11,7 @@ ja:
         email: メールアドレス
         password: パスワード(8文字以上)
         password_confirmation: パスワード再入力
+        avatar: アイコン
       post:
         post_image: 投稿画像
         body: 投稿メッセージ(必須)
