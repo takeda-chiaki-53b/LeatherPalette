@@ -1,28 +1,39 @@
-<div class="card rounded-xl bg-base-100 shadow-md aspect-[1/1]">
-  <div class="card-image" style="height: 84%;">
+<div class="card rounded-xl bg-base-100 shadow-md aspect-[1/1] text-yellow-900">
+  <div class="card-image" style="height: 75%;">
     <% if post.post_image.present? %>
       <%= link_to image_tag(post.post_image.first.url, class: 'rounded-t-xl w-full h-full object-cover'), post_path(post) %>
     <% else %>
       <%= link_to image_tag('no_image.png', class: 'rounded-t-xl w-full h-full object-cover'), post_path(post) %>
     <% end %>
   </div>
-  <div class="flex items-center justify-between" style="height: 16%">
-    <ul class="list-inline">
-        <li class="text-xs ml-3"><i class="bi bi-person"></i><%= post.user.name %></li>
-    </ul>
 
-    <!-- ログインしていない場合は、アイコンを表示しない-->
-    <% if current_user %>
-      <div>
-        <!-- 自分の投稿の場合は編集ボタン、他者の投稿ならお気に入りボタンを表示 -->
-        <% if current_user.own?(post) %>
-          <%= link_to edit_post_path(post) do %>
-            <i class="bi bi-pencil text-base md:text-xl mr-4"></i>
+  <div class="flex justify-between items-center mx-3 py-1 border-b">
+    <p class="text-xs md:text-sm">
+      <%= post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y.%-m.%-d") %>
+    </p>
+
+    <div class="flex">
+      <!-- ログインしていない場合は、アイコンを表示しない-->
+      <% if current_user %>
+        <div>
+          <!-- 自分の投稿の場合は編集ボタン、他者の投稿ならお気に入りボタンを表示 -->
+          <% if current_user.own?(post) %>
+            <%= link_to edit_post_path(post) do %>
+              <i class="bi bi-pencil text-lg md:text-xl"></i>
+            <% end %>
+          <% else %>
+            <%= render 'posts/favorite_buttons', { post: post } %>
           <% end %>
-        <% else %>
-          <%= render 'posts/favorite_buttons', { post: post } %>
-        <% end %>
-      </div>
-    <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
+
+  <div class="flex items-center mx-3 py-2" style="height: 25%">
+    <%= image_tag post.user.avatar_url, class: 'rounded-full border h-5 w-5 md:w-5 md:h-5 xl:w-7 xl:h-7 object-contain' %>
+    <span class="text-xs font-semibold ml-2 md:ml-3 overflow-hidden text-ellipsis whitespace-nowrap">
+      <%= post.user.name %>
+    </span>
+  </div>
+
 </div>
