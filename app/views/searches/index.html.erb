@@ -88,18 +88,19 @@
   <!-- ブランド(ユーザー名)の選択肢表示 -->
   <div class="brand_search" data-search-target="condition" data-condition="brand">
     <div class="bg-white rounded-xl shadow-md p-4 w-10/12 mx-auto text-yellow-900">
-      <table class="table">
+      <table class="table w-full">
         <tr>
           <th>ブランドを選択</th>
         </tr>
         <tbody>
           <% @brand_admins.each do |brand| %>
             <tr class="hover:bg-[#fdba74]">
-              <td>
-              <%= form_with url: result_searches_path, method: :post, data: { turbo: false } do |f| %>
-                <%= f.hidden_field :brand_name, value: brand.name %>
-                <%= f.submit brand.name, class: "block w-full text-left cursor-pointer" %>
-              <% end %>
+              <td class="flex items-center">
+                <%= image_tag(brand.avatar_url, alt: "#{brand.name}のアバター", class: "w-8 h-8 rounded-full border mr-2") %>
+                <%= form_with url: result_searches_path, method: :post, data: { turbo: false } do |f| %>
+                  <%= f.hidden_field :brand_name, value: brand.name %>
+                  <%= f.submit brand.name, class: "block w-full text-left cursor-pointer whitespace-normal" %>
+                <% end %>
               </td>
             </tr>
           <% end %>

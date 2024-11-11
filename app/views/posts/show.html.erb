@@ -2,7 +2,7 @@
 <div class="container">
   <div class="w-full p-4 md:px-0 md:py-2 md:w-1/2 mx-auto border-b">
     <ul class="list-inline flex items-center">
-      <li class="mr-2"><%= image_tag 'no_image.png', width: "40", height: "40", class: "rounded-full" %></li>
+      <li class="mr-2"><%= image_tag @post.user.avatar_url, width: "40", height: "40", class: "rounded-full border" %></li>
       <li class="text-yellow-900"><%= @post.user.name %></li>
     </ul>
   </div>
@@ -31,17 +31,22 @@
   <% end %>
 </div>
 
-<!-- ログインしていない場合は、アイコンを表示しない-->
-<% if current_user %>
-  <div>
-    <!-- 自分以外の投稿ならお気に入りアイコンを表示 -->
-    <% unless current_user.own?(@post) %>
-      <div class="flex justify-end w-full px-4 pt-4 pb-4 md:px-0 md:pt-4 md:pb-4 md:w-1/2 mx-auto">
+<!-- 日付・お気に入りボタン -->
+<div class="flex justify-between items-center w-full md:w-1/2 mx-auto px-4 pt-4 pb-4 md:px-0 md:pt-4 md:pb-4 text-yellow-900">
+  <p class="mr-2">
+    <%= @post.created_at.in_time_zone('Asia/Tokyo').strftime("%Y.%-m.%-d") %>
+  </p>
+
+  <!-- ログインしていない場合は、アイコンを表示しない -->
+  <% if current_user %>
+    <div class="flex">
+      <!-- 自分以外の投稿ならお気に入りアイコンを表示 -->
+      <% unless current_user.own?(@post) %>
         <%= render 'favorite_buttons', { post: @post } %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 <!-- 投稿本文 -->
 <div class="body-content">
