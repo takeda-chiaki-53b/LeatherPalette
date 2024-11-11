@@ -41,4 +41,3 @@
 /vendor/bundle
 /public/uploads/*
 /.env
-/tmp/screenshots/*
