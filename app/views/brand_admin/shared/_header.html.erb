@@ -1,47 +1,69 @@
-<!-- 大きな画面用 -->
+<!-- 大画面用 -->
 <div class="hidden lg:block">
   <div class="fixed top-0 start-0 bottom-0 z-[60] w-60 bg-neutral-100 border-e-2 border-neutral-100 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0">
       <div class="px-6 flex flex-col">
         <%= link_to root_path, class: "btn btn-ghost flex items-center text-xl rounded-lg justify-start font-bold text-yellow-900 hover:bg-white" do %>
-          <span>LeatherPalette ブランド管理者</span>
+          <span>LeatherPalette ブランド</span>
         <% end %>
       </div>
       <nav class="p-6 flex flex-col flex-wrap text-yellow-900">
-        <ul class="space-y-2.5 font-semibold">
+        <ul class="space-y-2 font-semibold">
           <li>
             <%= link_to posts_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-house text-xl"></i>
-              <span><%= t('.home') %></span>
+              <span class="ml-2"><%= t('.index') %></span>
             <% end %>
           </li>
           <li>
             <%= link_to searches_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-search text-xl"></i>
-              <span><%= t('.search') %></span>
+              <span class="ml-2"><%= t('.search') %></span>
             <% end %>
           </li>
           <li>
             <%= link_to new_post_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-plus-square text-xl"></i>
-              <span><%= t('.post_new') %></span>
+              <span class="ml-2"><%= t('.post_new') %></span>
             <% end %>
           </li>
           <li>
             <%= link_to favorites_posts_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-heart text-xl"></i>
-              <span><%= t('.favorite') %></span>
+              <span class="ml-2"><%= t('.favorite') %></span>
             <% end %>
           </li>
           <li>
             <%= link_to brand_admin_mypage_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-person-circle text-xl"></i>
-              <span><%= t('.mypage') %></span>
+              <span class="ml-2"><%= t('.mypage') %></span>
             <% end %>
           </li>
+          <li>
+            <%= link_to profile_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
+              <i class="bi bi-person-vcard text-xl"></i>
+              <span class="ml-2"><%= t('.profile') %></span>
+            <% end %>
+          </li>
+
+          <!-- ブランドアカウント専用機能 -->
+          <li class="border-t">
+            <%= link_to brand_admin_products_path, class: "mt-3 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
+              <i class="bi bi-file-earmark-spreadsheet text-xl"></i>
+              <span class="ml-2"><%= t('.products') %></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_brand_admin_product_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
+              <i class="bi bi-file-earmark-plus text-xl"></i>
+              <span class="ml-2"><%= t('.product_new') %></span>
+            <% end %>
+          </li>
+          <!-- ここまで -->
+
           <li class="fixed bottom-4">
             <%= link_to logout_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white", data: { turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？' } do %>
               <i class="bi bi-box-arrow-left text-xl"></i>
-              <span><%= t('.logout') %></span>
+              <span class="ml-2"><%= t('.logout') %></span>
             <% end %>
           </li>
         </ul>
@@ -49,7 +71,7 @@
   </div>
 </div>
 
-<!-- 中くらいの画面用 -->
+<!-- 中画面用 -->
 <div class="hidden md:block lg:hidden">
   <div class="fixed top-0 start-0 bottom-0 z-[60] w-20 bg-neutral-100 border-e-2 border-neutral-100 text-yellow-900">
     <div class="flex flex-col justify-center items-center gap-y-4 py-5">
@@ -58,35 +80,66 @@
           <i class="bi bi-image"></i>
         <% end %>
       </div>
-      <div class="hs-tooltip inline-block [--placement:right]">
-        <%= link_to posts_path, class:"flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
-          <i class="bi bi-house text-xl"></i>
-        <% end %>
-      </div>
-      <div class="hs-tooltip inline-block [--placement:right]">
-        <%= link_to searches_path, class:"flex items-center gap-x-4.5 py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
-          <i class="bi bi-search text-xl"></i>
-        <% end %>
-      </div>
-      <div class="hs-tooltip inline-block [--placement:right]">
-        <%= link_to new_post_path, class:"flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
-          <i class="bi bi-plus-square text-xl"></i>
-        <% end %>
-      </div>
-      <div class="hs-tooltip inline-block [--placement:right]">
-        <%= link_to favorites_posts_path, class:"flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
-          <i class="bi bi-heart text-xl"></i>
-        <% end %>
-      </div>
-      <div class="hs-tooltip inline-block [--placement:right]">
-        <%= link_to brand_admin_mypage_path, class:"flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
-          <i class="bi bi-person-circle text-xl"></i>
-        <% end %>
-      </div>
-      <div class="fixed bottom-2 hs-tooltip inline-block [--placement:right]">
-        <%= link_to logout_path, class:"flex items-center gap-x-3.5 py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: {turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？'} do %>
-          <i class="bi bi-box-arrow-left text-xl"></i>
-        <% end %>
+
+      <div class="flex flex-col justify-center items-center">
+        <div class="hs-tooltip inline-block [--placement:right]">
+          <%= link_to posts_path, class:"flex flex-col items-center py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
+            <i class="bi bi-house text-xl"></i>
+            <span class="text-[0.6rem] font-medium"><%= t('.index') %></span>
+          <% end %>
+        </div>
+        <div class="hs-tooltip inline-block [--placement:right]">
+          <%= link_to searches_path, class:"flex flex-col items-center py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
+            <i class="bi bi-search text-xl"></i>
+            <span class="text-[0.6rem] font-medium"><%= t('.search') %></span>
+          <% end %>
+        </div>
+        <div class="hs-tooltip inline-block [--placement:right]">
+          <%= link_to new_post_path, class:"flex flex-col items-center py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
+            <i class="bi bi-plus-square text-xl"></i>
+            <span class="text-[0.6rem] font-medium"><%= t('.post_new') %></span>
+          <% end %>
+        </div>
+        <div class="hs-tooltip inline-block [--placement:right]">
+          <%= link_to favorites_posts_path, class:"flex flex-col items-center py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
+            <i class="bi bi-heart text-xl"></i>
+            <span class="text-[0.6rem] font-medium"><%= t('.favorite') %></span>
+          <% end %>
+        </div>
+        <div class="hs-tooltip inline-block [--placement:right]">
+          <%= link_to brand_admin_mypage_path, class:"flex flex-col items-center py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
+            <i class="bi bi-person-circle text-xl"></i>
+            <span class="text-[0.6rem] font-medium"><%= t('.mypage') %></span>
+          <% end %>
+        </div>
+        <div class="hs-tooltip inline-block [--placement:right]">
+          <%= link_to profile_path, class:"flex flex-col items-center py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
+            <i class="bi bi-person-vcard text-xl"></i>
+            <span class="text-[0.6rem] font-medium"><%= t('.profile') %></span>
+          <% end %>
+        </div>
+
+        <!-- ブランドアカウント専用機能 -->
+        <div class="hs-tooltip inline-block [--placement:right] border-t">
+          <%= link_to brand_admin_products_path, class:"mt-2 flex flex-col items-center py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
+            <i class="bi bi-file-earmark-spreadsheet text-xl"></i>
+            <span class="text-[0.6rem] font-medium"><%= t('.products') %></span>
+          <% end %>
+        </div>
+        <div class="hs-tooltip inline-block [--placement:right]">
+          <%= link_to new_brand_admin_product_path, class:"flex flex-col items-center py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: { turbo: false } do %>
+            <i class="bi bi-file-earmark-plus text-xl"></i>
+            <span class="text-[0.6rem] font-medium"><%= t('.product_new') %></span>
+          <% end %>
+        </div>
+        <!-- ここまで -->
+
+        <div class="fixed bottom-2 hs-tooltip inline-block [--placement:right]">
+          <%= link_to logout_path, class:"flex flex-col items-center py-2 px-2.5 text-sm rounded-lg hover:bg-white", data: {turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？'} do %>
+            <i class="bi bi-box-arrow-left text-xl"></i>
+            <span class="text-[0.6rem] font-medium"><%= t('.logout') %></span>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -94,28 +147,50 @@
 
 <!-- スマホ用 -->
 <div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full bg-neutral-100 text-sm py-2">
-  <nav class="max-w-[85rem] w-full mx-auto px-4 text-yellow-900" aria-label="Global">
+  <nav class="max-w-[85rem] w-full mx-auto px-2 text-yellow-900" aria-label="Global">
     <div class="flex items-center justify-between">
       <div>
         <div class="btn btn-ghost text-xl"><%= link_to "LeatherPalette", root_path %></div>
       </div>
-        <ul class="menu menu-horizontal px-1 max-width">
+        <ul class="menu menu-horizontal px-1 max-width ">
           <li>
-            <details class="relative">
-              <summary><i class="bi bi-person-circle"></i>menu</summary>
-                <ul class="p-1 z-50 absolute right-0 shadow rounded-box w-36">
-                  <li>
+            <details class="relative border rounded-lg">
+              <summary class="font-medium">menu</summary>
+                <ul class="absolute top-[22px] z-50 right-0 shadow rounded-box w-48 glass">
+                  <li class="border-b mb-2">
                     <%= link_to logout_path, class: "dropdown-content flex items-center text-sm rounded-lg justify-start", data: {turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？'} do %>
-                      <i class="bi bi-box-arrow-left text-xl"></i>
-                      <span><%= t('.logout') %></span>
+                      <i class="bi bi-box-arrow-left text-lg"></i>
+                      <span class="ml-2"><%= t('.logout') %></span>
                     <% end %>
                   </li>
                   <li>
                     <%= link_to brand_admin_mypage_path, class: "dropdown-content flex items-center text-sm rounded-lg justify-start" do %>
-                      <i class="bi bi-person-circle text-xl"></i>
-                      <span><%= t('.mypage') %></span>
+                      <i class="bi bi-person-circle text-lg"></i>
+                      <span class="ml-2"><%= t('.mypage') %></span>
                     <% end %>
                   </li>
+                  <li>
+                    <%= link_to profile_path, class: "dropdown-content flex items-center text-sm rounded-lg justify-start" do %>
+                      <i class="bi bi-person-vcard text-lg"></i>
+                      <span class="ml-2"><%= t('.profile') %></span>
+                    <% end %>
+                  </li>
+
+                  <!-- ブランドアカウント専用機能 -->
+                  <li class="border-t mt-2">
+                    <%= link_to brand_admin_products_path, class: "dropdown-content flex items-center text-sm rounded-lg justify-start" do %>
+                      <i class="bi bi-file-earmark-spreadsheet text-lg"></i>
+                      <span class="ml-2"><%= t('.products') %></span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to new_brand_admin_product_path, class: "dropdown-content flex items-center text-sm rounded-lg justify-start" do %>
+                      <i class="bi bi-file-earmark-plus text-lg"></i>
+                      <span class="ml-2"><%= t('.product_new') %></span>
+                    <% end %>
+                  </li>
+                  <!-- ここまで -->
+
                 </ul>
             </details>
           </li>
@@ -124,35 +199,38 @@
   </nav>
 </div>
 
-<!-- スマホ用のメニューバー -->
+<!-- スマホ用ボトムナビゲーション -->
 <div class="fixed inset-x-0 bottom-0 z-10 bg-[#fffffe] border-t-2 border-neutral-100 shadow-md md:hidden">
-  <div class="flex flex-row justify-between items-center py-3 text-yellow-900 mb-5">
-    <div class="grid"><!-- 左側余白 --></div>
-    <div class="hs-tooltip inline-block [--placement:right]">
-      <%= link_to posts_path, class:"flex items-center gap-x-3.5 py-2 px-3 text-sm rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
+  <div class="flex flex-row justify-between items-center p-2 text-yellow-900">
+    <div class="hs-tooltip inline-block flex-1 [--placement:right]">
+      <%= link_to posts_path, class:"flex flex-col items-center py-2 px-1 text-sm rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
         <i class="bi bi-house text-xl"></i>
+        <span class="text-[0.6rem] font-medium mt-1"><%= t('.index') %></span>
       <% end %>
     </div>
-    <div class="hs-tooltip inline-block [--placement:right]">
-      <%= link_to searches_path, class:"flex items-center gap-x-3.5 py-2 px-3 text-sm rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
+    <div class="hs-tooltip inline-block flex-1 [--placement:right]">
+      <%= link_to searches_path, class:"flex flex-col items-center py-2 px-1 text-sm rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
         <i class="bi bi-search text-xl"></i>
+        <span class="text-[0.6rem] font-medium mt-1"><%= t('.search') %></span>
       <% end %>
     </div>
-    <div class="hs-tooltip inline-block [--placement:right]">
-      <%=link_to new_post_path, class:"flex items-center gap-x-3.5 py-2 px-3 text-sm rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
+    <div class="hs-tooltip inline-block flex-1 [--placement:right]">
+      <%=link_to new_post_path, class:"flex flex-col items-center py-2 px-1 text-sm rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
         <i class="bi bi-plus-square text-xl"></i>
+        <span class="text-[0.6rem] font-medium mt-1"><%= t('.post_new') %></span>
       <% end %>
     </div>
-    <div class="hs-tooltip inline-block [--placement:right]">
-      <%= link_to favorites_posts_path, class:"flex items-center gap-x-3.5 py-2 px-3 text-sm rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
+    <div class="hs-tooltip inline-block flex-1 [--placement:right]">
+      <%= link_to favorites_posts_path, class:"flex flex-col items-center py-2 px-1 text-sm rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
         <i class="bi bi-heart text-xl"></i>
+        <span class="text-[0.6rem] font-medium mt-1"><%= t('.favorite') %></span>
       <% end %>
     </div>
-    <div class="hs-tooltip inline-block [--placement:right]">
-        <%= link_to brand_admin_mypage_path, class:"flex items-center gap-x-3.5 py-2 px-3 text-sm rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
-          <i class="bi bi-person-circle text-xl"></i>
-        <% end %>
+    <div class="hs-tooltip inline-block flex-1 [--placement:right]">
+      <%= link_to brand_admin_mypage_path, class:"flex flex-col items-center py-2 px-1 text-sm rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
+        <i class="bi bi-person-circle text-xl"></i>
+        <span class="text-[0.6rem] font-medium mt-1"><%= t('.mypage') %></span>
+      <% end %>
     </div>
-    <div class="grid"><!-- 右側余白 --></div>
   </div>
 </div>
