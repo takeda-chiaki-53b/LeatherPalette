@@ -6,11 +6,14 @@ ja:
         to_login_page: ログインページへ
     shared:
       header:
-        home: 投稿一覧
-        search: 検索
+        index: 投稿一覧
+        search: 投稿検索
         post_new: 投稿作成
         favorite: お気に入り
         mypage: マイページ
+        profile: ユーザー情報
+        products: 商品一覧
+        product_new: 商品登録
         logout: ログアウト
     mypages:
       show:
@@ -37,11 +40,12 @@ ja:
       login: ログイン
       sign_up: 新規登録
     header:
-      home: ホーム
-      search: 検索
+      index: 投稿一覧
+      search: 投稿検索
       post_new: 投稿作成
       favorite: お気に入り
       mypage: マイページ
+      profile: ユーザー情報
       logout: ログアウト
   posts:
     index:
