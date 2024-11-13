@@ -11,7 +11,7 @@ ja:
         post_new: 投稿作成
         favorite: お気に入り
         mypage: マイページ
-        profile: ユーザー情報
+        profile: 登録情報
         products: 商品一覧
         product_new: 商品登録
         logout: ログアウト
@@ -45,7 +45,7 @@ ja:
       post_new: 投稿作成
       favorite: お気に入り
       mypage: マイページ
-      profile: ユーザー情報
+      profile: 登録情報
       logout: ログアウト
   posts:
     index:
