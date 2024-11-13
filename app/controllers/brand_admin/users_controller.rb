@@ -11,7 +11,8 @@ class BrandAdmin::UsersController < ApplicationController
     @user.role = :brand_admin # :brand_adminを設定
 
     if @user.save
-      redirect_to login_path, success: "ブランドアカウント登録が完了しました"
+      auto_login(@user)
+      redirect_to posts_path, success: "ブランドアカウント登録が完了しました"
     else
       flash.now[:danger] = "ブランドアカウント登録に失敗しました"
       render :new, status: :unprocessable_entity
