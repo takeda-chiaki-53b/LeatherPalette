@@ -11,7 +11,7 @@ ja:
         post_new: 投稿作成
         favorite: お気に入り
         mypage: マイページ
-        profile: ユーザー情報
+        profile: 登録情報
         products: 商品一覧
         product_new: 商品登録
         logout: ログアウト
@@ -39,13 +39,16 @@ ja:
     before_login_header:
       login: ログイン
       sign_up: 新規登録
+      top: TOP
+      index: 投稿一覧
+      search: 投稿検索
     header:
       index: 投稿一覧
       search: 投稿検索
       post_new: 投稿作成
       favorite: お気に入り
       mypage: マイページ
-      profile: ユーザー情報
+      profile: 登録情報
       logout: ログアウト
   posts:
     index:
