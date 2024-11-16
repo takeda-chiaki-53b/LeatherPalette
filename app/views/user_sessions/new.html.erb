@@ -18,6 +18,17 @@
           <%= f.submit t('.login'), class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] text-yellow-900" %>
         </div>
       <% end %>
+
+      <!--  Google 認証リンク -->
+      <div class="text-center text-sm">
+        OR
+      <div>
+
+      <!-- Google ログイン -->
+      <%= link_to auth_at_provider_path(provider: :google) do %>
+        <%= image_tag "google_sign_in.png", class: "w-2/3 md:w-1/4 lg:w-1/4 xl:w-1/6 mx-auto py-5" %>
+      <% end %>
+
       <div class="text-center mt-6 text-sm">
         <%= link_to t('.password_forget'), "#" %>
       </div>

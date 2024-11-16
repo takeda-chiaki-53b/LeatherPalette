@@ -27,11 +27,23 @@
           <%= f.submit "登録", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] text-yellow-900" %>
         </div>
       <% end %>
+
+      <!--  Google 認証リンク -->
+      <div class="text-center text-sm">
+        OR
+      <div>
+
+      <!-- Google ログイン -->
+      <%= link_to auth_at_provider_path(provider: :google) do %>
+        <%= image_tag "google_sign_up.png", class: "w-2/3 md:w-1/4 lg:w-1/4 xl:w-1/6 mx-auto py-5" %>
+      <% end %>
+
       <div class="flex flex-col flex-wrap flex items-center">
         <%= link_to new_brand_admin_user_path, class: "btn btn-ghost text-center mt-3 leading-5 font-semibold bg-neutral-100" do %>
           <span>ブランドアカウント登録はこちら☜<br>(ページが切り替わります)</span>
         <% end %>
       </div>
+      
       <div class="text-center mt-6 text-sm">
         <%= link_to t('.to_login_page'), login_path %>
       </div>
