@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
 
+  # Google 認証
+  post "oauth/callback" => "oauths#callback"
+  get "oauth/callback" => "oauths#callback"
+  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+
   # ブランドアカウントのルート
   namespace :brand_admin do
     resources :users, only: %i[new create]
