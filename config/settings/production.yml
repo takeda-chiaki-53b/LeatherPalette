@@ -1,0 +1,6 @@
+default_url_options:
+  protocol: 'https'
+  host: 'www.leatherpalette.com'
+
+sorcery:
+    google_callback_url: 'https://www.leatherpalette.com/oauth/callback?provider=google'
