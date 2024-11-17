@@ -18,7 +18,7 @@ class OauthsController < ApplicationController
 
     # プロバイダー情報を使ってログインを試みる(authenticationsテーブルを参照し、一致するユーザーを探す)
     # 情報取得にはoauthアクションで取得したアクセストークンをGoogleAPIへ渡す
-    @user = login_form(pdovider)
+    @user = login_form(provider)
 
 
     # authenticationsテーブルにプロバイダー情報と一致するユーザーが見つからなかった場合
