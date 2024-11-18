@@ -3,4 +3,4 @@ default_url_options:
   host: 'www.leatherpalette.com'
 
 sorcery:
-    google_callback_url: 'https://www.leatherpalette.com/oauth/callback?provider=google'
+    google_callback_url: 'https://www.leatherpalette.com/oauth/callback'
