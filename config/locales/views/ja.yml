@@ -36,6 +36,7 @@ ja:
       password: パスワード
       login: ログイン
       password_forget: パスワードをお忘れの方はこちら
+      gmail_warning: 下のボタンからGoogleアカウントでログインできます
   shared:
     before_login_header:
       login: ログイン
