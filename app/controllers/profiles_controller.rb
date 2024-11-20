@@ -3,7 +3,10 @@ class ProfilesController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    # Googleアカウントの場合にビューを出し分ける為
+    @google_user = @user.email.include?("@gmail.com")
+  end
 
   def update
     if @user.update(user_params)

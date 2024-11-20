@@ -76,3 +76,5 @@ ja:
      title: ユーザー情報
     edit:
      title: ユーザー情報編集
+     gmail_update_forbidden: Googleアカウントの場合は、メールの変更はできません
+     gmail_warning: お手数ですが、Googleアカウントの場合は、ログアウト後にGoogleアカウントによる新規登録をお願いします
