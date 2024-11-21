@@ -25,12 +25,13 @@
       <% end %>
 
       <!--  Google 認証リンク -->
-      <div class="divider w-10/12 md:w-1/2 mx-auto py-4">または</div>
+      <div class="divider w-10/12 md:w-1/2 mx-auto py-4">または Googleアカウントでログイン</div>
 
       <!-- Google ログイン -->
+      <div class="w-10/12 md:w-1/2 mx-auto my-4 text-center text-xs">⚠️Googleアカウント名が、当サービスのユーザー名で既に使用されている場合、Googleログインが出来ない仕様となっております。</div>
       <div class="w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/6 mx-auto mb-4">
         <%= link_to auth_at_provider_path(provider: :google) do %>
-          <%= image_tag "google_sign_up.png" %>
+          <%= image_tag "google_sign_in.png" %>
         <% end %>
       <div>
 

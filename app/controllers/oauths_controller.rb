@@ -16,17 +16,17 @@ class OauthsController < ApplicationController
     # 既存のユーザーをプロバイダ情報を元に検索し、存在すればログイン
     if (@user = login_from(auth_params[:provider]))
       Rails.logger.debug("User found: #{@user.inspect}")
-      redirect_to root_path, notice: "Googleアカウントでログインしました"
+      redirect_to root_path, success: "Googleアカウントでログインしました"
     else
       Rails.logger.debug("No existing user found for provider: #{provider}")
       begin
         # ユーザーが存在しない場合はプロバイダ情報を元に新規ユーザーを作成し、ログイン
         signup_and_login(provider)
         Rails.logger.debug("New user created: #{@user.inspect}")
-        redirect_to root_path, notice: "Googleアカウントでログインしました"
+        redirect_to root_path, success: "Googleアカウントでログインしました"
       rescue StandardError => e
         Rails.logger.error("Error during signup and login: #{e.message}")
-        redirect_to root_path, alert: "Googleアカウントでログインに失敗しました"
+        redirect_to root_path, danger: "Googleアカウントでログインに失敗しました"
       end
     end
   end
