@@ -28,6 +28,7 @@ ja:
     new:
       title: 新規登録
       to_login_page: ログインページへ
+      gmail_warning: 下のボタンからGoogleアカウントでログインできます
   user_sessions:
     new:
       title: ログイン
@@ -35,6 +36,7 @@ ja:
       password: パスワード
       login: ログイン
       password_forget: パスワードをお忘れの方はこちら
+      gmail_warning: 下のボタンからGoogleアカウントでログインできます
   shared:
     before_login_header:
       login: ログイン
@@ -74,3 +76,5 @@ ja:
      title: ユーザー情報
     edit:
      title: ユーザー情報編集
+     gmail_update_forbidden: Googleアカウントの場合は、メールの変更はできません
+     gmail_warning: お手数ですが、Googleアカウントの場合は、ログアウト後にGoogleアカウントによる新規登録をお願いします

@@ -2,53 +2,44 @@ class OauthsController < ApplicationController
   skip_before_action :require_login, only: %i[oauth callback]
 
   def oauth
-    # Googleログインボタンが押されると、アプリからプロバイダー（ここではGoogle）へアクセストークンの要求を出す
+    # 指定されたプロバイダの認証ページにユーザーをリダイレクトさせる
     login_at(auth_params[:provider])
-
-    # Googleの認可サーバーはユーザーを認証画面に移動させ連携の許可を待つ
-    # ユーザーが許可を出すと、認可サーバーはアクセストークンを生成する
-    # 生成したアクセストークンをアプリ側へ発行し、そのアクセストークンを手に入れた状態でユーザー情報取得の「認可」が完了する
-    # 認可が下りれば callback の url にリダイレクトされる
   end
 
   def callback
-    # どのサービス（プロバイダー）からログインしようとしているのか情報を取得する
-    # oauthアクションで指定したプロバイダーの情報を使うため
     provider = auth_params[:provider]
 
-    # プロバイダー情報を使ってログインを試みる(authenticationsテーブルを参照し、一致するユーザーを探す)
-    # 情報取得にはoauthアクションで取得したアクセストークンをGoogleAPIへ渡す
-    @user = login_form(provider)
+    # auth_paramsの内容をログに出力
+    Rails.logger.debug("Auth Params: #{auth_params.inspect}")
+    Rails.logger.debug("Provider: #{provider}")
 
-
-    # authenticationsテーブルにプロバイダー情報と一致するユーザーが見つからなかった場合
-    unless @user
-      # プロバイダーからユーザーのハッシュを取得する
-      sorcery_fetch_user_hash(provider)
-      # 取得した情報からメールアドレスを使ってusersテーブルで既存のユーザーを探す
-      @user = User.find_by(email: @user_hash[:user_info]["email"])
-
-      # プロバイダーから取得したメールアドレスが、usersテーブルの既存ユーザー情報に存在する場合
-      if @user
-        # 既存のユーザーにプロバイダ情報を追加(authenticationsテーブルに)
-        @user.add_provider_to_user(provider, @user_hash[:uid].to_s)
-      else
-        # usersテーブルにユーザーを新規作成、一緒にauthenticationsテーブルにプロバイダー情報も登録
-        @user = create_from(provider)
+    # 既存のユーザーをプロバイダ情報を元に検索し、存在すればログイン
+    if (@user = login_from(auth_params[:provider]))
+      Rails.logger.debug("User found: #{@user.inspect}")
+      redirect_to root_path, success: "Googleアカウントでログインしました"
+    else
+      Rails.logger.debug("No existing user found for provider: #{provider}")
+      begin
+        # ユーザーが存在しない場合はプロバイダ情報を元に新規ユーザーを作成し、ログイン
+        signup_and_login(provider)
+        Rails.logger.debug("New user created: #{@user.inspect}")
+        redirect_to root_path, success: "Googleアカウントでログインしました"
+      rescue StandardError => e
+        Rails.logger.error("Error during signup and login: #{e.message}")
+        redirect_to root_path, danger: "Googleアカウントでログインに失敗しました"
       end
-
-      reset_session
-      auto_login(@user)
     end
-
-    redirect_to posts_path, notice: "Googleアカウントでログインしました"
-  rescue StandardError
-    redirect_to login_path, alert: "Googleアカウントでログインに失敗しました"
   end
 
   private
 
   def auth_params
-    params.permit(:code, :provider)
+    params.permit(:code, :provider, :scope, :authuser, :prompt)
+  end
+
+  def signup_and_login(provider)
+    @user = create_from(provider)
+    reset_session
+    auto_login(@user)
   end
 end
