@@ -1,2 +1,52 @@
-<h1>PasswordResets#create</h1>
-<p>Find me in app/views/password_resets/create.html.erb</p>
+<% content_for(:title, t('.title')) %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto text-yellow-900">
+      <h1 class="text-xl text-center font-semibold mt-10 mb-4 pb-2">
+        パスワード再設定メール送信
+      </h1>
+      <!-- turboの無効化は、エラーが発生すると、その後のフォーム入力でJavascriptが読み込まれなくなる事を防ぐ為。 -->
+      <%= form_with url: password_resets_path, data: { turbo: false } do |f| %>
+        <div class="mb-3">
+          <%= f.label :email, t('.email'), class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
+          <%= f.email_field :email, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10", placeholder: "ご登録時のメールアドレスをご入力ください", id: "user_email" %>
+          <!-- gmailアカウントは受け付けず、Googleログインを促す -->
+          <div id="email-warning" class="text-red-500 hidden text-sm mt-1 w-10/12 md:w-1/2 mx-auto">
+              <%= t('.gmail_warning') %>
+          </div>
+        </div>
+
+        <div class="mx-auto w-10/12 md:w-1/2">
+          <%= f.submit t('.submit'), class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] text-yellow-900", id: "submit_button" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<script>
+    // メールアドレスがGmailアドレスの場合、警告を表示
+    // 'turbo:load'はTurboを使ったアプリケーションでページ遷移時の際に新しいコンテンツが読み込まれたときに発火するイベント
+    // 'DOMContentLoaded'では無く、'turbo:load'を使用(DOMContentLoadedイベントは、ページが完全に再読み込みされたときのみ発火するため)
+    document.addEventListener('turbo:load', function() {
+        // 各要素の取得
+        const emailInput = document.getElementById('user_email');
+        const emailWarning = document.getElementById('email-warning');
+        const submitButton = document.getElementById('submit_button');
+
+        // 'user_email' が存在する場合のみ、イベントリスナーを追加
+        if (emailInput) {
+            emailInput.addEventListener('input', function() {
+                // @gmail.comが含まれている場合に警告を表示し、送信ボタンを非表示にする
+                if (emailInput.value.includes('@gmail.com')) {
+                    emailWarning.classList.remove('hidden');
+                    submitButton.classList.add('hidden');  // 送信ボタンを非表示
+                } else {
+                    emailWarning.classList.add('hidden');
+                    submitButton.classList.remove('hidden');  // 送信ボタンを表示
+                }
+            });
+        }
+    });
+</script>

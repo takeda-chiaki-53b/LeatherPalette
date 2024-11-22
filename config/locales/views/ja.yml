@@ -39,6 +39,12 @@ ja:
       gmail_warning: 下のボタンからGoogleアカウントでログインできます
   password_reset_mail:
     subject: パスワード再設定のご案内
+  password_resets:
+    new:
+      title: パスワード再設定申請
+      email: メールアドレス
+      submit: 送信
+      gmail_warning: Googleアカウントでご登録済の方はパスワード設定なしでログインできます
   shared:
     before_login_header:
       login: ログイン
