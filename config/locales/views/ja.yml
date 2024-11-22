@@ -37,6 +37,8 @@ ja:
       login: ログイン
       password_forget: パスワードをお忘れの方はこちら
       gmail_warning: 下のボタンからGoogleアカウントでログインできます
+  password_reset_mail:
+    subject: パスワード再設定のご案内
   shared:
     before_login_header:
       login: ログイン
