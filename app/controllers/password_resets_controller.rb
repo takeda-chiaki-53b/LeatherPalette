@@ -28,7 +28,7 @@ class PasswordResetsController < ApplicationController
     # @user.password_confirmation～はパスワードとパスワード確認の値が一致するかどうかを検証するために必要なステップ
     # change_passwordメソッド(パスワード変更)が成功/失敗に応じてページ遷移を設定
     @user.password_confirmation = params[:user][:password_confirmation]
-    if user.change_password(params[:user][:password])
+    if @user.change_password(params[:user][:password])
       redirect_to login_path, success: "パスワードの再設定が完了しました"
     else
       flash.now[:danger] = "パスワードの再設定に失敗しました"
