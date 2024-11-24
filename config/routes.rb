@@ -41,4 +41,10 @@ Rails.application.routes.draw do
 
   # プロフィール
   resource :profile, only: %i[show edit update]
+
+  # パスワードリセット
+  resources :password_resets, only: %i[new create edit update ]
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  # Railsアプリケーションの開発環境で、LetterOpenerWebのエンジンを指定したパス（ここでは"/letter_opener"）でマウントするという意味。
+  # これによって、開発環境で/letter_openerにアクセスすると、送信されたメールを確認できるようになる
 end

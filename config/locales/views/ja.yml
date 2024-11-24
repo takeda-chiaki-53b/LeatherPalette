@@ -37,6 +37,20 @@ ja:
       login: ログイン
       password_forget: パスワードをお忘れの方はこちら
       gmail_warning: 下のボタンからGoogleアカウントでログインできます
+  password_reset_mail:
+    subject: パスワード再設定のご案内
+  password_resets:
+    new:
+      title: パスワード再設定申請
+      email: メールアドレス
+      submit: 送信
+      gmail_warning: Googleアカウントでご登録済の方はパスワード設定なしでログインできます
+    edit:
+      title: パスワード再設定
+      email: メールアドレス
+      new_password: 新しいパスワード(8文字以上)
+      password_confirmation: パスワード再入力
+      submit: 更新
   shared:
     before_login_header:
       login: ログイン

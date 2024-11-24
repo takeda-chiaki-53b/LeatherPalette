@@ -3,41 +3,24 @@
   <div class="row">
     <div class="col-12 col-md-10 col-lg-8 mx-auto text-yellow-900">
       <h1 class="text-xl text-center font-semibold mt-10 mb-4 pb-2">
-        ログイン
+        パスワード再設定メール送信
       </h1>
       <!-- turboの無効化は、エラーが発生すると、その後のフォーム入力でJavascriptが読み込まれなくなる事を防ぐ為。 -->
-      <%= form_with url: login_path, data: { turbo: false } do |f| %>
+      <%= form_with url: password_resets_path, data: { turbo: false } do |f| %>
         <div class="mb-3">
           <%= f.label :email, t('.email'), class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
-          <%= f.email_field :email, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10", id: "user_email" %>
+          <%= f.email_field :email, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10", placeholder: "ご登録時のメールアドレスをご入力ください", id: "user_email" %>
           <!-- gmailアカウントは受け付けず、Googleログインを促す -->
           <div id="email-warning" class="text-red-500 hidden text-sm mt-1 w-10/12 md:w-1/2 mx-auto">
               <%= t('.gmail_warning') %>
           </div>
         </div>
-        <div class="mb-3">
-          <%= f.label :password, t('.password'), class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
-          <%= f.password_field :password, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
-        </div>
+
         <div class="mx-auto w-10/12 md:w-1/2">
-          <%= f.submit t('.login'), class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] text-yellow-900", id: "submit_button" %>
+          <%= f.submit t('.submit'), class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] text-yellow-900", id: "submit_button" %>
         </div>
       <% end %>
 
-      <!--  Google 認証リンク -->
-      <div class="divider w-10/12 md:w-1/2 mx-auto py-4">または Googleアカウントでログイン</div>
-
-      <!-- Google ログイン -->
-      <div class="w-10/12 md:w-1/2 mx-auto my-4 text-center text-xs">⚠️Googleアカウント名が、当サービスのユーザー名で既に使用されている場合、Googleログインが出来ない仕様となっております。</div>
-      <div class="w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/6 mx-auto mb-4">
-        <%= link_to auth_at_provider_path(provider: :google) do %>
-          <%= image_tag "google_sign_in.png" %>
-        <% end %>
-      <div>
-
-      <div class="text-center mt-6 text-sm">
-        <%= link_to t('.password_forget'), new_password_reset_path %>
-      </div>
     </div>
   </div>
 </div>
@@ -55,13 +38,13 @@
         // 'user_email' が存在する場合のみ、イベントリスナーを追加
         if (emailInput) {
             emailInput.addEventListener('input', function() {
-                // @gmail.comが含まれている場合に警告を表示し、ログインボタンを非表示にする
+                // @gmail.comが含まれている場合に警告を表示し、送信ボタンを非表示にする
                 if (emailInput.value.includes('@gmail.com')) {
                     emailWarning.classList.remove('hidden');
-                    submitButton.classList.add('hidden');  // ログインボタンを非表示
+                    submitButton.classList.add('hidden');  // 送信ボタンを非表示
                 } else {
                     emailWarning.classList.add('hidden');
-                    submitButton.classList.remove('hidden');  // ログインボタンを表示
+                    submitButton.classList.remove('hidden');  // 送信ボタンを表示
                 }
             });
         }

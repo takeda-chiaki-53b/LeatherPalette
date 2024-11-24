@@ -78,6 +78,25 @@ Rails.application.configure do
   # caching is enabled.
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = Settings.default_url_options.to_h
+  # ActionMailerがメールを生成する際に使用するデフォルトのURLオプションを
+  # アプリケーションの設定ファイル（config/settings/development.yml)に定義されている、定数default_url_optionsを取得して設定している。
+  config.action_mailer.raise_delivery_errors = true
+  # メールの配信中にエラーが発生した場合に(trueに設定することで)例外を発生させる
+
+  config.action_mailer.delivery_method = :smtp
+  # メールの送信方法をSMTP（Simple Mail Transfer Protocol）に指定。SMTPはインターネットでメールを転送するための標準プロトコル。
+  # 以下でSMTPサーバーの詳細設定
+  config.action_mailer.smtp_settings = {
+    address:              "smtp.gmail.com",
+    port:                 587,
+    domain:               "www.leatherpalette.com",
+    user_name:            ENV["GMAIL_USERNAME"],
+    password:             ENV["GMAIL_PASSWORD"],
+    authentication:       "plain",
+    enable_starttls_auto: true
+  }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
