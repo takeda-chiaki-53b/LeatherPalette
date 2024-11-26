@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root "tops#index"
 
+  # 利用規約とプライバシーポリシー
+  get "terms_of_use", to: "tops#terms_of_use"
+
   # 新規登録、ログイン、ログアウト
   resources :users, only: %i[new create]
   get "login", to: "user_sessions#new"

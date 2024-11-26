@@ -1,4 +1,7 @@
 ja:
+  tops:
+    terms_of_use:
+     title: 利用規約
   brand_admin:
     users:
       new:
