@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # 利用規約とプライバシーポリシー
   get "terms_of_use", to: "tops#terms_of_use"
+  get "privacy_policy", to: "tops#privacy_policy"
 
   # 新規登録、ログイン、ログアウト
   resources :users, only: %i[new create]
