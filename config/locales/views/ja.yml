@@ -1,4 +1,9 @@
 ja:
+  tops:
+    terms_of_use:
+     title: 利用規約
+    privacy_policy:
+     title: プライバシーポリシー
   brand_admin:
     users:
       new:
