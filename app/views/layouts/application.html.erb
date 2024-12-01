@@ -10,7 +10,7 @@
 
     <%= yield :head %>
 
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/manifest.json"><!-- PWA対応 -->
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
@@ -29,7 +29,6 @@
         gtag('config', 'G-WNV542D8LF');
       </script>
     <% end %>
-
   </head>
 
   <body>
@@ -54,4 +53,19 @@
       </div>
     </footer>
   </body>
+
+  <!-- PWA対応 -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service_worker.js')
+        .then((registration) => {
+          console.log('Service Worker registered:', registration);
+        })
+        .catch((error) => {
+          console.error('Service Worker registration failed:', error);
+        });
+      });
+    }
+  </script>
 </html>
