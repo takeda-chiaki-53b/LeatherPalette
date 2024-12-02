@@ -97,7 +97,7 @@
 
 <!-- スマホ用ボトムナビゲーション -->
 <div class="fixed inset-x-0 bottom-0 z-10 bg-[#fffffe] border-t-2 border-neutral-100 shadow-md md:hidden">
-  <div class="flex flex-row justify-between items-center pb-3 px-2 text-yellow-900">
+  <div class="flex flex-row justify-between items-center pb-5 px-2 text-yellow-900">
     <div class="inline-block flex-1">
       <%= link_to posts_path, class:"flex flex-col items-center py-2 px-1 rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
         <i class="bi bi-house text-lg"></i>
@@ -112,7 +112,7 @@
     </div>
     <div class="inline-block flex-1">
       <%= link_to "https://twitter.com/intent/tweet?url=#{root_url}&text=Leather%20Palette%20革製品のエイジング共有・検索サービス%0A%23LeatherPalette_app", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, class:"flex flex-col items-center py-2 px-1 rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
-        <%= image_tag 'X_logo-black.png', class: "h-4 w-4 mt-2 mb-1 mx-2.5" %>
+        <%= image_tag 'X_logo-black.png', class: "h-4 w-4 mt-2 mb-1.5 mx-2.5" %>
         <span class="text-[0.6rem] font-medium mt-1"><%= t('.x_share') %></span>
       <% end %>
     </div>
