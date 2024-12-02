@@ -20,6 +20,7 @@ ja:
         products: 商品一覧
         product_new: 商品登録
         logout: ログアウト
+        x_share: シェア
     mypages:
       show:
         title: マイページ
@@ -63,6 +64,7 @@ ja:
       top: TOP
       index: 投稿一覧
       search: 投稿検索
+      x_share: シェア
     header:
       index: 投稿一覧
       search: 投稿検索
@@ -71,6 +73,7 @@ ja:
       mypage: マイページ
       profile: 登録情報
       logout: ログアウト
+      x_share: シェア
   posts:
     index:
       title: 投稿一覧
