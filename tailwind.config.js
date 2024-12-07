@@ -12,6 +12,9 @@ module.exports = {
       colors: {
         'beige': '#e6ddd5',
       },
+      fontfamily: {
+        'noto': ['Noto Serif JP', 'serif'],
+      },
     }
   }
 }

@@ -35,9 +35,15 @@
     <meta name="twitter:title" content="Leather Palette" />
     <meta name="twitter:description" content="革製品のエイジング共有アプリ" />
     <meta name="twitter:image" content="<%= asset_url('ogp.png') %>" />
+
+    <!-- GoogleFontsの取得 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One&family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+
   </head>
 
-  <body class="min-h-screen bg-beige">
+  <body class="min-h-screen bg-beige font-noto">
     <header>
     <% if logged_in? && current_user.role == 'brand_admin' %>
       <%= render 'brand_admin/shared/header' %> <!-- ブランド管理者用のヘッダー -->
