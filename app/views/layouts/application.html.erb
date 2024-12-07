@@ -37,7 +37,7 @@
     <meta name="twitter:image" content="<%= asset_url('ogp.png') %>" />
   </head>
 
-  <body>
+  <body class="min-h-screen bg-beige">
     <header>
     <% if logged_in? && current_user.role == 'brand_admin' %>
       <%= render 'brand_admin/shared/header' %> <!-- ブランド管理者用のヘッダー -->
