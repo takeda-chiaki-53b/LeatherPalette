@@ -39,11 +39,10 @@
     <!-- GoogleFontsの取得 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Klee+One&family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&family=Shippori+Mincho&display=swap" rel="stylesheet">
   </head>
 
-  <body class="min-h-screen bg-beige font-noto">
+  <body class="min-h-screen bg-beige font-noto text-darkgray">
     <header>
     <% if logged_in? && current_user.role == 'brand_admin' %>
       <%= render 'brand_admin/shared/header' %> <!-- ブランド管理者用のヘッダー -->

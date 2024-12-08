@@ -10,10 +10,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'darkgray':'#333333',
         'beige': '#e6ddd5',
       },
       fontfamily: {
         'noto': ['Noto Serif JP', 'serif'],
+        'shippori-mincho':['Shippori Mincho', 'serif']
       },
     }
   }

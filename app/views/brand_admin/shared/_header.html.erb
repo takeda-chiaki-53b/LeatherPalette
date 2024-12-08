@@ -2,11 +2,11 @@
 <div class="hidden lg:block">
   <div class="fixed top-0 start-0 bottom-0 z-[60] w-60 border-e-2 border-neutral-100 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0">
       <div class="px-6 flex flex-col">
-        <%= link_to root_path, class: "btn btn-ghost flex items-center text-xl rounded-lg justify-start font-bold text-yellow-900 hover:bg-white" do %>
+        <%= link_to root_path, class: "btn btn-ghost flex items-center text-xl rounded-lg justify-start font-bold hover:bg-white" do %>
           <span>LeatherPalette ブランド</span>
         <% end %>
       </div>
-      <nav class="p-6 flex flex-col flex-wrap text-yellow-900">
+      <nav class="p-6 flex flex-col flex-wrap">
         <ul class="font-semibold">
           <li>
             <%= link_to posts_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
@@ -81,7 +81,7 @@
 
 <!-- 中画面用 -->
 <div class="hidden md:block lg:hidden">
-  <div class="fixed top-0 start-0 bottom-0 z-[60] w-20 border-e-2 border-neutral-100 text-yellow-900">
+  <div class="fixed top-0 start-0 bottom-0 z-[60] w-20 border-e-2 border-neutral-100">
     <div class="flex flex-col justify-center items-center gap-y-4 py-5">
       <div class="mt-5 mb-4 font-bold">
         <%= link_to root_path, class: "flex-none text-lg font-semibold" do  %>
@@ -163,7 +163,7 @@
 
 <!-- スマホ用 -->
 <div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full border-b-2 border-neutral-100 text-sm py-2">
-  <nav class="max-w-[85rem] w-full mx-auto px-2 text-yellow-900" aria-label="Global">
+  <nav class="max-w-[85rem] w-full mx-auto px-2" aria-label="Global">
     <div class="flex items-center justify-between">
       <div>
         <div class="btn btn-ghost text-xl"><%= link_to "LeatherPalette", root_path %></div>
@@ -224,7 +224,7 @@
 
 <!-- スマホ用ボトムナビゲーション -->
 <div class="fixed inset-x-0 bottom-0 z-10 bg-beige border-t-2 border-neutral-100 shadow-md md:hidden">
-  <div class="flex flex-row justify-between items-center pb-5 px-2 text-yellow-900">
+  <div class="flex flex-row justify-between items-center pb-5 px-2">
     <div class="inline-block flex-1">
       <%= link_to posts_path, class:"flex flex-col items-center py-2 px-1 text-sm rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
         <i class="bi bi-house text-xl"></i>
