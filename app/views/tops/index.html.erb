@@ -1,40 +1,40 @@
-<div>
-  <div class="flex justify-center items-center">
-    <div class="md:w-1/4 min-[320px]:w-1/2">
+<div class="bg-light">
+  <div class="overlay-content container mx-auto px-6">
+    <div class="py-60 text-start">
+      <h2 class="text-sm md:text-base text-mocha mb-4">革製品のエイジング共有サービス</h2>
+      <h1 class="text-5xl md:text-6xl lg:text-6xl font-shippori-mincho-800 font-extrabold text-darkgray mb-20">Leather Palette</h1>
+      <p class="text-sm lg:text-base font-semibold text-darkbrown mb-1">Leather Paletteは、革製品のエイジング写真やメンテナンス方法の共有ができるサービスです。</p>
+      <p class="text-sm lg:text-base font-semibold text-darkbrown mb-20">共有された投稿を、使用年数やカラー・商品名から検索することができます。</p>
     </div>
-  </div>
-  <div class="text-center md:text-lg min-[320px]:text-xs my-2 font-semibold">
-  <p>TOPページタイトル</p>
-  <p>仮作成中</p>
+
+      <h3 class="text-lg font-semibold text-center p-5">機能紹介</h3>
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+        <div class="bg-white rounded-xl shadow-md p-6 text-center">
+          <h3 class="text-2xl font-semibold mb-2">投稿</h3>
+          <h3 class="text-sm mb-2">自分の相棒を紹介！</h3>
+          <p class="text-sm">使用年数やお手入れの方法が一緒に登録できるよ！素敵な相棒のエイジングの過程をみんなと共有しよう✨</p>
+          <div class="flex justify-center mt-6 mb-6">
+            <%= link_to posts_path, class: "flex items-center text-center py-3 px-4 font-semibold text-sm rounded-3xl bg-[#E6CCB585] hover:bg-[#fdba74]" do %> 投稿を見てみる<i class="bi bi-eyeglasses text-lg"></i>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6 text-center">
+          <h3 class="text-2xl font-semibold mb-2">検索</h3>
+          <h3 class="text-sm mb-2">ブランドやカテゴリーで検索してみよう！</h3>
+          <p class="text-sm">新しいグッズを見つけられるかも🌟お手入れ方法やブランドをチェックして、次のお買い物のヒントにしてみて！</p>
+          <div class="flex justify-center mt-6 mb-6">
+            <%= link_to searches_path, class: "flex items-center text-center py-3 px-4 font-semibold text-sm rounded-3xl bg-[#E6CCB585] hover:bg-[#fdba74]" do %> 投稿を検索する<i class="bi bi-search text-lg"></i>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6 text-center">
+          <h3 class="text-2xl font-semibold mb-2">お気に入り</h3>
+          <h3 class="text-sm mb-2">素敵な投稿を保存しよう！</h3>
+          <p class="text-sm">新規登録をして、お気に入りに保存すれば、いつでも気になる投稿を見返せます✨</p>
+        </div>
+      </div>
   </div>
 </div>
-
-<section class="container mx-auto px-6 py-10">
-  <h2 class="text-3xl font-bold text-center">ロゴ＋背景的なの入れる</h2>
-  <h2 class="text-lg font-semibold text-center mb-5">機能紹介</h2>
-  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-
-    <div class="bg-white rounded-xl shadow-md p-6 text-center">
-      <h3 class="text-2xl font-semibold mb-2">投稿</h3>
-      <h3 class="text-sm mb-2">自分の相棒を紹介！</h3>
-      <p class="text-sm">使用年数やお手入れの方法が一緒に登録できるよ！素敵な相棒のエイジングの過程をみんなと共有しよう✨</p>
-      <div class="flex justify-center mt-6 mb-6">
-        <%= link_to posts_path, class: "flex items-center text-center py-3 px-4 font-semibold text-sm rounded-3xl bg-[#E6CCB585] hover:bg-[#fdba74]" do %>
-          <i class="fa-solid fa-user-plus fa-xl mr-2"></i> 新着投稿を見てみる👀
-        <% end %>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-xl shadow-md p-6 text-center">
-      <h3 class="text-2xl font-semibold mb-2">検索</h3>
-      <h3 class="text-sm mb-2">ブランドやカテゴリーで検索してみよう！</h3>
-      <p class="text-sm">新しいグッズを見つけられるかも🌟お手入れ方法やブランドをチェックして、次のお買い物のヒントにしてみて！</p>
-    </div>
-
-    <div class="bg-white rounded-xl shadow-md p-6 text-center">
-      <h3 class="text-2xl font-semibold mb-2">お気に入り</h3>
-      <h3 class="text-sm mb-2">素敵な投稿を保存しよう！</h3>
-      <p class="text-sm">新規登録をしてログインすると、お気に入り保存できるよ✨</p>
-    </div>
-  </div>
-</section>

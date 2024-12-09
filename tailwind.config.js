@@ -11,11 +11,16 @@ module.exports = {
     extend: {
       colors: {
         'darkgray':'#333333',
-        'beige': '#e6ddd5',
+        'beige':'#dbd1c7',
+        'mocha':'#847366',
+        'darkbrown':'#5f534a',
+        'orange':'#d69b71'
       },
       fontfamily: {
-        'noto': ['Noto Serif JP', 'serif'],
-        'shippori-mincho':['Shippori Mincho', 'serif']
+        'noto':['Noto Serif JP', 'serif'],
+        'shippori-mincho':['Shippori Mincho', 'serif'],
+        'zen-300':['Zen Kaku Gothic New', 'sans-serif'],
+        'zen-400':['Zen Kaku Gothic New', 'sans-serif'],
       },
     }
   }

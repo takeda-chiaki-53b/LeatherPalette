@@ -35,14 +35,9 @@
     <meta name="twitter:title" content="Leather Palette" />
     <meta name="twitter:description" content="革製品のエイジング共有アプリ" />
     <meta name="twitter:image" content="<%= asset_url('ogp.png') %>" />
-
-    <!-- GoogleFontsの取得 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&family=Shippori+Mincho&display=swap" rel="stylesheet">
   </head>
 
-  <body class="min-h-screen bg-beige font-noto text-darkgray">
+  <body class="min-h-screen bg-beige font-noto text-darkbrown">
     <header>
     <% if logged_in? && current_user.role == 'brand_admin' %>
       <%= render 'brand_admin/shared/header' %> <!-- ブランド管理者用のヘッダー -->
@@ -53,7 +48,7 @@
     <% end %>
     </header>
     <main class="flex-grow">
-      <div class="lg:ml-64 md:ml-20 md:mb-36">
+      <div class="lg:ml-60 md:ml-20 md:mb-36">
         <%= render 'shared/flash_message' %>
         <%= yield %>
       </div>
