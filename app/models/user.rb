@@ -2,8 +2,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   mount_uploader :avatar, AvatarUploader
 
-  validates :name, presence: true, length: { maximum: 255 }, uniqueness: true
-  validates :email, presence: true, uniqueness: true
+  validates :name, presence: true, length: { maximum: 50 }, uniqueness: { message: "：このユーザー名は使用できません。別の名前をご入力ください。" }
+  validates :email, presence: true, uniqueness: { message: "：このメールアドレスは使用できません。別のメールアドレスをご入力ください。" }
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }

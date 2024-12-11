@@ -9,7 +9,7 @@ ja:
         id: ID
         name: ユーザー名
         email: メールアドレス
-        password: パスワード(8文字以上)
+        password: パスワード
         password_confirmation: パスワード再入力
         avatar: アイコン
       post:
