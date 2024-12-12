@@ -69,6 +69,9 @@ group :development, :test do
   # RSpecの導入
   gem "rspec-rails"
   gem "factory_bot_rails"
+
+  # カバレッジ計測のgem
+  gem "simplecov"
 end
 
 group :development do
