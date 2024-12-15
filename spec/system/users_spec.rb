@@ -28,13 +28,13 @@ RSpec.describe "Users", type: :system do
           click_button "登録"
           expect(page).to have_content "ユーザー登録に失敗しました"
           expect(page).to have_content "メールアドレスを入力してください"
-          expect(current_path).to eq new_user_path
+          expect(current_path).to eq users_path # renderメソッドで再表示させる為、new_user_pathへのリダイレクトではない。
         end
       end
 
       context "登録済のメールアドレスを使用" do
         it "ユーザーの新規作成が失敗する" do
-          existed_user = create(:user)
+          existed_user = create(:user, email: "email@example.com")
           visit new_user_path
           fill_in "ユーザー名", with: "test_user"
           fill_in "メールアドレス", with: "email@example.com"
@@ -43,7 +43,7 @@ RSpec.describe "Users", type: :system do
           click_button "登録"
           expect(page).to have_content "ユーザー登録に失敗しました"
           expect(page).to have_content "メールアドレス：このメールアドレスは使用できません。別のメールアドレスをご入力ください。"
-          expect(current_path).to eq new_user_path
+          expect(current_path).to eq users_path
           expect(page).to have_field "メールアドレス", with: "email@example.com"
         end
       end
