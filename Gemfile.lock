@@ -118,7 +118,7 @@ GEM
     deep_merge (1.2.2)
     diff-lcs (1.5.1)
     docile (1.4.1)
-    dotenv (3.1.5)
+    dotenv (3.1.6)
     drb (2.2.1)
     erubi (1.13.0)
     excon (1.0.0)
