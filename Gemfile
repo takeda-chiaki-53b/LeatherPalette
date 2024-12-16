@@ -45,7 +45,7 @@ gem "sorcery"
 gem "rails-i18n", "~> 7.0.10"
 
 # upload images
-gem "carrierwave", "~> 3.0"
+gem "carrierwave", "~> 3.1"
 
 # production_upload_images
 gem "fog-aws", "3.29.0"
