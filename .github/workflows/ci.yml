@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [ main, '*' ] # 現在作業しているブランチにプッシュしたときにもテストを実行するように追加
 
 jobs:
   scan_ruby:
@@ -83,3 +83,91 @@ jobs:
           name: screenshots
           path: ${{ github.workspace }}/tmp/screenshots
           if-no-files-found: ignore
+
+  rspec:
+    # 実行環境として最新のUbuntuを選択
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: test
+        ports:
+          - 5432:5432
+      chrome:
+        image: seleniarm/standalone-chromium:latest
+        ports:
+          - 4445:4444 # compose.ymlと完全一致させるとエラーとなるため一部番号を変更
+
+    steps:
+      # テストを実行する環境を作る(自身のリポジトリをダウンロード)
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # rubyを実行出来る環境を作る
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      # テストが実行出来るようにchromeブラウザをダウンロード
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: 120
+          install-dependencies: true
+
+      # actions/cache@v2を使ってnode_modulesの依存関係をキャッシュ
+      # 次回以降に依存関係を再利用出来る
+      # keyに基づいて完全に当てはまるキャッシュを見つけた場合、pathにキャッシュされたファイルが復元される
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+       # テストを実行する環境を作る。Bundler(Gemの依存関係を管理するツール)をインストール
+      - name: Bundler and gem install
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3 --path vendor/bundle
+
+      # JavaScriptのパッケージマネージャーであるYarnを使って、package.jsonに記載された依存関係をインストール
+      - name: Yarn install
+        run: yarn install --check-files
+
+      # ポートの競合をチェックし、4444が使用中なら、Capybaraのポートを3001に変更。
+      - name: Check for port conflicts and set CAPYBARA_PORT
+        run: |
+          PORT=4444
+          if lsof -i:$PORT; then
+            echo "Port $PORT is in use, killing the process"
+            lsof -ti:$PORT | xargs kill -9
+          fi
+          CAPYBARA_PORT=3001
+          echo "CAPYBARA_PORT=$CAPYBARA_PORT" >> $GITHUB_ENV
+          echo "DEBUG: Capybara port set to $CAPYBARA_PORT"
+
+      # テストを実行する環境を作る。
+      # database.yml.ciのテスト実行用のデータベースファイルの内容をコピー
+      # データベースを作成して、マイグレーションを実行した後、アセット（画像、CSS、JavaScriptなど）をコンパイルしてテストを実行
+      - name: Database create and migrate
+        run: |
+          cp config/database.yml.ci config/database.yml
+          bundle exec rails db:create RAILS_ENV=test
+          bundle exec rails db:migrate RAILS_ENV=test
+
+      - name: assets precompile
+        run: bundle exec rake assets:precompile RAILS_ENV=test
+
+      - name: Run tests
+        run: |
+          bundle exec rspec
+        env:
+          SELENIUM_DRIVER_URL: http://localhost:4445/wd/hub
+          CAPYBARA_PORT: ${{ env.CAPYBARA_PORT }}
