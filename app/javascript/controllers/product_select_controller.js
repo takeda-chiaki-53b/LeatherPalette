@@ -5,7 +5,15 @@ export default class extends Controller {
   static targets = ["products"]
 
   onChange(event) {
-    this.updateProducts(event.target.value) // 商品一覧を更新するメソッドを呼び出す。（イベントが発火した時の値を取得＝セレクトボックスの値）
+    const brandAdminId = event.target.value
+
+    // ブランドが未選択の場合、商品セレクトボックスを初期化
+    if (!brandAdminId) {
+      this.productsTarget.innerHTML = "<option value=''>ブランドを選択</option>"
+      return
+    }
+
+    this.updateProducts(brandAdminId) // 商品一覧を更新するメソッドを呼び出す。（イベントが発火した時の値を取得＝セレクトボックスの値）
   }
 
   updateProducts(brandAdminId) {
