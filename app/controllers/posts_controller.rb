@@ -94,9 +94,18 @@ class PostsController < ApplicationController
     @favorite_posts = current_user.favorite_posts.published.includes(:user).order(created_at: :desc)
   end
 
+  def product_select
+    @brand = User.find(params[:id])
+    @products = @brand.products
+
+    respond_to do |format|
+      format.json { render json: @products }
+    end
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:body, :used_year, :brand_admin_id, :color, :care_item, :care_frequency, :care_howto, :status, post_image: [], post_image_cache: [])
+    params.require(:post).permit(:body, :used_year, :brand_admin_id, :product_id, :color, :care_item, :care_frequency, :care_howto, :status, post_image: [], post_image_cache: [])
   end
 end
