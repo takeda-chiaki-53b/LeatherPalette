@@ -104,13 +104,12 @@ jobs:
     steps:
       # テストを実行する環境を作る(自身のリポジトリをダウンロード)
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       # rubyを実行出来る環境を作る
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
           bundler-cache: true
 
       # テストが実行出来るようにchromeブラウザをダウンロード
@@ -124,7 +123,7 @@ jobs:
       # 次回以降に依存関係を再利用出来る
       # keyに基づいて完全に当てはまるキャッシュを見つけた場合、pathにキャッシュされたファイルが復元される
       - name: Cache node modules
-        uses: actions/cache@v4
+        uses: actions/cache@v2
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
