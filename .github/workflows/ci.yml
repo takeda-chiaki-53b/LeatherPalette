@@ -106,12 +106,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 必要なライブラリをインストール
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libglib2.0-0 libgtk-3-0 libasound2-plugins
-
       # rubyを実行出来る環境を作る
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
