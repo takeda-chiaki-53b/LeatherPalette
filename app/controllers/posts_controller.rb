@@ -42,6 +42,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @brand_admin = User.find(@post.brand_admin_id) if @post.brand_admin_id.present? # 投稿にブランドが設定されている場合、その情報を取得
+    @product_name = Product.find_by(id: @post.product_id)&.product_name # 商品名の取得
 
     # 自分の投稿ならそのまま表示し、他ユーザーの投稿であれば、公開ステータスだけを表示する
     if
@@ -94,9 +95,18 @@ class PostsController < ApplicationController
     @favorite_posts = current_user.favorite_posts.published.includes(:user).order(created_at: :desc)
   end
 
+  def product_select
+    @brand = User.find(params[:id])
+    @products = @brand.products
+
+    respond_to do |format|
+      format.json { render json: @products }
+    end
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:body, :used_year, :brand_admin_id, :color, :care_item, :care_frequency, :care_howto, :status, post_image: [], post_image_cache: [])
+    params.require(:post).permit(:body, :used_year, :brand_admin_id, :product_id, :color, :care_item, :care_frequency, :care_howto, :status, post_image: [], post_image_cache: [])
   end
 end

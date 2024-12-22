@@ -92,6 +92,22 @@
   </div>
 </div>
 
+<!-- 商品情報 -->
+<div class="product">
+  <div class="flex w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto text-yellow-900">
+    <div class="w-1/5">
+      <p>商品名 </p>
+    </div>
+    <div class="w-4/5">
+      <% if @product_name %>
+        <p><%= @product_name %></p>
+      <% else %>
+        <p>未登録</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <!-- カラー -->
 <div class="color">
   <div class="flex w-full px-4 pt-4 pb-10 md:px-0 md:pt-4 md:pb-10 md:w-1/2 mx-auto text-yellow-900">
