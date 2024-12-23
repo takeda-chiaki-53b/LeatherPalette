@@ -16,6 +16,11 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
 
+    <!-- デベロッパーツールの警告対処・プレロードの設定 -->
+    <link rel="preload" href="<%= asset_path 'application.css' %>" as="style">
+    <link rel="stylesheet" href="<%= asset_path 'application.css' %>">
+    <!-- ここまで -->
+
     <!-- 本番環境のみでGoogle tag (gtag.js)を表示 -->
     <% if Rails.env.production? %>
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-WNV542D8LF"></script>
