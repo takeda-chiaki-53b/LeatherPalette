@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
+  before_action :set_brand_admins, only: %i[new create edit update]
+  before_action :set_products, only: %i[new create edit update]
 
   def index
     @posts = Post.published.includes(:user).order(created_at: :desc)
@@ -7,14 +9,11 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @brand_admins = User.brand_admins # スコープでブランド管理者のユーザーを取得
-    @products = Product.all
   end
 
   def create
     @post = current_user.posts.build(post_params)
     @post.brand_admin_id = params[:post][:brand_admin_id].presence # nilまたは空文字の場合は自動的にnilになる
-    @products = Product.all
 
     # params[:draft]があれば下書き、params[:unpublished]があれば非公開、どちらもなければ公開投稿
     @post.status =
@@ -35,7 +34,6 @@ class PostsController < ApplicationController
         redirect_to posts_path, success: "投稿を公開しました"
       end
     else
-      @brand_admins = User.brand_admins # newビューを再表示する際に、スコープでブランド管理者のユーザーを再度取得
       flash.now[:danger] = "投稿メッセージを入力していないと投稿できません"
       render :new, status: :unprocessable_entity
     end
@@ -56,14 +54,10 @@ class PostsController < ApplicationController
 
   def edit
     @post = current_user.posts.find(params[:id])
-    @brand_admins = User.brand_admins # スコープ
-    @products = Product.all
   end
 
   def update
     @post = current_user.posts.find(params[:id])
-    @brand_admins = User.brand_admins # スコープ
-    @products = Product.all
 
     # params[:published]があれば公開、params[:unpublished]があれば非公開、どちらもなければ下書き
     @post.status =
@@ -101,7 +95,7 @@ class PostsController < ApplicationController
 
   def product_select
     @brand = User.find(params[:id])
-    @products = @brand.products
+    @products = @brand.products.order(product_name: :asc)
 
     respond_to do |format|
       format.json { render json: @products }
@@ -112,5 +106,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:body, :used_year, :brand_admin_id, :product_id, :color, :care_item, :care_frequency, :care_howto, :status, post_image: [], post_image_cache: [])
+  end
+
+  def set_brand_admins
+    @brand_admins = User.brand_admins # スコープでブランド管理者のユーザーを取得
+  end
+
+  def set_products
+    @products = Product.includes(:user).order(product_name: :asc)
   end
 end
