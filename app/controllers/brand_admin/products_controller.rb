@@ -2,7 +2,7 @@ class BrandAdmin::ProductsController < ApplicationController
   skip_before_action :check_brand_admin, only: %i[show]
 
   def index
-    @products = current_user.products.includes(:user).order(created_at: :desc)
+    @products = current_user.products.includes(:user).order(product_name: :asc)
   end
 
   def new
