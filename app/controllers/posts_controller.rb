@@ -8,11 +8,13 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @brand_admins = User.brand_admins # スコープでブランド管理者のユーザーを取得
+    @products = Product.all
   end
 
   def create
     @post = current_user.posts.build(post_params)
     @post.brand_admin_id = params[:post][:brand_admin_id].presence # nilまたは空文字の場合は自動的にnilになる
+    @products = Product.all
 
     # params[:draft]があれば下書き、params[:unpublished]があれば非公開、どちらもなければ公開投稿
     @post.status =
@@ -55,11 +57,13 @@ class PostsController < ApplicationController
   def edit
     @post = current_user.posts.find(params[:id])
     @brand_admins = User.brand_admins # スコープ
+    @products = Product.all
   end
 
   def update
     @post = current_user.posts.find(params[:id])
     @brand_admins = User.brand_admins # スコープ
+    @products = Product.all
 
     # params[:published]があれば公開、params[:unpublished]があれば非公開、どちらもなければ下書き
     @post.status =
