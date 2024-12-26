@@ -34,7 +34,7 @@ class PostsController < ApplicationController
         redirect_to posts_path, success: "投稿を公開しました"
       end
     else
-      flash.now[:danger] = "投稿メッセージを入力していないと投稿できません"
+      flash.now[:danger] = "投稿の作成に失敗しました"
       render :new, status: :unprocessable_entity
     end
   end
@@ -78,7 +78,7 @@ class PostsController < ApplicationController
         redirect_to post_path(@post), success: "投稿を更新しました"
       end
     else
-      flash.now[:danger] = "投稿メッセージを入力していないと投稿できません"
+      flash.now[:danger] = "投稿の更新に失敗しました"
       render :edit, status: :unprocessable_entity
     end
   end
