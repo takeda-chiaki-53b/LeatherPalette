@@ -9,26 +9,7 @@
 </div>
 
 <div class="relative w-full md:w-1/2 mx-auto">
-  <div class="overflow-hidden relative">
-    <div class="flex transition-transform duration-500 ease-in-out" id="carouselItems">
-      <% if @post.post_image.present? %>
-        <% @post.post_image.each_with_index do |image, index| %>
-          <div class="carousel-item <%= 'active' if index.zero? %> w-full">
-            <%= image_tag(image.url, class: 'block w-full h-auto object-contain') %>
-          </div>
-        <% end %>
-      <% else %>
-        <div class="carousel-item active w-full">
-          <%= image_tag('no_image.png', class: 'block w-full h-auto object-contain') %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <% if @post.post_image.count > 1 %>
-    <!-- 画像が複数枚ある場合のみ表示 -->
-    <button class="absolute left-1 top-1/2 transform -translate-y-1/2 bg-gray-200 bg-opacity-60 shadow-md text-white w-10 h-10 rounded-full" onclick="prevSlide()">❮</button>
-    <button class="absolute right-1 top-1/2 transform -translate-y-1/2 bg-gray-200 bg-opacity-60 shadow-md text-white w-10 h-10 rounded-full" onclick="nextSlide()">❯</button>
-  <% end %>
+  <%= image_tag(@post.post_image.url, class: 'block w-full h-auto object-contain') %>
 </div>
 
 <!-- 日付・お気に入りボタン -->
@@ -194,46 +175,3 @@
     <%= link_to "編集", edit_post_path(@post), class: "btn w-1/3 bg-[#E6CCB585] hover:bg-[#fdba74] text-yellow-900", id: "button-edit-#{@post.id}" %>
   </div>
 <% end %>
-
-<script>
-  let currentIndex = 0;
-
-  function showSlide(index) {
-    const slides = document.querySelectorAll('.carousel-item');
-    currentIndex = (index + slides.length) % slides.length;
-
-    const offset = -currentIndex * 100;
-    document.getElementById('carouselItems').style.transform = `translateX(${offset}%)`;
-
-    slides.forEach((slide, i) => slide.classList.toggle('active', i === currentIndex));
-  }
-
-  function nextSlide() {
-    showSlide(currentIndex + 1);
-  }
-
-  function prevSlide() {
-    showSlide(currentIndex - 1);
-  }
-
-  // スワイプ機能
-  const carousel = document.getElementById('carouselItems');
-  let startX;
-
-  carousel.addEventListener('touchstart', (event) => {
-    startX = event.touches[0].clientX;
-  });
-
-  carousel.addEventListener('touchend', (event) => {
-    const endX = event.changedTouches[0].clientX;
-    const distanceX = endX - startX;
-
-    if (distanceX > 30) {
-      prevSlide(); // 右スワイプ
-    } else if (distanceX < -30) {
-      nextSlide(); // 左スワイプ
-    }
-  });
-
-  showSlide(currentIndex); // 最初のスライドを表示
-</script>

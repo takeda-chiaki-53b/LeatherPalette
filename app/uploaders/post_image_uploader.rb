@@ -67,7 +67,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
 
   # 拡張子を.webpで保存
   def filename
-    super.chomp(File.extname(super)) + ".webp" if original_filename.present?
+    super.chomp(File.extname(super)) + ".webp"
   end
 
   private

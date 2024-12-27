@@ -1,27 +1,21 @@
 <%= form_with model: post, data: { turbo: false } do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%= f.label :post_image, '画像を選択（5枚まで）', class: 'label w-10/12 md:w-1/2 mx-auto pt-4 font-medium'%>
-  <%= f.file_field :post_image, multiple: true, include_hidden: false, class: 'file-input file-input-bordered form-control w-10/12 md:w-1/2 mx-auto'%>
-  <%= f.hidden_field :post_image, multiple: true %>
+  <!-- 投稿画像 -->
+  <div data-controller="image-preview" data-image-preview-width="250" data-image-preview-height="250">
+    <%= f.label :post_image, '画像選択', class: 'label w-10/12 md:w-1/2 mx-auto pt-4 font-medium'%>
+    <%= f.file_field :post_image, class: 'file-input file-input-bordered form-control w-10/12 md:w-1/2 mx-auto', accept: 'image/*', data: { "image-preview-target": "input", action: "change->image-preview#previewImage"} %>
+    <%= f.hidden_field :post_image_cache %>
 
-  <!-- サムネイル表示 -->
-  <div class="thumbnail w-10/12 md:w-1/2 mx-auto py-3 text-sm">
-    <% if post.post_image.any? %>
-      <p>【編集前の画像】　※画像の追加・変更の場合も、登録する画像すべてを選択してください。</p>
-      <div class="flex flex-wrap">
-        <% post.post_image.each do |image| %>
-          <div class="thumbnail-image-wrapper m-1 w-24 h-24 overflow-hidden flex items-center justify-center border border-neutral-200">
-            <%= image_tag image.url, alt: "サムネイル", class: "thumbnail-image max-w-full max-h-full object-cover" %>
-          </div>
-        <% end %>
-      </div>
-    <% else %>
-      <p>画像を選択していない場合、以下のデフォルト画像が設定されます。</p>
-      <div class="thumbnail-image-wrapper w-24 h-24">
-        <%= image_tag 'no_image.png', alt: "デフォルト画像", class: "thumbnail-image max-w-full max-h-full object-cover" %>
-      </div>
-    <% end %>
+      <!-- 画像の説明 -->
+    <div class="flex justify-center mt-2">
+      <p class="text-center text-sm">以下に表示される画像が登録されます</p>
+    </div>
+    <!-- サムネイル表示 -->
+    <div class="flex justify-center mt-4 mb-4" data-image-preview-target="existing">
+      <%= image_tag(post.post_image_url, class: 'h-60 w-60 border-2 object-contain') if post.post_image? %>
+    </div>
+    <div class="flex justify-center mt-4 mb-4" data-image-preview-target="preview"></div>
   </div>
 
   <!-- 投稿メッセージ -->
