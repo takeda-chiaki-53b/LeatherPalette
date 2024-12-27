@@ -1,6 +1,6 @@
 <div class="card rounded-xl bg-base-100 shadow-md aspect-[1/1] text-yellow-900">
   <div class="card-image" style="height: 75%;">
-    <%= link_to image_tag(post.post_image.first.url, class: 'rounded-t-xl w-full h-full object-cover'), post_path(post) %>
+    <%= link_to image_tag(post.post_image.url, class: 'rounded-t-xl w-full h-full object-cover'), post_path(post) %>
   </div>
 
   <div class="flex justify-between items-center mx-3 py-1 border-b">
