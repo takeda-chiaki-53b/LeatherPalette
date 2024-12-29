@@ -41,7 +41,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @brand_admin = User.find(@post.brand_admin_id) if @post.brand_admin_id.present? # 投稿にブランドが設定されている場合、その情報を取得
+    # 投稿のブランドidに一致するuserが見つかれば、その情報を取得、
+    # 見つからなければnilを代入しエラーハンドリングを行う：brand_admin_id(アイテム情報のブランド)を未選択状態(nil)にする
+    @brand_admin = User.find_by(id: @post.brand_admin_id) || begin
+      @post.brand_admin_id = nil
+    end
     @product_name = Product.find_by(id: @post.product_id)&.product_name # 商品名の取得
 
     # 自分の投稿ならそのまま表示し、他ユーザーの投稿であれば、公開ステータスだけを表示する
