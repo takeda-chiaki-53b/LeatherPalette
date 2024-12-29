@@ -1,6 +1,6 @@
 <!-- 大画面用 -->
 <div class="hidden lg:block">
-  <div class="fixed top-0 start-0 bottom-0 z-[60] w-60 border-e-2 border-neutral-100 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0">
+  <div class="fixed top-0 start-0 bottom-0 z-50 w-60 border-e-2 border-neutral-100 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0">
       <div class="px-6 flex flex-col">
         <%= link_to root_path, class: "btn btn-ghost flex items-center text-xl rounded-lg justify-start font-bold hover:bg-white" do %>
           <span>LeatherPalette ブランド</span>
@@ -81,7 +81,7 @@
 
 <!-- 中画面用 -->
 <div class="hidden md:block lg:hidden">
-  <div class="fixed top-0 start-0 bottom-0 z-[60] w-20 border-e-2 border-neutral-100">
+  <div class="fixed top-0 start-0 bottom-0 z-50 w-20 border-e-2 border-neutral-100">
     <div class="flex flex-col justify-center items-center gap-y-4 py-5">
       <div class="mt-5 mb-4 font-bold">
         <%= link_to root_path, class: "flex-none text-lg font-semibold" do  %>
@@ -162,7 +162,7 @@
 </div>
 
 <!-- スマホ用 -->
-<div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full border-b-2 border-neutral-100 text-sm py-2">
+<div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full border-b-2 border-neutral-100 bg-beige text-sm py-2 fixed top-0 left-0 right-0 z-50">
   <nav class="max-w-[85rem] w-full mx-auto px-2" aria-label="Global">
     <div class="flex items-center justify-between">
       <div>
@@ -172,7 +172,7 @@
           <li>
             <details class="relative border rounded-lg">
               <summary class="font-medium">menu</summary>
-                <ul class="absolute top-[22px] z-50 right-0 shadow rounded-box w-48 font-semibold">
+                <ul class="absolute top-[22px] right-0 shadow rounded-box w-48 font-semibold">
                   <li>
                     <%= link_to brand_admin_mypage_path, class: "dropdown-content flex items-center text-sm rounded-lg justify-start" do %>
                       <i class="bi bi-person-circle text-lg"></i>
