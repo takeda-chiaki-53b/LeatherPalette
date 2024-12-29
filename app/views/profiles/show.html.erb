@@ -25,3 +25,7 @@
     <%= link_to "編集", edit_profile_path, class: "btn w-full md:w-1/2 mb-5 bg-[#E6CCB585] hover:bg-[#fdba74] text-yellow-900" %>
   </div>
 </div>
+
+<div class="p-6 mt-20 flex justify-center w-5/6 mx-auto">
+  <%= link_to "アカウント削除", profile_path, data: { turbo_method: "delete", turbo_confirm: "アカウントを削除すると、投稿やお気に入り等の関連情報もすべて削除されます。本当に削除してよろしいですか？" }, class: "btn w-full md:w-1/2 mb-5 bg-[#e5e5e5] hover:bg-[#a3a3a3]" %>
+</div>

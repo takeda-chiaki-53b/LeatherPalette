@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, only: %i[edit update]
+  before_action :set_user, only: %i[edit update destroy]
 
   def show; end
 
@@ -15,6 +15,13 @@ class ProfilesController < ApplicationController
       flash.now[:danger] = "ユーザー情報の更新に失敗しました"
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @user.destroy!
+    # セッションをクリアしてユーザーをログアウト状態にする
+    reset_session
+    redirect_to root_path, status: :see_other, success: "アカウントを削除しました。"
   end
 
   private

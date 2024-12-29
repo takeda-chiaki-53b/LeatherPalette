@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   resource :mypage, only: %i[show]
 
   # プロフィール
-  resource :profile, only: %i[show edit update]
+  resource :profile, only: %i[show edit update destroy]
 
   # パスワードリセット
   resources :password_resets, only: %i[new create edit update ]
