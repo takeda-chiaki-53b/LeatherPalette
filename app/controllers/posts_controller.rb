@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :set_products, only: %i[new create edit update]
 
   def index
-    @posts = Post.published.includes(:user).order(created_at: :desc)
+    @posts = Post.published.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -94,7 +94,7 @@ class PostsController < ApplicationController
   end
 
   def favorites
-    @favorite_posts = current_user.favorite_posts.published.includes(:user).order(created_at: :desc)
+    @favorite_posts = current_user.favorite_posts.published.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def product_select

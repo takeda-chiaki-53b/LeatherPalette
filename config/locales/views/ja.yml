@@ -100,3 +100,10 @@ ja:
      title: ユーザー情報編集
      gmail_update_forbidden: Googleアカウントの場合は、メールの変更はできません
      gmail_warning: お手数ですが、Googleアカウントの場合は、ログアウト後にGoogleアカウントによる新規登録をお願いします
+  views:
+    pagination:
+      first: <i class="bi bi-chevron-double-left text-sm"></i>
+      last: <i class="bi bi-chevron-double-right text-sm"></i>
+      previous: <i class="bi bi-chevron-left text-sm"></i>
+      next: <i class="bi bi-chevron-right text-sm"></i>
+      truncate: "..."
