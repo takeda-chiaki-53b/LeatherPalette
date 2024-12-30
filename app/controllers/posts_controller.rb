@@ -94,7 +94,7 @@ class PostsController < ApplicationController
   end
 
   def favorites
-    @favorite_posts = current_user.favorite_posts.published.includes(:user).order(created_at: :desc)
+    @favorite_posts = current_user.favorite_posts.published.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def product_select
