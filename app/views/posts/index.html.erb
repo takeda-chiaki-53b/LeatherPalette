@@ -11,4 +11,6 @@
         <div class= 'text-lg m-auto'>投稿はありません</div>
     <% end %>
 </div>
-<%= paginate @posts %>
+<div class="flex justify-center mt-5">
+  <%= paginate @posts, theme: 'bootstrap-5' %>
+</div>
