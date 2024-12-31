@@ -2,10 +2,9 @@ class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   before_action :set_brand_admins, only: %i[new create edit update]
   before_action :set_products, only: %i[new create edit update]
-  before_action :check_page, only: %i[index favorites]
 
   def index
-    @posts = Post.published.includes(:user).order(created_at: :desc).page(@page)
+    @posts = Post.published.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -95,7 +94,7 @@ class PostsController < ApplicationController
   end
 
   def favorites
-    @favorite_posts = current_user.favorite_posts.published.includes(:user).order(created_at: :desc).page(@page)
+    @favorite_posts = current_user.favorite_posts.published.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def product_select
@@ -119,11 +118,5 @@ class PostsController < ApplicationController
 
   def set_products
     @products = Product.includes(:user).order(product_name: :asc)
-  end
-
-  # ページネーションの設定.page(params[:page])の脆弱性対策
-  def check_page
-    @page = params[:page].to_i
-    @page = 1 if @page < 1  # 1未満の場合は1に設定
   end
 end
