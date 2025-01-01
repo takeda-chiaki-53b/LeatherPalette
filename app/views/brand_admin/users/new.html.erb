@@ -8,22 +8,22 @@
       <%= form_with model: @user , url: brand_admin_users_path do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
         <div class="mb-3">
-          <%= f.label :name, class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
-          <%= f.text_field :name, placeholder: "ブランド名をご入力ください", class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
+          <%= f.label :name, class: "label w-5/6 md:w-1/2 mx-auto text-sm" %>
+          <%= f.text_field :name, placeholder: "ブランド名をご入力ください", class: "input input-bordered form-control w-5/6 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mb-3">
-          <%= f.label :email, class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
-          <%= f.email_field :email, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
+          <%= f.label :email, class: "label w-5/6 md:w-1/2 mx-auto text-sm" %>
+          <%= f.email_field :email, class: "input input-bordered form-control w-5/6 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mb-3">
-          <%= f.label :password, class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
-          <%= f.password_field :password, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10", placeholder: "8文字以上で入力してください" %>
+          <%= f.label :password, class: "label w-5/6 md:w-1/2 mx-auto text-sm" %>
+          <%= f.password_field :password, class: "input input-bordered form-control w-5/6 md:w-1/2 mx-auto h-10", placeholder: "8文字以上で入力してください" %>
         </div>
         <div class="mb-3">
-          <%= f.label :password_confirmation, class: "label w-10/12 md:w-1/2 mx-auto text-sm" %>
-          <%= f.password_field :password_confirmation, class: "input input-bordered form-control w-10/12 md:w-1/2 mx-auto h-10" %>
+          <%= f.label :password_confirmation, class: "label w-5/6 md:w-1/2 mx-auto text-sm" %>
+          <%= f.password_field :password_confirmation, class: "input input-bordered form-control w-5/6 md:w-1/2 mx-auto h-10" %>
         </div>
-        <div class="mx-auto w-10/12 md:w-1/2">
+        <div class="mx-auto w-5/6 md:w-1/2">
           <%= f.submit "登録", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] text-yellow-900" %>
         </div>
       <% end %>

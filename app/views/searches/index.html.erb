@@ -3,7 +3,7 @@
   <h1 class="text-2xl font-semibold text-yellow-900" >投稿検索</h1>
 </div>
 
-<div class="flex justify-between items-center w-10/12 mx-auto text-yellow-900 py-5">
+<div class="flex justify-between items-center w-5/6 mx-auto text-yellow-900 py-5">
   <div class="text-left">
     <h2 class="text-xl font-semibold" >検索方法を選択</h2>
     <p class="text-sm">選択した条件を「アイテム情報」に含む投稿を検索します。</p>
@@ -14,7 +14,7 @@
   <!-- 検索方法選択エリア -->
   <!-- 大きな画面用 -->
   <div class="hidden md:block lg:block">
-    <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto mb-6">
+    <div class="flex flex-wrap justify-between text-yellow-900 w-5/6 mx-auto mb-6">
 
       <div class="flex flex-col items-center">
         <div class="flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" data-action="click->search#select" data-condition="brand">
@@ -50,7 +50,7 @@
   <!-- スマホ用 -->
   <div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full py-5">
     <nav class="max-w-[85rem] w-full mx-auto text-yellow-900" aria-label="Global">
-      <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto">
+      <div class="flex flex-wrap justify-between text-yellow-900 w-5/6 mx-auto">
 
         <div class="flex flex-col items-center">
           <div class="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" data-action="click->search#select" data-condition="brand">
@@ -87,7 +87,7 @@
   <!-- 検索方法別の条件指定部分 -->
   <!-- ブランド(ユーザー名)の選択肢表示 -->
   <div class="brand_search" data-search-target="condition" data-condition="brand">
-    <div class="bg-white rounded-xl shadow-md p-4 w-10/12 mx-auto text-yellow-900">
+    <div class="bg-white rounded-xl shadow-md p-4 w-5/6 mx-auto text-yellow-900">
       <table class="table w-full">
         <tr>
           <th>ブランドを選択</th>
@@ -112,7 +112,7 @@
 
   <!-- 使用年数の選択肢表示 -->
   <div class="used_year_search" data-search-target="condition" data-condition="used_year">
-    <div class="bg-white rounded-xl shadow-md p-4 text-center w-10/12 mx-auto text-yellow-900">
+    <div class="bg-white rounded-xl shadow-md p-4 text-center w-5/6 mx-auto text-yellow-900">
       <table class="table">
         <tr>
           <th>使用年数を選択</th>
@@ -150,7 +150,7 @@
 
   <!-- カラーの選択肢表示 -->
   <div class="color_search" data-search-target="condition" data-condition="color">
-    <div class="bg-white rounded-xl shadow-md p-4 text-center w-10/12 mx-auto text-yellow-900">
+    <div class="bg-white rounded-xl shadow-md p-4 text-center w-5/6 mx-auto text-yellow-900">
       <table class="table">
         <tr>
           <th>カラーを選択</th>
@@ -187,7 +187,7 @@
 
   <!-- 絞り込み条件表示 -->
   <div class="hidden" data-search-target="condition" data-condition="refine">
-    <div class="bg-white rounded-xl shadow-md p-4 text-center w-10/12 mx-auto text-yellow-900">
+    <div class="bg-white rounded-xl shadow-md p-4 text-center w-5/6 mx-auto text-yellow-900">
       <table class="table">
         <tr>
           <th>絞り込み条件を指定</th>

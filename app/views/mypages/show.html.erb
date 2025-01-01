@@ -18,7 +18,7 @@
   <% end %>
 
   <!-- 追加するか検討中の機能の為、一旦コメントアウト -->
-  <!-- <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto mb-6"> -->
+  <!-- <div class="flex flex-wrap justify-between text-yellow-900 w-5/6 mx-auto mb-6"> -->
     <!-- <div class="flex flex-col items-center">
     <!--   <%= link_to '#', class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %> -->
     <!--     <i class="bi bi-person-gear text-2xl"></i> -->
@@ -42,7 +42,7 @@
   <nav class="max-w-[85rem] w-full mx-auto text-yellow-900" aria-label="Global">
 
   <%= link_to profile_path do %>
-    <div class="bg-white rounded-xl shadow-md border border-neutral-200 p-6 text-yellow-900 w-10/12 mx-auto">
+    <div class="bg-white rounded-xl shadow-md border border-neutral-200 p-6 text-yellow-900 w-5/6 mx-auto">
       <div class="flex justify-center">
         <%= image_tag current_user.avatar_url, class: 'rounded-full h-24 w-24 border-2 object-contain' %>
       </div>
@@ -53,7 +53,7 @@
   <% end %>
 
     <!-- 追加するか検討中の機能の為、一旦コメントアウト -->
-    <!-- <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto"> -->
+    <!-- <div class="flex flex-wrap justify-between text-yellow-900 w-5/6 mx-auto"> -->
       <!-- <div class="flex flex-col items-center"> -->
       <!--   <%= link_to '#', class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %> -->
       <!--     <i class="bi bi-person-gear text-xl"></i> -->
@@ -80,7 +80,7 @@
 
 <!-- ステータス別投稿表示エリア -->
 <div data-controller="tabber">
-  <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 items-center w-10/12 mx-auto">
+  <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 items-center w-5/6 mx-auto">
     <ul class="flex w-full">
       <li class="flex-1  w-full">
         <%= link_to '公開中', 'javascript:void(0)', class: 'block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 active-tab', aria: { current: "page" }, data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
