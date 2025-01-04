@@ -1,8 +1,8 @@
 <% content_for(:title, t('.title')) %>
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-10 col-lg-8 mx-auto text-yellow-900">
-      <h1 class="text-xl text-center font-semibold mt-10 mb-4 pb-2">
+    <div class="col-12 col-md-10 col-lg-8 mx-auto">
+      <h1 class="text-lg text-center font-semibold pt-20 mb-4">
         ブランド新規登録
       </h1>
       <%= form_with model: @user , url: brand_admin_users_path do |f| %>
@@ -24,7 +24,7 @@
           <%= f.password_field :password_confirmation, class: "input input-bordered form-control w-5/6 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mx-auto w-5/6 md:w-1/2">
-          <%= f.submit "登録", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585] text-yellow-900" %>
+          <%= f.submit "登録", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585]" %>
         </div>
       <% end %>
       <div class="text-center mt-6 text-sm">
