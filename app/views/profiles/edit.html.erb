@@ -1,14 +1,14 @@
 <% content_for(:title, t('.title')) %>
-<div class="flex justify-center mt-5 mb-5">
-  <h1 class="text-2xl font-semibold text-yellow-900" >ユーザー情報編集</h1>
+<div class="flex justify-center pt-20 mb-5">
+  <h1 class="text-lg font-semibold" >ユーザー情報編集</h1>
 </div>
 
-<div class="bg-white rounded-xl shadow-md border border-neutral-200 p-6 text-center text-yellow-900 w-5/6 mx-auto">
+<div class="bg-white rounded-xl shadow-md border border-neutral-200 p-6 text-center w-5/6 mx-auto">
   <!-- turboの無効化は、エラーが発生すると、その後のフォーム入力でJavascriptが読み込まれなくなる事を防ぐ為。 -->
   <%= form_with model: @user, url: profile_path, method: :put, data: { turbo: false } do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-    <div class="w-full md:w-1/2 mx-auto text-yellow-900 h-full">
+    <div class="w-full md:w-1/2 mx-auto h-full">
 
       <div class="mb-3">
         <div class="flex justify-center mt-4 mb-4">
@@ -49,7 +49,7 @@
       <% end %>
 
       <div>
-        <%= f.submit "登録", class: "btn mt-8 mb-5 w-full mx-auto h-10 bg-[#E6CCB585] text-yellow-900", id: "submit_button" %>
+        <%= f.submit "登録", class: "btn mt-8 mb-5 w-full mx-auto h-10 bg-[#E6CCB585] text-darkbrown", id: "submit_button" %>
       </div>
 
     </div>

@@ -3,10 +3,11 @@
   <h1 class="text-lg font-semibold" >投稿検索</h1>
 </div>
 
-<div class="flex justify-between items-center w-5/6 mx-auto py-5">
-  <div class="text-left">
+<div class="flex justify-between items-center w-5/6 mx-auto mb-5">
+  <div class="flex items-center text-left">
     <h2 class="text-base font-semibold" >検索方法を選択</h2>
-    <p class="text-sm">選択した条件を「アイテム情報」に含む投稿を検索します。</p>
+    <!-- 検索する範囲の説明モーダル -->
+    <i class="bi bi-question-circle cursor-pointer hover:text-orange ml-2" onclick="search_info_modal.showModal()"></i>
   </div>
 </div>
 
@@ -48,7 +49,7 @@
   </div>
 
   <!-- スマホ用 -->
-  <div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full py-5">
+  <div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full">
     <nav class="max-w-[85rem] w-full mx-auto" aria-label="Global">
       <div class="flex flex-wrap justify-between w-5/6 mx-auto">
 
@@ -247,3 +248,15 @@
   </div>
 
 </div>
+
+<!-- モーダルの中身 -->
+<dialog id="search_info_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="text-base font-bold">検索範囲について</h3>
+    <p class="text-sm pt-4">選択した条件と一致する「アイテム情報」が登録されている投稿を絞り込みます。</p>
+    <p class="text-sm pt-4">選択した条件に当てはまる画像が登録されている場合でも、「アイテム情報」の登録がない場合は検索結果に表示されません。</p>
+    <div class="modal-action">
+        <button class="btn btn-sm text-sm border-neutral-200 text-darkbrown" onclick="search_info_modal.close()">✕</button>
+    </div>
+  </div>
+</dialog>
