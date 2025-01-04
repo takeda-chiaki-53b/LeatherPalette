@@ -12,8 +12,8 @@ export default class extends Controller {
 
     // 初期化（全てのタブを非アクティブにし、コンテンツを隠す）
     tab_menus.forEach((tab_menu, index) => {
-      tab_menu.classList.remove("active-tab", "text-blue-600", "border-b-2", "border-blue-600", "dark:text-blue-500", "dark:border-blue-500")
-      tab_menu.classList.add("not-active", "text-gray-500", "border-b-2", "border-transparent", "hover:text-gray-600", "hover:border-gray-300", "dark:hover:text-gray-300")
+      tab_menu.classList.remove("active-tab", "text-darkbrown", "border-b-2", "border-darkbrown")
+      tab_menu.classList.add("not-active", "text-gray-500", "border-b-2", "border-transparent", "hover:text-gray-600", "hover:border-gray-300")
       contents[index].classList.add("hidden")
     })
     // tab_menusの中にある全てのタブメニューに対して、ひとつずつ処理を行う
@@ -23,8 +23,8 @@ export default class extends Controller {
 
 
     // クリックしたタブをアクティブにし、対応するコンテンツを表示する
-    current.classList.remove("not-active", "text-gray-500", "border-b-2", "border-transparent", "hover:text-gray-600", "hover:border-gray-300", "dark:hover:text-gray-300")
-    current.classList.add("active-tab", "text-blue-600", "border-b-2", "border-blue-600", "dark:text-blue-500", "dark:border-blue-500")
+    current.classList.remove("not-active", "text-gray-500", "border-b-2", "border-transparent", "hover:text-gray-600", "hover:border-gray-300")
+    current.classList.add("active-tab", "text-darkbrown", "border-b-2", "border-darkbrown")
     contents[currentIndex].classList.remove("hidden")
     // 現在選択されているタブ（current）から、not-activeクラスを削除する
     // 現在のタブにactive-tabクラスを追加してアクティブである（選択されている）ことを示す

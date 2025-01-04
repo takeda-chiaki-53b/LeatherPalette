@@ -53,12 +53,14 @@
     <% end %>
     </header>
     <main class="flex-grow">
-      <div class="lg:ml-60 md:ml-20 md:mb-36">
-        <%= render 'shared/flash_message' %>
+      <div class="lg:ml-60 md:ml-20 md:mb-36 relative">
+        <div id="flash-message" class="absolute top-1 w-full z-50 mx-auto">
+          <%= render 'shared/flash_message' %>
+        </div>
         <%= yield %>
       </div>
     </main>
-    <footer class="footer footer-center p-10 mt-16 md:mt-4 sm:mt-0">
+    <footer class="footer footer-center px-6 py-16 mt-16 md:mt-4 sm:mt-0">
       <div class="lg:ml-64 md:ml-20 min-[320px]:mb-14 md:mb-0 z-10">
        <%= render 'shared/footer' %>
       </div>
@@ -78,5 +80,20 @@
         });
       });
     }
+  </script>
+
+  <!-- フラッシュメッセージを自動で消す処理 -->
+  <script>
+    document.addEventListener('turbo:load', function() {
+      const flashMessage = document.getElementById('flash-message');
+      if (flashMessage) {
+        setTimeout(() => {
+          flashMessage.classList.add('fade-out'); // CSSで指定したフェードアウトクラスを追加
+          setTimeout(() => {
+            flashMessage.style.display = 'none'; // 完全に非表示にする
+          }, 500); // 0.5秒後に非表示にする
+        }, 3000); // 3000ミリ秒（3秒）後にフェードアウト開始
+      }
+    });
   </script>
 </html>

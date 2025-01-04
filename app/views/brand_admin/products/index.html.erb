@@ -1,6 +1,6 @@
 <% content_for(:title, t('.title')) %>
-<div class="flex justify-center mt-5">
-  <h1 class="text-2xl font-semibold text-yellow-900" >登録済商品一覧</h1>
+<div class="flex justify-center pt-20">
+  <h1 class="text-lg font-semibold" >登録済商品一覧</h1>
 </div>
 <div class="flex flex-wrap m-4">
     <% if @products.present? %>
@@ -8,6 +8,6 @@
         <%= render @products %>
       </div>
     <% else %>
-        <div class= 'text-lg m-auto'>登録済商品はありません</div>
+        <div class= 'text-base m-auto'>登録済商品はありません</div>
     <% end %>
 </div>

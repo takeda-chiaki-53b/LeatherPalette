@@ -1,12 +1,13 @@
 <% content_for(:title, t('.title')) %>
-<div class="flex justify-center mt-5 mb-5">
-  <h1 class="text-2xl font-semibold text-yellow-900" >投稿検索</h1>
+<div class="flex justify-center pt-20 mb-5">
+  <h1 class="text-lg font-semibold" >投稿検索</h1>
 </div>
 
-<div class="flex justify-between items-center w-10/12 mx-auto text-yellow-900 py-5">
-  <div class="text-left">
-    <h2 class="text-xl font-semibold" >検索方法を選択</h2>
-    <p class="text-sm">選択した条件を「アイテム情報」に含む投稿を検索します。</p>
+<div class="flex justify-between items-center w-5/6 mx-auto mb-5">
+  <div class="flex items-center text-left">
+    <h2 class="text-base font-semibold" >検索方法を選択</h2>
+    <!-- 検索する範囲の説明モーダル -->
+    <i class="bi bi-question-circle cursor-pointer hover:text-orange ml-2" onclick="search_info_modal.showModal()"></i>
   </div>
 </div>
 
@@ -14,7 +15,7 @@
   <!-- 検索方法選択エリア -->
   <!-- 大きな画面用 -->
   <div class="hidden md:block lg:block">
-    <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto mb-6">
+    <div class="flex flex-wrap justify-between w-5/6 mx-auto mb-6">
 
       <div class="flex flex-col items-center">
         <div class="flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" data-action="click->search#select" data-condition="brand">
@@ -48,9 +49,9 @@
   </div>
 
   <!-- スマホ用 -->
-  <div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full py-5">
-    <nav class="max-w-[85rem] w-full mx-auto text-yellow-900" aria-label="Global">
-      <div class="flex flex-wrap justify-between text-yellow-900 w-10/12 mx-auto">
+  <div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full">
+    <nav class="max-w-[85rem] w-full mx-auto" aria-label="Global">
+      <div class="flex flex-wrap justify-between w-5/6 mx-auto">
 
         <div class="flex flex-col items-center">
           <div class="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" data-action="click->search#select" data-condition="brand">
@@ -87,7 +88,7 @@
   <!-- 検索方法別の条件指定部分 -->
   <!-- ブランド(ユーザー名)の選択肢表示 -->
   <div class="brand_search" data-search-target="condition" data-condition="brand">
-    <div class="bg-white rounded-xl shadow-md p-4 w-10/12 mx-auto text-yellow-900">
+    <div class="bg-white rounded-xl shadow-md p-4 w-5/6 mx-auto">
       <table class="table w-full">
         <tr>
           <th>ブランドを選択</th>
@@ -95,11 +96,11 @@
         <tbody>
           <% @brand_admins.each do |brand| %>
             <tr class="hover:bg-[#fdba74]">
-              <td class="flex items-center">
-                <%= image_tag(brand.avatar_url, alt: "#{brand.name}のアバター", class: "w-8 h-8 rounded-full border mr-2") %>
+              <td class="flex items-center cursor-pointer" onclick="this.querySelector('form').submit();">
+                <%= image_tag(brand.avatar_url, alt: "#{brand.name}のアバター", class: "w-10 h-10 rounded-full border mr-2") %>
                 <%= form_with url: result_searches_path, method: :post, data: { turbo: false } do |f| %>
                   <%= f.hidden_field :brand_name, value: brand.name %>
-                  <%= f.submit brand.name, class: "block w-full text-left cursor-pointer whitespace-normal" %>
+                  <%= f.submit brand.name, class: "block w-full text-left whitespace-normal break-all" %>
                 <% end %>
               </td>
             </tr>
@@ -112,7 +113,7 @@
 
   <!-- 使用年数の選択肢表示 -->
   <div class="used_year_search" data-search-target="condition" data-condition="used_year">
-    <div class="bg-white rounded-xl shadow-md p-4 text-center w-10/12 mx-auto text-yellow-900">
+    <div class="bg-white rounded-xl shadow-md p-4 text-center w-5/6 mx-auto">
       <table class="table">
         <tr>
           <th>使用年数を選択</th>
@@ -150,7 +151,7 @@
 
   <!-- カラーの選択肢表示 -->
   <div class="color_search" data-search-target="condition" data-condition="color">
-    <div class="bg-white rounded-xl shadow-md p-4 text-center w-10/12 mx-auto text-yellow-900">
+    <div class="bg-white rounded-xl shadow-md p-4 text-center w-5/6 mx-auto">
       <table class="table">
         <tr>
           <th>カラーを選択</th>
@@ -187,7 +188,7 @@
 
   <!-- 絞り込み条件表示 -->
   <div class="hidden" data-search-target="condition" data-condition="refine">
-    <div class="bg-white rounded-xl shadow-md p-4 text-center w-10/12 mx-auto text-yellow-900">
+    <div class="bg-white rounded-xl shadow-md p-4 text-center w-5/6 mx-auto">
       <table class="table">
         <tr>
           <th>絞り込み条件を指定</th>
@@ -240,10 +241,22 @@
         </div>
 
         <div class='mx-auto w-11/12 md:w-1/2'>
-        <%= f.submit "選択した条件で検索", class: "btn mt-10 w-full mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74] text-yellow-900" %>
+        <%= f.submit "選択した条件で検索", class: "btn mt-10 w-full mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74]" %>
         </div>
       <% end %>
     </div>
   </div>
 
 </div>
+
+<!-- モーダルの中身 -->
+<dialog id="search_info_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="text-base font-bold">検索範囲について</h3>
+    <p class="text-sm pt-4">選択した条件と一致する「アイテム情報」が登録されている投稿を絞り込みます。</p>
+    <p class="text-sm pt-4">選択した条件に当てはまる画像が登録されている場合でも、「アイテム情報」の登録がない場合は検索結果に表示されません。</p>
+    <div class="modal-action">
+        <button class="btn btn-sm text-sm border-neutral-200 text-darkbrown" onclick="search_info_modal.close()">✕</button>
+    </div>
+  </div>
+</dialog>

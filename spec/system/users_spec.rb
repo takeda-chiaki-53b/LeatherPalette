@@ -53,7 +53,7 @@ RSpec.describe "Users", type: :system do
       context "ログインしていない状態" do
         it "マイページへのアクセスが失敗する" do
           visit mypage_path(user)
-          # 後でフラッシュの設定を修正したらコメントアウトを外す expect(page).to have_content "ログインしてください"
+          expect(page).to have_content "ログインしてください"
           expect(current_path).to eq login_path
         end
       end

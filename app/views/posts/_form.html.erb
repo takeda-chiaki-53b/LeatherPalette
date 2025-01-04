@@ -3,8 +3,8 @@
 
   <!-- 投稿画像 -->
   <div data-controller="image-preview" data-image-preview-width="250" data-image-preview-height="250">
-    <%= f.label :post_image, '画像選択', class: 'label w-10/12 md:w-1/2 mx-auto pt-4 font-medium'%>
-    <%= f.file_field :post_image, class: 'file-input file-input-bordered form-control w-10/12 md:w-1/2 mx-auto', accept: 'image/*', data: { "image-preview-target": "input", action: "change->image-preview#previewImage"} %>
+    <%= f.label :post_image, '画像選択', class: 'label w-5/6 md:w-1/2 mx-auto pt-5 font-medium'%>
+    <%= f.file_field :post_image, class: 'file-input file-input-bordered form-control w-5/6 md:w-1/2 mx-auto text-sm', accept: 'image/*', data: { "image-preview-target": "input", action: "change->image-preview#previewImage"} %>
     <%= f.hidden_field :post_image_cache %>
 
       <!-- 画像の説明 -->
@@ -12,135 +12,170 @@
       <p class="text-center text-sm">以下に表示される画像が登録されます</p>
     </div>
     <!-- サムネイル表示 -->
-    <div class="flex justify-center mt-4 mb-4" data-image-preview-target="existing">
+    <div class="flex justify-center mt-4" data-image-preview-target="existing">
       <%= image_tag(post.post_image_url, class: 'h-60 w-60 border-2 object-contain') if post.post_image? %>
     </div>
-    <div class="flex justify-center mt-4 mb-4" data-image-preview-target="preview"></div>
+    <div class="flex justify-center mt-4" data-image-preview-target="preview"></div>
   </div>
 
   <!-- 投稿メッセージ -->
-  <%= f.label :body, class: "label w-10/12 md:w-1/2 mx-auto pt-4 font-medium" %>
+  <%= f.label :body, class: "label w-5/6 md:w-1/2 mx-auto font-medium mt-4" %>
   <%= f.text_area :body,
-  class: "input input-bordered bg-neutral-100 form-control mb-6 w-10/12 md:w-1/2 mx-auto h-auto",
-  rows: 5, placeholder: "2000字以内
-  アイテム購入時のエピソードや自分なりの使い方などを共有しましょう!" %>
+  class: "input input-bordered form-control mb-6 w-5/6 md:w-1/2 mx-auto h-auto text-sm",
+  rows: 15, placeholder: "1000字以内
+使い方や推しポイントなどを共有しましょう!" %>
 
 
-  <div class="flex items-center mx-auto w-10/12 md:w-1/2 pt-10">
-    <h3 class="font-semibold text-yellow-900" >■アイテム情報</h3>
+  <!-- アイテム情報のinfoモーダル -->
+  <div class="mx-auto w-5/6 md:w-1/2 mt-4">
+    <i class="bi bi-question-circle cursor-pointer hover:text-orange" onclick="item_info_modal.showModal()"></i>
   </div>
 
-  <!-- 使用年数選択 -->
-  <div class="flex items-center mx-auto w-10/12 md:w-1/2 pt-4">
-    <%= f.label :used_year, '使用年数', class: 'label font-medium mr-4 w-1/2' %>
-    <div class="rounded-lg border border-neutral-200 w-full">
-      <%= f.select :used_year, [
-        ["半年未満", "半年未満"],
-        ["1年", "1年"],
-        ["1年半", "1年半"],
-        ["2年", "2年"],
-        ["2年半", "2年半"],
-        ["3年", "3年"],
-        ["3年半", "3年半"],
-        ["4年", "4年"],
-        ["4年半", "4年半"],
-        ["5年", "5年"],
-        ["5年以上", "5年以上"],
-        ["10年以上", "10年以上"],],
-        { include_blank: "未選択" }, class: 'select rounded-lg w-full' %>
-    </div>
-  </div>
+  <details class="dropdow mx-auto w-5/6 md:w-1/2 px-2 border rounded-lg shadow-sm bg-neutral-100 cursor-pointer">
+    <summary class="font-medium py-4 ml-2" >アイテム情報（任意）</summary>
+    <!-- 動的セレクトボックス -->
+    <div data-controller="product-select">
+      <!-- ブランド選択 -->
+      <div class="flex items-center py-2">
+        <div class="rounded-lg border border-neutral-200 w-full">
+          <%= f.select :brand_admin_id, @brand_admins.collect { |brand_admin| [brand_admin.name, brand_admin.id] }, { include_blank: "ブランド" }, class: "select w-full", data: { action: "change->product-select#onChange" } %>
+        </div>
+      </div>
 
-  <!-- 動的セレクトボックス -->
-  <div data-controller="product-select">
-    <!-- ブランド選択 -->
-    <div class="flex items-center mx-auto w-10/12 md:w-1/2 pt-4">
-      <%= f.label :brand_admin_id, 'ブランド', class: 'label font-medium mr-4 w-1/2' %>
-      <div class="rounded-lg border border-neutral-200 w-full">
-        <%= f.select :brand_admin_id, @brand_admins.collect { |brand_admin| [brand_admin.name, brand_admin.id] }, { include_blank: "未選択" }, class: "select w-full", data: { action: "change->product-select#onChange" } %>
+      <!-- 商品選択 -->
+      <div class="flex items-center py-2">
+        <div class="rounded-lg border border-neutral-200 w-full">
+            <%= f.select :product_id, @products.select { |product| product.user_id == @post.brand_admin_id }.map { |product| [product.product_name, product.id] }, { selected: @post.product_id, include_blank: "商品名（先にブランドを選択）" }, class: "select w-full", data: { "product-select-target": "products" } %>
+        </div>
       </div>
     </div>
 
-    <!-- 商品選択 -->
-    <div class="flex items-center mx-auto w-10/12 md:w-1/2 pt-4">
-      <%= f.label :product_id, '商品名', class: 'label font-medium mr-4 w-1/2' %>
+    <!-- 使用年数選択 -->
+    <div class="flex items-center py-2">
       <div class="rounded-lg border border-neutral-200 w-full">
-          <%= f.select :product_id, @products.select { |product| product.user_id == @post.brand_admin_id }.map { |product| [product.product_name, product.id] }, { selected: @post.product_id, include_blank: "ブランドを選択" }, class: "select w-full", data: { "product-select-target": "products" } %>
+        <%= f.select :used_year, [
+          ["半年未満", "半年未満"],
+          ["1年", "1年"],
+          ["1年半", "1年半"],
+          ["2年", "2年"],
+          ["2年半", "2年半"],
+          ["3年", "3年"],
+          ["3年半", "3年半"],
+          ["4年", "4年"],
+          ["4年半", "4年半"],
+          ["5年", "5年"],
+          ["5年以上", "5年以上"],
+          ["10年以上", "10年以上"],],
+          { include_blank: "使用年数" }, class: 'select rounded-lg w-full' %>
       </div>
     </div>
-  </div>
 
-  <!-- カラー選択 -->
-  <div class="flex items-center mx-auto w-10/12 md:w-1/2 pt-4 mb-6">
-    <%= f.label :color, 'カラー', class: 'label font-medium mr-4 w-1/2' %>
-    <div class="rounded-lg border border-neutral-200 w-full">
-      <%= f.select :color, [
-        ["ブラック系", "ブラック系"],
-        ["ブラウン系", "ブラウン系"],
-        ["キャメル系", "キャメル系"],
-        ["ベージュ系", "ベージュ系"],
-        ["グレー系", "グレー系"],
-        ["レッド系", "レッド系"],
-        ["ピンク系", "ピンク系"],
-        ["オレンジ系", "オレンジ系"],
-        ["イエロー系", "イエロー系"],
-        ["グリーン系", "グリーン系"],
-        ["ブルー系", "ブルー系"],
-        ["パープル系", "パープル系"],],
-        { include_blank: "未選択" }, class: 'select rounded-lg w-full' %>
+    <!-- カラー選択 -->
+    <div class="flex items-center py-2 mb-4">
+      <div class="rounded-lg border border-neutral-200 w-full">
+        <%= f.select :color, [
+          ["ブラック系", "ブラック系"],
+          ["ブラウン系", "ブラウン系"],
+          ["キャメル系", "キャメル系"],
+          ["ベージュ系", "ベージュ系"],
+          ["グレー系", "グレー系"],
+          ["レッド系", "レッド系"],
+          ["ピンク系", "ピンク系"],
+          ["オレンジ系", "オレンジ系"],
+          ["イエロー系", "イエロー系"],
+          ["グリーン系", "グリーン系"],
+          ["ブルー系", "ブルー系"],
+          ["パープル系", "パープル系"],],
+          { include_blank: "カラー" }, class: 'select rounded-lg w-full' %>
+      </div>
     </div>
+  </details>
+
+  <!-- お手入れ情報のinfoモーダル -->
+  <div class="mx-auto w-5/6 md:w-1/2 mt-5">
+    <i class="bi bi-question-circle cursor-pointer hover:text-orange" onclick="care_info_modal.showModal()"></i>
   </div>
 
-  <div class="flex items-center mx-auto w-10/12 md:w-1/2 pt-10">
-    <h3 class="font-semibold text-yellow-900" >■お手入れ情報</h3>
-  </div>
+  <details class="dropdow mx-auto w-5/6 md:w-1/2 px-2 border rounded-lg shadow-sm bg-neutral-100 cursor-pointer">
+    <summary class="font-medium py-4 ml-2" >お手入れ情報（任意）</summary>
+      <!-- ケア頻度 -->
+      <div class="flex items-center py-2">
+        <div class="rounded-lg border border-neutral-200 w-full">
+          <%= f.select :care_frequency, [
+            ["特に何もしない", "特に何もしない"],
+            ["水濡れや汚れた時", "水濡れや汚れた時"],
+            ["毎日", "毎日"],
+            ["2～3日に1回", "2～3日に1回"],
+            ["1週間に1回", "1週間に1回"],
+            ["半月に1回", "半月に1回"],
+            ["1ヶ月に1回", "1ヶ月に1回"],
+            ["2～3ヶ月に1回", "2～3ヶ月に1回"],
+            ["半年に1回", "半年に1回"],
+            ["1年に1回", "1年に1回"]],
+            { include_blank: "ケア頻度" }, class: 'select rounded-lg w-full' %>
+        </div>
+      </div>
 
-  <!-- ケア頻度 -->
-  <div class="flex items-center mx-auto w-10/12 md:w-1/2 pt-4">
-    <%= f.label :care_frequency, 'ケア頻度', class: 'label font-medium mr-4 w-1/2' %>
-    <div class="rounded-lg border border-neutral-200 w-full">
-      <%= f.select :care_frequency, [
-        ["特に何もしない", "特に何もしない"],
-        ["水濡れや汚れた時", "水濡れや汚れた時"],
-        ["毎日", "毎日"],
-        ["2～3日に1回", "2～3日に1回"],
-        ["1週間に1回", "1週間に1回"],
-        ["半月に1回", "半月に1回"],
-        ["1ヶ月に1回", "1ヶ月に1回"],
-        ["2～3ヶ月に1回", "2～3ヶ月に1回"],
-        ["半年に1回", "半年に1回"],
-        ["1年に1回", "1年に1回"]],
-        { include_blank: "未選択" }, class: 'select rounded-lg w-full' %>
-    </div>
-  </div>
-
-  <!-- ケアアイテム入力 -->
-  <%= f.label :care_item, 'ケア用品', class: "label w-10/12 md:w-1/2 mx-auto pt-4 font-medium" %>
-  <%= f.text_area :care_item,
-  class: "input input-bordered bg-neutral-100 form-control w-10/12 md:w-1/2 mx-auto h-auto",
-  rows: 3, placeholder: "700字以内
+      <!-- ケアアイテム入力 -->
+      <div class="flex items-center py-2">
+        <div class="rounded-lg w-full">
+          <%= f.label :care_item, 'ケア用品', class: "label mx-auto font-medium text-sm" %>
+          <%= f.text_area :care_item,
+          class: "input input-bordered form-control w-full h-auto text-sm",
+          rows: 5, placeholder: "700字以内
 例：馬毛ブラシ、綿の布(ハンカチ)" %>
+        </div>
+      </div>
 
-  <!-- ケア方法入力 -->
-  <%= f.label :care_howto, 'ケア方法', class: "label w-10/12 md:w-1/2 mx-auto pt-4 font-medium" %>
-  <%= f.text_area :care_howto,
-  class: "input input-bordered bg-neutral-100 form-control w-10/12 md:w-1/2 mx-auto h-auto",
-  rows: 4, placeholder: "1000字以内　
+      <!-- ケア方法入力 -->
+      <div class="flex items-center py-2 mb-4">
+        <div class="rounded-lg w-full">
+          <%= f.label :care_howto, 'ケア方法', class: "label mx-auto font-medium text-sm" %>
+          <%= f.text_area :care_howto,
+          class: "input input-bordered form-control w-full h-auto text-sm",
+          rows: 10, placeholder: "1000字以内　
 例：水に濡れた時は全体を固く絞った布で水拭きして、乾いてから乾拭きしてます！" %>
+        </div>
+      </div>
+  </details>
 
   <!-- 投稿関連のボタン -->
-  <div class="mx-auto w-10/12 md:w-1/2 mt-20 flex justify-between items-center">
-    <div class='mx-auto w-10/12 md:w-1/2 mr-1'>
-      <%= f.submit "下書きに保存", name: "draft", class: "btn w-full mx-auto h-10 bg-[#d4d4d4] hover:bg-[#fdba74] text-yellow-900", id: "submit-button-draft"%>
+  <div class="mx-auto w-5/6 md:w-1/2 mt-20 flex justify-between items-center">
+    <div class='mx-auto w-5/6 md:w-1/2 mr-1'>
+      <%= f.submit "下書きに保存", name: "draft", class: "btn w-full mx-auto h-10 bg-[#d4d4d4] hover:bg-[#fdba74]", id: "submit-button-draft"%>
     </div>
 
-    <div class='mx-auto w-10/12 md:w-1/2 ml-1'>
-      <%= f.submit "非公開で投稿", name: "unpublished", class: "btn w-full mx-auto h-10 bg-[#d4d4d4] hover:bg-[#fdba74] text-yellow-900", id: "submit-button-unpublished"%>
+    <div class='mx-auto w-5/6 md:w-1/2 ml-1'>
+      <%= f.submit "非公開で投稿", name: "unpublished", class: "btn w-full mx-auto h-10 bg-[#d4d4d4] hover:bg-[#fdba74]", id: "submit-button-unpublished"%>
     </div>
   </div>
 
-  <div class='mx-auto w-10/12 md:w-1/2'>
-    <%= f.submit "投稿(公開)", name: "published", class: "btn mt-10 w-full mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74] text-yellow-900", id: "submit-button-published"%>
+  <div class='mx-auto w-5/6 md:w-1/2'>
+    <%= f.submit "投稿(公開)", name: "published", class: "btn mt-10 w-full mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74]", id: "submit-button-published"%>
   </div>
 
 <% end %>
+
+<!-- モーダルの中身 -->
+<dialog id="item_info_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="text-base font-bold">アイテム情報を登録すると？</h3>
+    <p class="text-sm pt-4">投稿検索ページからの検索でヒットしやすくなります。</p>
+    <p class="text-sm py-2">あなたの投稿が他のユーザーにも見つけてもらいやすくなるかも！</p>
+    <div class="modal-action">
+        <button class="btn btn-sm border-neutral-200 text-sm" onclick="item_info_modal.close()">✕</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="care_info_modal" class="modal">
+  <div class="modal-box">
+    <h3 class="text-base font-bold">お手入れ情報を登録すると？</h3>
+    <p class="text-sm pt-4">他のユーザーがあなたのケア方法をヒントにしてくれるかも！</p>
+    <p class="text-sm pt-8">また、自分の記録用にも活用できます。</p>
+    <p class="text-sm pt-2">どのアイテムやケア方法と相性が良いか、残しておくと他の商品を使う時にも振り返りが出来ます。</p>
+    <div class="modal-action">
+        <button class="btn btn-sm border-neutral-200 text-sm" onclick="care_info_modal.close()">✕</button>
+    </div>
+  </div>
+</dialog>
