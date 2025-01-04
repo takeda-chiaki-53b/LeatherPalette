@@ -48,6 +48,7 @@
   }
 }
 
+/* トップの背景画像で使用 */
 .bg-light:before {
   content: "";
   display: block;
@@ -62,4 +63,10 @@
 .overlay-content {
   position: relative;
   z-index: 1; /* 背景の上に表示するため */
+}
+
+/* フラッシュで使用 */
+.fade-out {
+  opacity: 0; /* 要素の透明度を設定するプロパティ。0は完全に透明、つまり見えない状態 */
+  transition: opacity 0.5s ease; /* アニメーションの設定。opacity（透明度）が変わるときの早さを指定。0.5秒でフェードアウト */
 }
