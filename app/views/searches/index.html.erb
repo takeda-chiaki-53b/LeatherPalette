@@ -96,10 +96,10 @@
           <% @brand_admins.each do |brand| %>
             <tr class="hover:bg-[#fdba74]">
               <td class="flex items-center cursor-pointer" onclick="this.querySelector('form').submit();">
-                <%= image_tag(brand.avatar_url, alt: "#{brand.name}のアバター", class: "w-8 h-8 rounded-full border mr-2") %>
+                <%= image_tag(brand.avatar_url, alt: "#{brand.name}のアバター", class: "w-10 h-10 rounded-full border mr-2") %>
                 <%= form_with url: result_searches_path, method: :post, data: { turbo: false } do |f| %>
                   <%= f.hidden_field :brand_name, value: brand.name %>
-                  <%= f.submit brand.name, class: "block w-full text-left whitespace-normal" %>
+                  <%= f.submit brand.name, class: "block w-full text-left whitespace-normal break-all" %>
                 <% end %>
               </td>
             </tr>

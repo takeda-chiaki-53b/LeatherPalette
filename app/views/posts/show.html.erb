@@ -1,9 +1,9 @@
 <% content_for(:title, t('.title')) %>
-<div class="container">
+<div class="container pt-16">
   <div class="w-full p-4 md:px-0 md:py-2 md:w-1/2 mx-auto border-b">
     <ul class="list-inline flex items-center">
-      <li class="mr-2"><%= image_tag @post.user.avatar_url, width: "40", height: "40", class: "rounded-full border" %></li>
-      <li><%= @post.user.name %></li>
+      <li class="mr-2 flex-shrink-0"><%= image_tag @post.user.avatar_url, class: "w-10 h-10 rounded-full border" %></li>
+      <li class="break-all"><%= @post.user.name %></li>
     </ul>
   </div>
 </div>
