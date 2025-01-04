@@ -1,13 +1,13 @@
 <% content_for(:title, t('.title')) %>
-<div class="flex justify-center mt-5 mb-5">
-  <h1 class="text-2xl font-semibold text-yellow-900" >マイページ</h1>
+<div class="flex justify-center pt-20 mb-5">
+  <h1 class="text-lg font-semibold" >マイページ</h1>
 </div>
 
 <!-- 大きな画面用 -->
 <div class="hidden md:block lg:block">
 
   <%= link_to profile_path do %>
-    <div class="bg-white rounded-xl shadow-md border border-neutral-200 p-6 text-yellow-900 w-1/2 mx-auto">
+    <div class="bg-white rounded-xl shadow-md border border-neutral-200 p-6 w-1/2 mx-auto">
       <div class="flex justify-center">
         <%= image_tag current_user.avatar_url, class: 'rounded-full h-24 w-24 border-2 object-contain' %>
       </div>
@@ -17,47 +17,15 @@
     </div>
   <% end %>
 
-
-  <div class="flex flex-wrap justify-between text-yellow-900 w-5/6 mx-auto mb-6">
-    <!-- 追加するか検討中の機能の為、一旦コメントアウト -->
-    <!-- <div class="flex flex-col items-center"> -->
-    <!-- <%= link_to '#', class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %> -->
-    <!--   <i class="bi bi-person-gear text-2xl"></i> -->
-    <!-- <% end %> -->
-    <!--   <span class="mt-2 text-sm text-center">アカウント</span> -->
-    <!-- </div> -->
-
-    <div class="flex flex-col items-center">
-      <%= link_to brand_admin_products_path, class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-        <i class="bi bi-file-earmark-spreadsheet text-2xl"></i>
-      <% end %>
-      <span class="mt-2 text-sm text-center">商品一覧</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <%= link_to new_brand_admin_product_path, class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-        <i class="bi bi-file-earmark-plus text-2xl"></i>
-      <% end %>
-      <span class="mt-2 text-sm text-center">商品登録</span>
-    </div>
-
-    <!-- 追加するか検討中の機能の為、一旦コメントアウト -->
-    <!-- <div class="flex flex-col items-center"> -->
-    <!--   <%= link_to '#', class:"flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %> -->
-    <!--     <i class="bi bi-journals text-2xl "></i> -->
-    <!--   <% end %> -->
-    <!--   <span class="mt-2 text-sm text-center">ダイアリー</span> -->
-    <!-- </div> -->
-
-  </div>
 </div>
 
 
 <!-- スマホ用 -->
 <div class="flex flex-wrap md:hidden sm:justify-start sm:flex-nowrap w-full py-5">
-  <nav class="max-w-[85rem] w-full mx-auto text-yellow-900" aria-label="Global">
+  <nav class="max-w-[85rem] w-full mx-auto" aria-label="Global">
 
     <%= link_to profile_path do %>
-      <div class="bg-white rounded-xl shadow-md border border-neutral-200 p-6 text-yellow-900 w-5/6 mx-auto">
+      <div class="bg-white rounded-xl shadow-md border border-neutral-200 p-6 w-5/6 mx-auto">
         <div class="flex justify-center">
           <%= image_tag current_user.avatar_url, class: 'rounded-full h-24 w-24 border-2 object-contain' %>
         </div>
@@ -67,37 +35,6 @@
       </div>
     <% end %>
 
-    <div class="flex flex-wrap justify-between text-yellow-900 w-5/6 mx-auto">
-      <!-- 追加するか検討中の機能の為、一旦コメントアウト -->
-      <!-- <div class="flex flex-col items-center"> -->
-      <!--   <%= link_to '#', class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %> -->
-      <!--     <i class="bi bi-person-gear text-xl"></i> -->
-      <!--   <% end %> -->
-      <!--   <span class="mt-2 text-xs text-center">アカウント</span> -->
-      <!-- </div> -->
-
-      <div class="flex flex-col items-center">
-        <%= link_to brand_admin_products_path, class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-          <i class="bi bi-file-earmark-spreadsheet text-xl"></i>
-        <% end %>
-        <span class="mt-2 text-xs text-center">商品一覧</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <%= link_to new_brand_admin_product_path, class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %>
-          <i class="bi bi-file-earmark-plus text-xl"></i>
-        <% end %>
-        <span class="mt-2 text-xs text-center">商品登録</span>
-      </div>
-
-      <!-- 追加するか検討中の機能の為、一旦コメントアウト -->
-      <!-- <div class="flex flex-col items-center"> -->
-      <!--   <%= link_to '#', class:"flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" do %> -->
-      <!--     <i class="bi bi-journals text-xl "></i> -->
-      <!--   <% end %> -->
-      <!--   <span class="mt-2 text-xs text-center">ダイアリー</span> -->
-      <!-- </div> -->
-
-    </div>
   </nav>
 </div>
 
@@ -108,10 +45,10 @@
 
 <!-- ステータス別投稿表示エリア -->
 <div data-controller="tabber">
-  <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700 items-center w-5/6 mx-auto">
+  <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 items-center w-5/6 mx-auto">
     <ul class="flex w-full">
       <li class="flex-1  w-full">
-        <%= link_to '公開中', 'javascript:void(0)', class: 'block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 active-tab', aria: { current: "page" }, data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
+        <%= link_to '公開中', 'javascript:void(0)', class: 'block p-4 text-darkbrown border-b-2 border-darkbrown rounded-t-lg active active-tab', aria: { current: "page" }, data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
       </li>
       <li class="flex-1  w-full">
         <%= link_to '非公開', 'javascript:void(0)', class: 'block p-4 rounded-t-lg not-active', data: { tabber_target: 'tab_menu', action: 'tabber#tab_menuClick' } %>
@@ -132,7 +69,7 @@
           <%= render @posts_published %>
         </div>
       <% else %>
-        <div class='text-lg m-auto'>公開中の投稿はありません</div>
+        <div class='text-base m-auto'>公開中の投稿はありません</div>
       <% end %>
     </div>
   </div>
@@ -145,7 +82,7 @@
           <%= render @posts_unpublished %>
         </div>
       <% else %>
-        <div class='text-lg m-auto'>非公開の投稿はありません</div>
+        <div class='text-base m-auto'>非公開の投稿はありません</div>
       <% end %>
     </div>
   </div>
@@ -158,7 +95,7 @@
           <%= render @posts_draft %>
         </div>
       <% else %>
-        <div class='text-lg m-auto'>下書きの投稿はありません</div>
+        <div class='text-base m-auto'>下書きの投稿はありません</div>
       <% end %>
     </div>
   </div>
