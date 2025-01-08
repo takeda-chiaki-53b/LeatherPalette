@@ -35,12 +35,15 @@ class ProductImageUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
-  # end
   # 画像のリサイズと余白の追加
-  process resize_and_pad: [ 1080, 1080, "#ffffff" ]
+  process resize_and_pad: [ 1080, 1080, "#ffffff", "center" ]
+
+  # 表示箇所によってサイズを変えるために、サムネイル生成による表示の最適化を行う
+  # app/views/brand_admin/products/_product.html.erbのカードで「post.post_image.thumb.url」で呼び出す
+  # Create different versions of your uploaded files:
+  version :thumb do
+    process resize_to_fit: [ 500, 500 ]
+  end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -69,24 +72,5 @@ class ProductImageUploader < CarrierWave::Uploader::Base
   # 拡張子を.webpで保存
   def filename
     super.chomp(File.extname(super)) + ".webp" if original_filename.present?
-  end
-
-  private
-
-  # 画像のリサイズと余白の追加を行うメソッド
-  def resize_and_pad(width, height, background = "#ffffff")
-    manipulate! do |img|
-      # 画像を指定サイズにリサイズ（アスペクト比を保つ）
-      img.resize "#{width}x#{height}"
-
-      # 指定サイズに合わせて余白を追加
-      img.combine_options do |cmd|
-        cmd.background background
-        cmd.gravity "center"
-        cmd.extent "#{width}x#{height}"
-      end
-
-      img
-    end
   end
 end
