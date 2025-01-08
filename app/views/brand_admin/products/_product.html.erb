@@ -1,6 +1,6 @@
 <div class="card rounded-xl bg-base-100 shadow-md aspect-[1/1]">
   <div class="card-image" style="height: 84%;">
-    <%= link_to image_tag(product.product_image.url, class: 'rounded-t-xl w-full h-full object-cover'), brand_admin_product_path(product) %>
+    <%= link_to image_tag(product.product_image.thumb.url, class: 'rounded-t-xl w-full h-full object-cover'), brand_admin_product_path(product) %>
   </div>
   <div class="flex items-center justify-between" style="height: 16%">
     <ul class="list-inline">
