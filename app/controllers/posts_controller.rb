@@ -27,11 +27,11 @@ class PostsController < ApplicationController
 
     if @post.save
       if @post.draft?
-        redirect_to posts_path, success: "下書きに保存しました"
+        redirect_to post_path(@post), success: "下書きに保存しました"
       elsif @post.unpublished?
-        redirect_to posts_path, success: "非公開の投稿に保存しました"
+        redirect_to post_path(@post), success: "非公開の投稿に保存しました"
       else
-        redirect_to posts_path, success: "投稿を公開しました"
+        redirect_to post_path(@post), success: "投稿を公開しました"
       end
     else
       flash.now[:danger] = "投稿の作成に失敗しました"
