@@ -1,0 +1,9 @@
+<% if @post.errors.present? %>
+  <%= turbo_stream.replace "post-form" do %>
+    <%= render 'posts/form', post: @post %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.replace "post-form" do %>
+    <%= render 'posts/form_result', post: Post.new, post: @post %>
+  <% end %>
+<% end %>
