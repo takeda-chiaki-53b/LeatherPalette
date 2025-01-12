@@ -27,11 +27,11 @@ class PostsController < ApplicationController
 
     if @post.save
       if @post.draft?
-        flash[:success] = "下書きに保存しました"
+        flash.now[:success] = "下書きに保存しました"
       elsif @post.unpublished?
-        flash[:success] = "非公開の投稿に保存しました"
+        flash.now[:success] = "非公開の投稿に保存しました"
       else
-        flash[:success] = "投稿を公開しました"
+        flash.now[:success] = "投稿を公開しました"
       end
     else
       flash.now[:danger] = "投稿の作成に失敗しました"
