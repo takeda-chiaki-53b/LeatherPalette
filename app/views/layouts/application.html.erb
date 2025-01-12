@@ -84,7 +84,22 @@
 
   <!-- フラッシュメッセージを自動で消す処理 -->
   <script>
+    // ページがロードされた時用
     document.addEventListener('turbo:load', function() {
+      const flashMessage = document.getElementById('flash-message');
+      if (flashMessage) {
+        setTimeout(() => {
+          flashMessage.classList.add('fade-out'); // CSSで指定したフェードアウトクラスを追加
+          setTimeout(() => {
+            flashMessage.style.display = 'none'; // 完全に非表示にする
+          }, 500); // 0.5秒後に非表示にする
+        }, 3000); // 3000ミリ秒（3秒）後にフェードアウト開始
+      }
+    });
+  </script>
+  <script>
+    // Turbo Streamによって部分更新された時用
+    document.addEventListener('turbo:render', function() {
       const flashMessage = document.getElementById('flash-message');
       if (flashMessage) {
         setTimeout(() => {
