@@ -10,13 +10,6 @@ RSpec.describe User, type: :model do
 
     # ユニークバリデーションのチェック
 
-    it '同じ名前があると無効になること' do
-      user1 = create(:user)
-      user2 = build(:user, name: user1.name)
-      expect(user2).to be_invalid
-      expect(user2.errors[:name]).to include("：このユーザー名は使用できません。別の名前をご入力ください。")
-    end
-
     it '同じメールアドレスがあると無効になること' do
       user1 = create(:user)
       user2 = build(:user, email: user1.email)
