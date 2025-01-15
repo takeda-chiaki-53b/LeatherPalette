@@ -25,6 +25,11 @@ class PostsController < ApplicationController
         :published
       end
 
+    # ステータスがdraftで、bodyが空の場合は「未登録」の文字を設定
+    if @post.draft? && @post.body.blank?
+      @post.body = "メッセージ未登録"
+    end
+
     if @post.save
       if @post.draft?
         redirect_to mypage_path, success: "下書きに保存しました"
@@ -73,7 +78,16 @@ class PostsController < ApplicationController
         :draft
       end
 
-    if @post.update(post_params)
+    # ステータスがdraftで、bodyが空の場合は「未登録」の文字を設定
+    if @post.draft? && post_params[:body].blank?
+      @post.body = "メッセージ未登録"
+    else
+      # ステータスがdraftではない、または空でない場合、# 入力されている値を使う
+      @post.body = post_params[:body]
+    end
+
+    # post_paramsにある他の情報に加えてbodyに現在の内容を追加する
+    if @post.update(post_params.merge(body: @post.body))
       if @post.draft?
         redirect_to post_path(@post), success: "下書きに保存しました"
       elsif @post.unpublished?
