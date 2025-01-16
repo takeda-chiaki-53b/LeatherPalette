@@ -27,6 +27,15 @@ class SearchesController < ApplicationController
     @posts = @posts.color_post_search(color) if color.present?
   end
 
+  def product_select
+    @brand = User.find(params[:id])
+    @products = @brand.products
+
+    respond_to do |format|
+      format.json { render json: @products }
+    end
+  end
+
   private
 
   def search_params
