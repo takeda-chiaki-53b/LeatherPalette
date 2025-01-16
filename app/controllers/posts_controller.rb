@@ -15,16 +15,6 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     @post.brand_admin_id = params[:post][:brand_admin_id].presence # nilまたは空文字の場合は自動的にnilになる
 
-    # params[:draft]があれば下書き、params[:unpublished]があれば非公開、どちらもなければ公開投稿
-    @post.status =
-      if params[:draft].present?
-        :draft
-      elsif params[:unpublished].present?
-        :unpublished
-      else
-        :published
-      end
-
     # ステータスがdraftで、bodyが空の場合は「未登録」の文字を設定
     if @post.draft? && @post.body.blank?
       @post.body = "メッセージ未登録"
@@ -67,16 +57,6 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
-
-    # params[:published]があれば公開、params[:unpublished]があれば非公開、どちらもなければ下書き
-    @post.status =
-      if params[:published].present?
-        :published
-      elsif params[:unpublished].present?
-        :unpublished
-      else
-        :draft
-      end
 
     # ステータスがdraftで、bodyが空の場合は「未登録」の文字を設定
     if @post.draft? && post_params[:body].blank?

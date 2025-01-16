@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   # 投稿のステータス（下書き,公開,非公開）
-  enum status: { draft: 0, published: 1, unpublished: 2 }
+  enum status: [ :draft, :published, :unpublished ]
 
   # ステータスごとに投稿を取得するスコープ
   scope :published, -> { where(status: :published) }
