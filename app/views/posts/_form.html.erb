@@ -139,20 +139,31 @@
       </div>
   </details>
 
-  <!-- 投稿関連のボタン -->
-  <div data-controller="loading">
-    <div class="mx-auto w-5/6 md:w-1/2 mt-20 flex justify-between items-center">
-      <div class='mx-auto w-5/6 md:w-1/2 mr-1'>
-        <%= f.submit "下書きに保存", name: "draft", class: "btn w-full mx-auto h-10 bg-[#d4d4d4] hover:bg-[#fdba74]", data: { action: "click->loading#showLoading", loading_target: "button" } %>
+  <!-- ステータス選択ラジオボタン -->
+  <div class="mx-auto w-5/6 md:w-1/2 mt-10">
+    <div class="text-start font-medium mb-1">
+      <p>ステータスを選択</p>
+    </div>
+    <div class="flex justify-between items-center py-3 bg-white rounded-lg">
+      <div class="flex flex-col items-center flex-1">
+        <%= f.radio_button :status, :draft, class: "custom-radio" %>
+        <%= f.label :status_draft, "下書き", class: "mt-1 text-sm cursor-pointer" %>
       </div>
-
-      <div class='mx-auto w-5/6 md:w-1/2 ml-1'>
-        <%= f.submit "非公開で投稿", name: "unpublished", class: "btn w-full mx-auto h-10 bg-[#d4d4d4] hover:bg-[#fdba74]", data: { action: "click->loading#showLoading", loading_target: "button" }%>
+      <div class="flex flex-col items-center flex-1">
+        <%= f.radio_button :status, :unpublished, class: "custom-radio" %>
+        <%= f.label :status_unpublished, "非公開", class: "mt-1 text-sm cursor-pointer" %>
+      </div>
+      <div class="flex flex-col items-center flex-1">
+        <%= f.radio_button :status, :published, class: "custom-radio" %>
+        <%= f.label :status_published, "公開", class: "mt-1 text-sm cursor-pointer" %>
       </div>
     </div>
+  </div>
 
-    <div class='mx-auto w-5/6 md:w-1/2'>
-      <%= f.submit "投稿(公開)", name: "published", class: "btn mt-10 w-full mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74]", data: { action: "click->loading#showLoading", loading_target: "button" } %>
+  <!-- 登録ボタンを押すとローディングアニメーション -->
+  <div data-controller="loading">
+    <div class='mx-auto w-5/6 md:w-1/2 mt-10'>
+      <%= f.submit "登録", class: "btn mt-10 w-full mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74]", data: { action: "click->loading#showLoading", loading_target: "button" } %>
     </div>
 
     <!-- ローディングモーダル -->
