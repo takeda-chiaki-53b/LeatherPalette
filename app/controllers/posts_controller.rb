@@ -127,7 +127,7 @@ class PostsController < ApplicationController
   end
 
   def set_brand_admins
-    @brand_admins = User.brand_admins # スコープでブランド管理者のユーザーを取得
+    @brand_admins = User.brand_admins.order(name: :asc) # スコープでブランド管理者のユーザーを取得
   end
 
   def set_products

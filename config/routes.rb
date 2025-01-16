@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 
   # 検索機能関連
   resources :searches, only: %i[index] do
+    get "product_select", on: :member
     collection do
       post :result  # collectionを使い、リソース全体に対してのアクションとして扱う
     end
