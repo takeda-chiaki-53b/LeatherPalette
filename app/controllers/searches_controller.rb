@@ -25,6 +25,7 @@ class SearchesController < ApplicationController
 
     # 条件に基づいて絞り込みを行う
     @posts = @posts.brand_post_search(brand_admin_id) if brand_admin_id.present?
+    @posts = @posts.product_post_search(product_id) if product_id.present?
     @posts = @posts.used_year_post_search(used_year) if used_year.present?
     @posts = @posts.color_post_search(color) if color.present?
   end
