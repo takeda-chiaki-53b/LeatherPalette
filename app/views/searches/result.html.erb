@@ -14,6 +14,12 @@
           <strong class="w-3/4 break-all"><%= @selected_brand_name %></strong>
         </li>
       <% end %>
+      <% if @selected_product_name.present? %>
+        <li class="flex">
+          <span class="w-1/4">商品名　 :</span>
+          <strong class="w-3/4 break-all"><%= @selected_product_name %></strong>
+        </li>
+      <% end %>
       <% if @selected_used_year.present? %>
         <li class="flex">
           <span class="w-1/4">使用年数 :</span>

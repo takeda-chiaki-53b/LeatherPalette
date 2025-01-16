@@ -7,6 +7,7 @@ class SearchesController < ApplicationController
 
   def result
     brand_admin_id = search_params[:brand_admin_id]
+    product_id = search_params[:product_id]
     used_year = search_params[:used_year]
     color = search_params[:color]
 
@@ -15,6 +16,7 @@ class SearchesController < ApplicationController
 
     # 選択されたパラメータをインスタンス変数にセット(検索結果に条件を表示させるため)
     @selected_brand_name = selected_brand ? selected_brand.name : nil # 見つかったブランドの名前をセットし、見つからない場合にはnilをセット
+    @selected_product_name = Product.find_by(id: product_id)&.product_name
     @selected_used_year = used_year
     @selected_color = color
 
@@ -39,7 +41,7 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    params.permit(:brand_admin_id, :used_year, :color)
+    params.permit(:brand_admin_id, :product_id, :used_year, :color)
   end
 
   def set_brand_admins
