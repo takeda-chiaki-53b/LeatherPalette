@@ -10,6 +10,9 @@ application.register("hello", HelloController)
 import ImagePreviewController from "./image_preview_controller"
 application.register("image-preview", ImagePreviewController)
 
+import LoadingController from "./loading_controller"
+application.register("loading", LoadingController)
+
 import ProductSelectController from "./product_select_controller"
 application.register("product-select", ProductSelectController)
 
