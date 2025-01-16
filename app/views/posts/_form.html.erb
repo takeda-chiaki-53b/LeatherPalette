@@ -140,18 +140,25 @@
   </details>
 
   <!-- 投稿関連のボタン -->
-  <div class="mx-auto w-5/6 md:w-1/2 mt-20 flex justify-between items-center">
-    <div class='mx-auto w-5/6 md:w-1/2 mr-1'>
-      <%= f.submit "下書きに保存", name: "draft", class: "btn w-full mx-auto h-10 bg-[#d4d4d4] hover:bg-[#fdba74]", id: "submit-button-draft"%>
+  <div data-controller="loading">
+    <div class="mx-auto w-5/6 md:w-1/2 mt-20 flex justify-between items-center">
+      <div class='mx-auto w-5/6 md:w-1/2 mr-1'>
+        <%= f.submit "下書きに保存", name: "draft", class: "btn w-full mx-auto h-10 bg-[#d4d4d4] hover:bg-[#fdba74]", data: { action: "click->loading#showLoading", loading_target: "button" } %>
+      </div>
+
+      <div class='mx-auto w-5/6 md:w-1/2 ml-1'>
+        <%= f.submit "非公開で投稿", name: "unpublished", class: "btn w-full mx-auto h-10 bg-[#d4d4d4] hover:bg-[#fdba74]", data: { action: "click->loading#showLoading", loading_target: "button" }%>
+      </div>
     </div>
 
-    <div class='mx-auto w-5/6 md:w-1/2 ml-1'>
-      <%= f.submit "非公開で投稿", name: "unpublished", class: "btn w-full mx-auto h-10 bg-[#d4d4d4] hover:bg-[#fdba74]", id: "submit-button-unpublished"%>
+    <div class='mx-auto w-5/6 md:w-1/2'>
+      <%= f.submit "投稿(公開)", name: "published", class: "btn mt-10 w-full mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74]", data: { action: "click->loading#showLoading", loading_target: "button" } %>
     </div>
-  </div>
 
-  <div class='mx-auto w-5/6 md:w-1/2'>
-    <%= f.submit "投稿(公開)", name: "published", class: "btn mt-10 w-full mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74]", id: "submit-button-published"%>
+    <!-- ローディングモーダル -->
+    <div data-loading-target="modal" class="hidden fixed inset-0 flex items-center justify-center bg-darkbrown bg-opacity-50 z-50">
+      <%= render 'shared/loading'%>
+    </div>
   </div>
 
 <% end %>
