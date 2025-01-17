@@ -1,10 +1,9 @@
 <!-- 大画面用 -->
 <div class="hidden lg:block">
   <div class="fixed top-0 start-0 bottom-0 z-50 w-60 border-e-2 border-neutral-100 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0">
-      <div class="px-6 flex flex-col">
-        <%= link_to root_path, class: "btn btn-ghost flex items-center text-xl rounded-lg justify-start font-bold hover:bg-white" do %>
-          <span>LeatherPalette</span>
-        <% end %>
+      <div class="px-6 flex flex-col items-center">
+        <%= link_to image_tag("header_logo.png", width: "60", height: "60", class: "rounded-lg border-2 border-natural hover:border-mocha"), root_path %>
+        <span class="mt-1 text-base">TOP</span>
       </div>
       <nav class="p-6 flex flex-col flex-wrap">
         <ul class="font-semibold">
@@ -48,10 +47,9 @@
 <div class="hidden md:block lg:hidden">
   <div class="fixed top-0 start-0 bottom-0 z-50 w-20 border-e-2 border-neutral-100">
     <div class="flex flex-col justify-center items-center gap-y-4 py-5">
-      <div class="mt-5 mb-4 font-bold">
-        <%= link_to root_path, class: "flex-none text-xl font-semibold" do  %>
-          <i class="bi bi-image"></i>
-        <% end %>
+      <div class="mt-5 mb-4 font-bold flex flex-col items-center">
+        <%= link_to image_tag("header_logo.png", width: "40", height: "40", class: "rounded-lg border-2 border-natural hover:border-mocha"), root_path %>
+        <span class="text-[0.6rem] font-medium py-1.5">TOP</span>
       </div>
 
       <div class="flex flex-col justify-center items-center">
@@ -99,6 +97,12 @@
 <div class="fixed inset-x-0 bottom-0 z-50 bg-beige border-t-2 border-neutral-100 shadow-md md:hidden">
   <div class="flex flex-row justify-between items-center pb-5 px-2">
     <div class="inline-block flex-1">
+      <%= link_to root_path, class:"flex flex-col items-center py-2 px-1 rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
+        <%= image_tag("header_logo.png", width: "24", height: "24", class: "mt-1 rounded-md border border-natural hover:border-mocha") %>
+        <span class="text-[0.6rem] font-medium mt-1"><%= t('.top') %></span>
+      <% end %>
+    </div>
+    <div class="inline-block flex-1">
       <%= link_to posts_path, class:"flex flex-col items-center py-2 px-1 rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
         <i class="bi bi-house text-lg"></i>
         <span class="text-[0.6rem] font-medium mt-1"><%= t('.index') %></span>
@@ -114,12 +118,6 @@
       <%= link_to "https://twitter.com/intent/tweet?url=#{root_url}&text=Leather%20Palette%20革製品のエイジング共有・検索サービス%0A%23LeatherPalette_app", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, class:"flex flex-col items-center py-2 px-1 rounded-lg hover:bg-neutral-100" do %>
         <i class="bi bi-twitter-x text-lg"></i>
         <span class="text-[0.6rem] font-medium mt-1"><%= t('.x_share') %></span>
-      <% end %>
-    </div>
-    <div class="inline-block flex-1">
-      <%= link_to root_path, class:"flex flex-col items-center py-2 px-1 rounded-lg hover:bg-neutral-100", data: { turbo: false } do %>
-        <i class="bi bi-asterisk text-lg"></i>
-        <span class="text-[0.6rem] font-medium mt-1"><%= t('.top') %></span>
       <% end %>
     </div>
     <div class="inline-block flex-1">
