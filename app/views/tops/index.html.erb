@@ -8,56 +8,61 @@
     </div>
 
     <h3 class="text-lg font-semibold text-center p-5">ログインせずに使える機能</h3>
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
 
-      <div class="bg-white rounded-xl shadow-md p-6 text-center">
+      <div class="bg-white  rounded-xl shadow-md p-6 text-center">
         <h3 class="text-xl font-semibold mb-6">投稿閲覧</h3>
-        <p class="text-sm text-start">他のユーザーが共有している投稿を自由に閲覧することが出来ます。<br>使い手による変化の違いを楽しみましょう！</p>
+        <p class="text-sm text-start">他のユーザーが共有している投稿を自由に閲覧できます。</p>
+        <p class="text-sm text-start py-4">使い方やお手入れ方法によってエイジングの表情は人それぞれ。同じアイテムでも違いの出るレザーの良さを楽しみましょう！</p>
         <div class="flex justify-center mt-6 mb-6">
-          <%= link_to posts_path, class: "flex items-center text-center py-3 px-4 font-semibold text-sm rounded-3xl bg-[#E6CCB585] hover:bg-[#fdba74]" do %> 投稿を見てみる<i class="bi bi-eyeglasses text-lg"></i>
+          <%= link_to posts_path, class: "flex items-center text-center py-3 px-4 font-semibold text-sm rounded-3xl bg-light_orange hover:bg-orange" do %> 投稿を見てみる<i class="bi bi-eyeglasses text-lg"></i>
           <% end %>
         </div>
       </div>
 
       <div class="bg-white rounded-xl shadow-md p-6 text-center">
         <h3 class="text-xl font-semibold mb-6">検索</h3>
-        <p class="text-sm text-start">ブランド名や使用年数、カラーで検索ができます。<br>気になるアイテムの変化を購入前に確認して、お買い物のヒントにしてみてください。</p>
+        <p class="text-sm text-start">ブランド名や使用年数、カラーで検索ができます。</p>
+        <p class="text-sm text-start py-4">気になるアイテムの変化を購入前に確認して、レザーの個体差やエイジング後の色味をお買い物のヒントにしてみてください。</p>
         <div class="flex justify-center mt-6 mb-6">
-          <%= link_to searches_path, class: "flex items-center text-center py-3 px-4 font-semibold text-sm rounded-3xl bg-[#E6CCB585] hover:bg-[#fdba74]" do %> 投稿を検索する<i class="bi bi-search text-lg"></i>
+          <%= link_to searches_path, class: "flex items-center text-center py-3 px-4 font-semibold text-sm rounded-3xl bg-light_orange hover:bg-orange" do %> 投稿を検索する<i class="bi bi-search text-lg"></i>
           <% end %>
         </div>
       </div>
     </div>
 
-    <h3 class="text-lg font-semibold text-center mt-14 p-6">ログイン後に使える機能</h3>
+    <h3 class="text-lg font-semibold text-center mt-16 p-6">ログイン後に使える機能</h3>
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 
       <div class="bg-white rounded-xl shadow-md p-6 text-center">
         <h3 class="text-xl font-semibold mb-6">投稿作成</h3>
-        <p class="text-sm text-start">自分のアイテムとエイジングに関する情報（使用年数やお手入れ方法）を一緒に登録出来ます。<br>素敵な相棒の変化の過程を共有！</p>
+        <p class="text-sm text-start">自分のアイテムとエイジングに関する情報（使用年数やお手入れ方法）を一緒に登録できます。</p>
+        <p class="text-sm text-start py-4">相棒の変化の過程を共有！あなたの投稿が誰かのヒントになるかも！</p>
       </div>
 
       <div class="bg-white rounded-xl shadow-md p-6 text-center">
         <h3 class="text-xl font-semibold mb-6">非公開・下書き</h3>
-        <p class="text-sm text-start">投稿を非公開で作成したり、下書きとして保存をしておくことが出来ます。<br>自分用の記録として、一時的なメモとしてご活用ください。</p>
+        <p class="text-sm text-start">非公開で投稿を作成したり、下書きを保存をしておくことができます。</p>
+        <p class="text-sm text-start py-4">自分用の記録として、一時的なメモとしてご活用ください。</p>
       </div>
 
       <div class="bg-white rounded-xl shadow-md p-6 text-center">
         <h3 class="text-xl font-semibold mb-6">お気に入り</h3>
-        <p class="text-sm text-start">他のユーザーの投稿をお気に入りに保存することが出来ます。<br>素敵な投稿をいつでも見返して、お手入れや使い方の参考に！</p>
+        <p class="text-sm text-start">他のユーザーの投稿をお気に入りに保存することができます。</p>
+        <p class="text-sm text-start py-4">素敵な投稿をいつでも見返して、お手入れや使い方の参考に！</p>
       </div>
     </div>
 
     <% unless logged_in? %>
       <div class="flex justify-center items-center mt-20">
         <div class="mx-2">
-          <%= link_to new_user_path, class: "btn btn-ghost text-sm rounded-lg justify-start border-white bg-beige hover:bg-white" do %>
+          <%= link_to new_user_path, class: "btn text-sm rounded-lg justify-start text-natural bg-mocha hover:text-darkbrown hover:bg-natural border-none" do %>
             <i class="bi bi-person-add text-lg"></i>
             <span class="ml-1"><%= t('.sign_up') %></span>
           <% end %>
         </div>
         <div class="mx-2">
-          <%= link_to login_path, class: "btn btn-ghost text-sm rounded-lg justify-start border-white bg-beige hover:bg-white" do %>
+          <%= link_to login_path, class: "btn text-sm rounded-lg justify-start text-natural bg-mocha hover:text-darkbrown hover:bg-natural border-none" do %>
             <i class="bi bi-box-arrow-in-right text-lg"></i>
             <span class="ml-1"><%= t('.login') %></span>
           <% end %>

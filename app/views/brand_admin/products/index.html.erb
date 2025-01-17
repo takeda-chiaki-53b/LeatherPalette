@@ -11,3 +11,8 @@
         <div class= 'text-base m-auto'>登録済商品はありません</div>
     <% end %>
 </div>
+<%= paginate @products %>
+
+<div class="text-center my-6 text-sm">
+  <%= link_to t('.to_product_new'), new_brand_admin_product_path %>
+</div>

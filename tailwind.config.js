@@ -8,6 +8,14 @@ module.exports = {
   plugins: [require("daisyui")],
 
   daisyui: {
+    themes: [
+      {
+        mytheme: {
+          "neutral": "#f3eae1", //　画像選択のボタン
+          "base-100": "#fafafa", // フォームの入力エリア
+        },
+      },
+    ],
     // ダークモードをオフ
     darkTheme: false
   },
@@ -15,17 +23,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'darkgray':'#333333',
-        'beige':'#dbd1c7',
-        'mocha':'#847366',
-        'darkbrown':'#5f534a',
-        'orange':'#d69b71'
-      },
-      fontfamily: {
-        'noto':['Noto Serif JP', 'serif'],
-        'shippori-mincho':['Shippori Mincho', 'serif'],
-        'zen-300':['Zen Kaku Gothic New', 'sans-serif'],
-        'zen-400':['Zen Kaku Gothic New', 'sans-serif'],
+        'darkgray':'#333333', // topアプリ名
+        'beige':'#dbd1c7', // 背景
+        'mocha':'#938073', // topアプリ名の上のフレーズ
+        'darkbrown':'#5f534a', // テキスト全版
+        'light_orange':'#E6CCB585', // top見てみるボタン
+        'orange':'#fdba74', // top見てみるボタン
+        'natural':'#f3eae1', // ヘッダーロゴ枠、ボタンテキスト
+        'gray1':'#e5e5e5', // 削除ボタン
+        'gray2':'#a3a3a3', // 削除ボタンホバー
       },
     }
   }

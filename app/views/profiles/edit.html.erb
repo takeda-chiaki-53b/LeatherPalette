@@ -49,8 +49,8 @@
       <% end %>
 
       <div data-controller="loading">
-        <%= f.submit "登録", class: "btn mt-8 mb-5 w-full mx-auto h-10 bg-[#E6CCB585] text-darkbrown", data: { action: "click->loading#showLoading", loading_target: "button" } %>
-        
+        <%= f.submit "登録", class: "btn mt-8 mb-5 w-full mx-auto h-10 text-natural bg-mocha hover:text-darkbrown hover:bg-natural border-none", data: { action: "click->loading#showLoading", loading_target: "button" } %>
+
         <!-- ローディングモーダル -->
         <div data-loading-target="modal" class="hidden fixed inset-0 flex items-center justify-center bg-darkbrown bg-opacity-50 z-50">
           <%= render 'shared/loading'%>

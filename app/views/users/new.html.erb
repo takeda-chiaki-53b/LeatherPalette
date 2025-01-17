@@ -29,7 +29,7 @@
           <%= f.password_field :password_confirmation, class: "input input-bordered form-control w-5/6 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mx-auto w-5/6 md:w-1/2">
-          <%= f.submit "登録", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585]", id: "submit_button" %>
+          <%= f.submit "登 録", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 text-natural bg-mocha hover:text-darkbrown hover:bg-natural border-none", id: "submit_button" %>
         </div>
       <% end %>
 
@@ -37,8 +37,7 @@
       <div class="divider w-5/6 md:w-1/2 mx-auto py-4 text-sm">または Googleアカウントで登録</div>
 
       <!-- Google ログイン -->
-      <div class="w-5/6 md:w-1/2 mx-auto my-4 text-center text-xs">⚠️Googleアカウント名が、当サービスのユーザー名で既に使用されている場合、登録出来ない仕様となっております。</div>
-      <div class="w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/6 mx-auto mb-4">
+      <div class="w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/6 mx-auto my-4">
         <%= link_to auth_at_provider_path(provider: :google) do %>
           <%= image_tag "google_sign_up.png" %>
         <% end %>
@@ -53,7 +52,7 @@
       <div class="text-center mx-auto mt-60 text-sm">ブランドアカウントの登録はこちら☟</div>
 
       <div class="flex flex-col flex-wrap flex items-center mt-2">
-        <%= link_to new_brand_admin_user_path, class: "btn btn-ghost text-center mt-3 leading-5 text-xs bg-neutral-100" do %>
+        <%= link_to new_brand_admin_user_path, class: "btn text-natural bg-mocha hover:text-darkbrown hover:bg-natural border-none text-center mt-3 leading-5 text-xs" do %>
           <span>ブランド登録入口</span>
         <% end %>
       </div>

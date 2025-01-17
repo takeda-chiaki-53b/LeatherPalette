@@ -1,10 +1,9 @@
 <!-- 大画面用 -->
 <div class="hidden lg:block">
   <div class="fixed top-0 start-0 bottom-0 z-50 w-60 border-e-2 border-neutral-100 pt-7 pb-10 overflow-y-auto lg:block lg:translate-x-0 lg:end-auto lg:bottom-0">
-      <div class="px-6 flex flex-col">
-        <%= link_to root_path, class: "btn btn-ghost flex items-center text-xl rounded-lg justify-start font-bold hover:bg-white" do %>
-          <span>LeatherPalette ブランド</span>
-        <% end %>
+      <div class="px-6 flex flex-col items-center">
+        <%= link_to image_tag("header_logo.png", width: "60", height: "60", class: "rounded-lg border-2 border-natural hover:border-mocha"), root_path %>
+        <span class="mt-1 text-base">TOP</span>
       </div>
       <nav class="p-6 flex flex-col flex-wrap">
         <ul class="font-semibold">
@@ -39,7 +38,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to profile_path, class: "mb-4 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
+            <%= link_to profile_path, class: "mb-2 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-person-vcard text-xl"></i>
               <span class="ml-1"><%= t('.profile') %></span>
             <% end %>
@@ -47,13 +46,13 @@
 
           <!-- ブランドアカウント専用機能 -->
           <li class="border-t">
-            <%= link_to brand_admin_products_path, class: "mt-4 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
+            <%= link_to brand_admin_products_path, class: "mt-2 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-file-earmark-spreadsheet text-xl"></i>
               <span class="ml-1"><%= t('.products') %></span>
             <% end %>
           </li>
           <li class="border-b">
-            <%= link_to new_brand_admin_product_path, class: "mb-4 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
+            <%= link_to new_brand_admin_product_path, class: "mb-2 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-file-earmark-plus text-xl"></i>
               <span class="ml-1"><%= t('.product_new') %></span>
             <% end %>
@@ -62,11 +61,17 @@
 
           <li class="border-t">
             <%= link_to "https://twitter.com/intent/tweet?url=#{root_url}&text=Leather%20Palette%20革製品のエイジング共有・検索サービス%0A%23LeatherPalette_app", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア",
-            class: "mt-4 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
+            class: "my-2 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
                 <i class="bi bi-twitter-x text-xl"></i>
                 <span class="ml-1"><%= t('.x_share') %></span>
             <% end %>
           </li>
+
+          <div class="p-2 flex flex-col items-center rounded-lg border-2">
+            <span class="text-xs">スマホ・タブレットは</span>
+            <span class="text-xs mt-1 mb-2">こちらからアクセス！</span>
+            <%= image_tag "QR.png", width: "70", height: "70" %>
+          </div>
 
           <li class="fixed bottom-4">
             <%= link_to logout_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white", data: { turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？' } do %>
@@ -83,10 +88,9 @@
 <div class="hidden md:block lg:hidden">
   <div class="fixed top-0 start-0 bottom-0 z-50 w-20 border-e-2 border-neutral-100">
     <div class="flex flex-col justify-center items-center gap-y-4 py-5">
-      <div class="mt-5 mb-4 font-bold">
-        <%= link_to root_path, class: "flex-none text-lg font-semibold" do  %>
-          <i class="bi bi-image"></i>
-        <% end %>
+      <div class="mt-5 mb-4 font-bold flex flex-col items-center">
+        <%= link_to image_tag("header_logo.png", width: "30", height: "30", class: "rounded-lg border-2 border-natural hover:border-mocha"), root_path %>
+        <span class="text-[0.6rem] font-medium py-1.5">TOP</span>
       </div>
 
       <div class="flex flex-col justify-center items-center">
@@ -166,9 +170,11 @@
   <nav class="max-w-[85rem] w-full mx-auto px-2" aria-label="Global">
     <div class="flex items-center justify-between">
       <div>
-        <div class="btn btn-ghost text-xl"><%= link_to "LeatherPalette", root_path %></div>
+        <div class="flex flex-col items-center px-4">
+          <%= link_to image_tag("header_logo.png", width: "36", height: "36", class: "rounded-lg border border-natural hover:border-mocha"), root_path %>
+        </div>
       </div>
-        <ul class="menu menu-horizontal px-1 max-width ">
+        <ul class="menu menu-horizontal px-4 max-width ">
           <li>
             <details class="relative border rounded-lg">
               <summary class="font-medium">menu</summary>

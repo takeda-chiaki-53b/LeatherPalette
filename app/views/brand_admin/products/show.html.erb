@@ -15,7 +15,7 @@
 
 <% if current_user && current_user.own?(@product) %>
   <div class="w-full mt-10 p-4 md:px-0 md:py-2 md:w-1/2 mx-auto flex justify-between items-center">
-    <%= link_to "削除", brand_admin_product_path(@product), class: "btn w-1/3 bg-[#e5e5e5] hover:bg-[#a3a3a3] text-darkbrown", id: "button-delete-#{@product.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } %>
-    <%= link_to "編集", edit_brand_admin_product_path(@product), class: "btn w-1/3 bg-[#E6CCB585] hover:bg-[#fdba74] text-darkbrown", id: "button-edit-#{@product.id}" %>
+    <%= link_to "削除", brand_admin_product_path(@product), class: "btn w-1/3 text-darkbrown bg-gray1 hover:text-white hover:bg-gray2 border-none", id: "button-delete-#{@product.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } %>
+    <%= link_to "編集", edit_brand_admin_product_path(@product), class: "btn w-1/3 text-natural bg-mocha hover:text-darkbrown hover:bg-natural border-none", id: "button-edit-#{@product.id}" %>
   </div>
 <% end %>
