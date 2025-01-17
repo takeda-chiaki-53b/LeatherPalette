@@ -8,6 +8,14 @@ module.exports = {
   plugins: [require("daisyui")],
 
   daisyui: {
+    themes: [
+      {
+        mytheme: {
+          "neutral": "#f3eae1", //　画像選択のボタン
+          "base-100": "#fafafa", // フォームの入力エリア
+        },
+      },
+    ],
     // ダークモードをオフ
     darkTheme: false
   },
