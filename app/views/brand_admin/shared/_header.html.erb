@@ -38,7 +38,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to profile_path, class: "mb-4 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
+            <%= link_to profile_path, class: "mb-2 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-person-vcard text-xl"></i>
               <span class="ml-1"><%= t('.profile') %></span>
             <% end %>
@@ -46,13 +46,13 @@
 
           <!-- ブランドアカウント専用機能 -->
           <li class="border-t">
-            <%= link_to brand_admin_products_path, class: "mt-4 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
+            <%= link_to brand_admin_products_path, class: "mt-2 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-file-earmark-spreadsheet text-xl"></i>
               <span class="ml-1"><%= t('.products') %></span>
             <% end %>
           </li>
           <li class="border-b">
-            <%= link_to new_brand_admin_product_path, class: "mb-4 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
+            <%= link_to new_brand_admin_product_path, class: "mb-2 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
               <i class="bi bi-file-earmark-plus text-xl"></i>
               <span class="ml-1"><%= t('.product_new') %></span>
             <% end %>
@@ -61,11 +61,17 @@
 
           <li class="border-t">
             <%= link_to "https://twitter.com/intent/tweet?url=#{root_url}&text=Leather%20Palette%20革製品のエイジング共有・検索サービス%0A%23LeatherPalette_app", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア",
-            class: "mt-4 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
+            class: "my-2 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white" do %>
                 <i class="bi bi-twitter-x text-xl"></i>
                 <span class="ml-1"><%= t('.x_share') %></span>
             <% end %>
           </li>
+
+          <div class="p-2 flex flex-col items-center rounded-lg border-2">
+            <span class="text-xs">スマホ・タブレットは</span>
+            <span class="text-xs mt-1 mb-2">こちらからアクセス！</span>
+            <%= image_tag "QR.png", width: "70", height: "70" %>
+          </div>
 
           <li class="fixed bottom-4">
             <%= link_to logout_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white", data: { turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？' } do %>
