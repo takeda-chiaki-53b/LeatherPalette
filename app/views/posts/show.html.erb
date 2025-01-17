@@ -66,6 +66,7 @@
     <div class="w-4/5 text-sm break-all">
       <% if @product_name %>
         <p><%= @product_name %></p>
+        <%= image_tag(@product_image.url, class: 'w-20 h-20 rounded-lg') %>
       <% else %>
         <p>未登録</p>
       <% end %>

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
   before_action :set_brand_admins, only: %i[new create edit update]
-  before_action :set_products, only: %i[new create edit update]
+  before_action :set_products, only: %i[new create show edit update]
 
   def index
     @posts = Post.published.includes(:user).order(created_at: :desc).page(params[:page])
@@ -41,7 +41,12 @@ class PostsController < ApplicationController
     @brand_admin = User.find_by(id: @post.brand_admin_id) || begin
       @post.brand_admin_id = nil
     end
-    @product_name = Product.find_by(id: @post.product_id)&.product_name # 商品名の取得
+
+    # @productsからproduct_idに基づいて関連するproductを取得
+    @product = @products.find { |product| product.id == @post.product_id }
+    # 商品名と商品画像を取得
+    @product_name = @product&.product_name
+    @product_image = @product&.product_image
 
     # 自分の投稿ならそのまま表示し、他ユーザーの投稿であれば、公開ステータスだけを表示する
     if
