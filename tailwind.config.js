@@ -25,12 +25,6 @@ module.exports = {
         'gray1':'#e5e5e5', // 削除ボタン
         'gray2':'#a3a3a3', // 削除ボタンホバー
       },
-      fontfamily: {
-        'noto':['Noto Serif JP', 'serif'],
-        'shippori-mincho':['Shippori Mincho', 'serif'],
-        'zen-300':['Zen Kaku Gothic New', 'sans-serif'],
-        'zen-400':['Zen Kaku Gothic New', 'sans-serif'],
-      },
     }
   }
 }
