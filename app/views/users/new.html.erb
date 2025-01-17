@@ -29,7 +29,7 @@
           <%= f.password_field :password_confirmation, class: "input input-bordered form-control w-5/6 md:w-1/2 mx-auto h-10" %>
         </div>
         <div class="mx-auto w-5/6 md:w-1/2">
-          <%= f.submit "登録", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 bg-[#E6CCB585]", id: "submit_button" %>
+          <%= f.submit "登 録", class: "btn mt-8 w-full mt-6 mb-5 mx-auto h-10 text-natural bg-mocha hover:text-darkbrown hover:bg-natural border-none", id: "submit_button" %>
         </div>
       <% end %>
 
@@ -52,7 +52,7 @@
       <div class="text-center mx-auto mt-60 text-sm">ブランドアカウントの登録はこちら☟</div>
 
       <div class="flex flex-col flex-wrap flex items-center mt-2">
-        <%= link_to new_brand_admin_user_path, class: "btn btn-ghost text-center mt-3 leading-5 text-xs bg-neutral-100" do %>
+        <%= link_to new_brand_admin_user_path, class: "btn text-natural bg-mocha hover:text-darkbrown hover:bg-natural border-none text-center mt-3 leading-5 text-xs" do %>
           <span>ブランド登録入口</span>
         <% end %>
       </div>

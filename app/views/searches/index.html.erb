@@ -18,28 +18,28 @@
     <div class="flex flex-wrap justify-between w-5/6 mx-auto mb-6">
 
       <div class="flex flex-col items-center">
-        <div class="flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" data-action="click->search#select" data-condition="brand">
+        <div class="flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:text-natural hover:bg-mocha" data-action="click->search#select" data-condition="brand">
           <i class="bi bi-tag text-2xl"></i>
         </div>
         <span class="mt-2 text-sm text-center">ブランド</span>
       </div>
 
       <div class="flex flex-col items-center">
-        <div class="flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" data-action="click->search#select" data-condition="used_year">
+        <div class="flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:text-natural hover:bg-mocha" data-action="click->search#select" data-condition="used_year">
           <i class="bi bi-clock-history text-2xl"></i>
         </div>
         <span class="mt-2 text-sm text-center">使用年数</span>
       </div>
 
       <div class="flex flex-col items-center">
-        <div class="flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" data-action="click->search#select" data-condition="color">
+        <div class="flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:text-natural hover:bg-mocha" data-action="click->search#select" data-condition="color">
           <i class="bi bi-palette text-2xl"></i>
         </div>
         <span class="mt-2 text-sm text-center">カラー</span>
       </div>
 
       <div class="flex flex-col items-center">
-        <div class="flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:bg-[#fdba74]" data-action="click->search#select" data-condition="refine">
+        <div class="flex items-center justify-center w-24 h-24 rounded-full bg-neutral-100 hover:text-natural hover:bg-mocha" data-action="click->search#select" data-condition="refine">
           <i class="bi bi-sliders text-2xl "></i>
         </div>
         <span class="mt-2 text-sm text-center">絞り込み</span>
@@ -54,28 +54,28 @@
       <div class="flex flex-wrap justify-between w-5/6 mx-auto">
 
         <div class="flex flex-col items-center">
-          <div class="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" data-action="click->search#select" data-condition="brand">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:text-natural hover:bg-mocha" data-action="click->search#select" data-condition="brand">
             <i class="bi bi-tag text-xl"></i>
           </div>
           <span class="mt-2 text-xs text-center">ブランド</span>
         </div>
 
         <div class="flex flex-col items-center">
-          <div class="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" data-action="click->search#select" data-condition="used_year">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:text-natural hover:bg-mocha" data-action="click->search#select" data-condition="used_year">
             <i class="bi bi-clock-history text-xl"></i>
           </div>
           <span class="mt-2 text-xs text-center">使用年数</span>
         </div>
 
         <div class="flex flex-col items-center">
-          <div class="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" data-action="click->search#select" data-condition="color">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:text-natural hover:bg-mocha" data-action="click->search#select" data-condition="color">
             <i class="bi bi-palette text-xl"></i>
           </div>
           <span class="mt-2 text-xs text-center">カラー</span>
         </div>
 
         <div class="flex flex-col items-center">
-          <div class="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:bg-[#fdba74]" data-action="click->search#select" data-condition="refine">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full bg-neutral-100 hover:text-natural hover:bg-mocha" data-action="click->search#select" data-condition="refine">
             <i class="bi bi-sliders text-xl "></i>
           </div>
           <span class="mt-2 text-xs text-center">絞り込み</span>
@@ -95,7 +95,7 @@
         </tr>
         <tbody>
           <% @brand_admins.each do |brand| %>
-            <tr class="hover:bg-[#fdba74]">
+            <tr class="hover:bg-natural">
               <td class="flex items-center cursor-pointer" onclick="this.querySelector('form').submit();">
                 <%= image_tag(brand.avatar_url, alt: "#{brand.name}のアバター", class: "w-10 h-10 rounded-full border mr-2") %>
                 <%= form_with url: result_searches_path, method: :post, data: { turbo: false } do |f| %>
@@ -134,7 +134,7 @@
             ["10年以上", "10年以上"],
           ] %>
           <% year_choices.each do |year_text| %>
-            <tr class="hover:bg-[#fdba74]">
+            <tr class="hover:bg-natural">
               <td>
                 <%= form_with url: result_searches_path, method: :post, data: { turbo: false } do |f| %>
                   <%= f.hidden_field :used_year, value: year_text[0] %>
@@ -172,7 +172,7 @@
             ["パープル系", "パープル系"],
           ] %>
           <% color_choices.each do |color_text| %>
-            <tr class="hover:bg-[#fdba74]">
+            <tr class="hover:bg-natural">
               <td>
                 <%= form_with url: result_searches_path, method: :post, data: { turbo: false } do |f| %>
                   <%= f.hidden_field :color, value: color_text[0] %>
@@ -250,7 +250,7 @@
         </div>
 
         <div class='mx-auto w-11/12 md:w-1/2'>
-        <%= f.submit "選択した条件で検索", class: "btn mt-10 w-full mb-5 mx-auto h-10 bg-[#E6CCB585] hover:bg-[#fdba74]" %>
+        <%= f.submit "選択した条件で検索", class: "btn mt-10 w-full mb-5 mx-auto h-10 text-natural bg-mocha hover:text-darkbrown hover:bg-natural border-none" %>
         </div>
       <% end %>
     </div>
