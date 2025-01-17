@@ -43,11 +43,11 @@
 
 <!-- ブランド -->
 <div class="brand">
-  <div class="flex w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto">
-    <div class="w-1/5 text-xs">
-      <p>ブランド /</p>
+  <div class="w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto">
+    <div class="inline-block text-xs px-1 rounded-xl bg-natural">
+      <p>ブランド</p>
     </div>
-    <div class="w-4/5 text-sm break-all">
+    <div class="text-sm break-all mb-2">
       <% if @brand_admin %>
         <p><%= @brand_admin.name %></p>
       <% else %>
@@ -59,11 +59,11 @@
 
 <!-- 商品情報 -->
 <div class="product">
-  <div class="flex w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto">
-    <div class="w-1/5 text-xs">
-      <p>商品名　 /</p>
+  <div class="w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto">
+    <div class="inline-block text-xs px-1 rounded-xl bg-natural">
+      <p>商品名</p>
     </div>
-    <div class="w-4/5 text-sm break-all">
+    <div class="text-sm break-all mb-2">
       <% if @product_name %>
         <p><%= @product_name %></p>
         <%= image_tag(@product_image.url, class: 'w-20 h-20 rounded-lg') %>
@@ -76,11 +76,11 @@
 
 <!-- 使用年数 -->
 <div class="used_year">
-  <div class="flex w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto">
-    <div class="w-1/5 text-xs">
-      <p>使用年数 /</p>
+  <div class="w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto">
+    <div class="inline-block text-xs px-1 rounded-xl bg-natural">
+      <p>使用年数</p>
     </div>
-    <div class="w-4/5 text-sm">
+    <div class="text-sm mb-2">
       <% if @post.used_year.present? %>
         <p><%= @post.used_year %></p>
       <% else %>
@@ -92,11 +92,11 @@
 
 <!-- カラー -->
 <div class="color">
-  <div class="flex w-full px-4 pt-4 pb-10 md:px-0 md:pt-4 md:pb-10 md:w-1/2 mx-auto">
-    <div class="w-1/5 text-xs">
-      <p>カラー　 /</p>
+  <div class="w-full px-4 pt-4 pb-10 md:px-0 md:pt-4 md:pb-10 md:w-1/2 mx-auto">
+    <div class="inline-block text-xs px-1 rounded-xl bg-natural">
+      <p>カラー</p>
     </div>
-    <div class="w-4/5 text-sm">
+    <div class="text-sm">
       <% if @post.color.present? %>
         <p><%= @post.color %></p>
       <% else %>
@@ -114,11 +114,11 @@
 
 <!-- 頻度 -->
 <div class="care_frequency">
-  <div class="flex w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto">
-    <div class="w-1/5 text-xs">
-      <p>ケア頻度 /</p>
+  <div class="w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto">
+    <div class="inline-block text-xs px-1 rounded-xl bg-natural">
+      <p>ケア頻度</p>
     </div>
-    <div class="w-4/5  text-sm">
+    <div class="text-sm mb-2">
       <% if @post.care_frequency.present? %>
         <p><%= @post.care_frequency %></p>
       <% else %>
@@ -133,12 +133,12 @@
 <!-- ケアアイテム -->
 <div class="care_item">
   <div class="w-full px-4 pt-4 md:px-0 md:pt-4 md:w-1/2 mx-auto">
-    <div class="text-xs mb-1">
-      <p>ケア用品 /</p>
+    <div class="inline-block text-xs px-1 rounded-xl bg-natural">
+      <p>ケア用品</p>
     </div>
-    <div class="text-sm">
+    <div class="text-sm mb-2">
       <% if @post.care_item.present? %>
-        <div class="break-words rounded-lg border border-neutral-200 p-2 w-full">
+        <div class="break-words w-full">
           <p><%= simple_format(h(@post.care_item)) %></p>
         </div>
       <% else %>
@@ -153,12 +153,12 @@
 <!-- ケア方法 -->
 <div class="care_howto">
   <div class="w-full px-4 pt-4 pb-10 md:px-0 md:pt-4 md:pb-10 md:w-1/2 mx-auto text-sm">
-    <div class="text-xs mb-1">
-      <p>ケア方法 /</p>
+    <div class="inline-block text-xs px-1 rounded-xl bg-natural">
+      <p>ケア方法</p>
     </div>
     <div class="text-sm">
       <% if @post.care_howto.present? %>
-        <div class="break-words rounded-lg border border-neutral-200 p-2 w-full">
+        <div class="break-words w-full">
           <p><%= simple_format(h(@post.care_howto))%></p>
         </div>
       <% else %>

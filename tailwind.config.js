@@ -19,7 +19,8 @@ module.exports = {
         'beige':'#dbd1c7',
         'mocha':'#847366',
         'darkbrown':'#5f534a',
-        'orange':'#d69b71'
+        'orange':'#d69b71',
+        'natural':'#f3eae1',
       },
       fontfamily: {
         'noto':['Noto Serif JP', 'serif'],
