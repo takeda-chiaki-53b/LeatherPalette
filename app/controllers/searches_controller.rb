@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  skip_before_action :require_login, only: %i[index result]
+  skip_before_action :require_login, only: %i[index result product_select]
   before_action :set_brand_admins, only: %i[index result]
 
   def index
