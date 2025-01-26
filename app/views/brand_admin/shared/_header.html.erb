@@ -73,8 +73,8 @@
             <%= image_tag "QR.png", width: "70", height: "70" %>
           </div>
 
-          <li class="fixed bottom-4">
-            <%= link_to logout_path, class: "btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white", data: { turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？' } do %>
+          <li class="border-t mt-4">
+            <%= link_to logout_path, class: "mt-4 btn btn-ghost flex items-center text-sm rounded-lg justify-start hover:bg-white", data: { turbo_method: :delete, turbo_confirm: 'ログアウトしてもよろしいですか？' } do %>
               <i class="bi bi-box-arrow-left text-xl"></i>
               <span class="ml-1"><%= t('.logout') %></span>
             <% end %>
