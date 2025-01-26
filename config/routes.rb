@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     get "product_select", on: :member
     collection do
       post :result  # collectionを使い、リソース全体に対してのアクションとして扱う
+      get :result
     end
   end
 
