@@ -36,7 +36,7 @@ class SearchesController < ApplicationController
 
   def product_select
     @brand = User.find(params[:id])
-    @products = @brand.products
+    @products = @brand.products.order(product_name: :asc)
 
     respond_to do |format|
       format.json { render json: @products }
