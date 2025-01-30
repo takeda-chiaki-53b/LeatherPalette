@@ -65,7 +65,7 @@
 | 開発環境 | Docker |
 | 認証 | Sorcery / Googleログイン |
 
-## ■ 画面遷移図 #後で修正
+## ■ 画面遷移図
 https://www.figma.com/design/jnOgeZSlBRqvVxVc4GKm6W/%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA?node-id=15-2&t=7VhAFGoEFCTfJDu4-1
 
 ## ■ ER図
