@@ -37,20 +37,20 @@
 
 /* フラッシュで使用 */
 .fade-out {
-  opacity: 0; /* 要素の透明度を設定するプロパティ。0は完全に透明、つまり見えない状態 */
-  transition: opacity 0.5s ease; /* アニメーションの設定。opacity（透明度）が変わるときの早さを指定。0.5秒でフェードアウト */
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 /* 投稿フォームのラジオボタン */
 .custom-radio {
-  appearance: none; /* デフォルトのスタイルを無効化 */
-  width: 1.25rem; /* h-5ぐらい＝1.25remを指定 */
-  height: 1.25rem; /* h-5ぐらい＝1.25remを指定 */
-  border: 1px solid #847366; /* ボーダー色の設定 */
-  border-radius: 50%; /* 円形にする */
-  outline: none; /* フォーカス時のアウトラインを無効化 */
-  cursor: pointer; /* カーソルをポインターに */
-  position: relative; /* 子要素の位置を相対的に設定 */
+  appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid #847366;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
 }
 
 .custom-radio:checked {
@@ -58,13 +58,13 @@
 }
 
 .custom-radio:checked::before {
-  content: ''; /* 擬似要素のコンテンツを空にする */
-  position: absolute; /* 親要素に対して絶対配置 */
-  top: 50%; /* 親要素の中央に配置 */
-  left: 50%; /* 親要素の中央に配置 */
-  transform: translate(-50%, -50%); /* 中央揃え */
-  width: 0.75rem; /* チェックの円のサイズ */
-  height: 0.75rem; /* チェックの円のサイズ */
-  border-radius: 50%; /* 円形にする */
-  background-color: #5f534a; /* チェックマークの色 */
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: #5f534a;
 }
