@@ -35,7 +35,7 @@
 ### ログイン後に使用可能な機能(一般ユーザー、ブランド権限共通)
 | 投稿作成 | 非公開・下書き保存 | お気に入り登録 |
 | ---- | ---- | ---- |
-|<img src="https://i.gyazo.com/79f5ec37e5dec44d5b9e136d69e28157.gif" alt="Image from Gyazo"/> | <img src="https://i.gyazo.com/478996a25109f76b77d095d4ce9e23f9.gif" alt="Image from Gyazo"/> | <img src="https://i.gyazo.com/ca3a92a5df2f33e3b4232df139061e0a.gif" alt="Image from Gyazo"/> |
+|<img src="https://i.gyazo.com/bba7fa2b9ff166c77f4ff146f6995c04.gif" alt="Image from Gyazo"/> | <img src="https://i.gyazo.com/478996a25109f76b77d095d4ce9e23f9.gif" alt="Image from Gyazo"/> | <img src="https://i.gyazo.com/ca3a92a5df2f33e3b4232df139061e0a.gif" alt="Image from Gyazo"/> |
 | 画像、キャプション、アイテム情報、お手入れ情報の登録が可能です。 | 投稿のステータスを非公開、下書き保存にした場合はマイページから閲覧できます。 | 投稿一覧または投稿詳細画面でお気に入りに登録ができます。<br>また、お気に入りに登録した投稿を一覧で確認できます。 |
 
 | マイページ | 登録情報の編集 |
