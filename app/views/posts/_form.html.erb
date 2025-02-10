@@ -4,6 +4,7 @@
   <!-- 投稿画像 -->
   <div data-controller="image-preview" data-image-preview-width="250" data-image-preview-height="250">
     <%= f.label :post_image, '画像選択', class: 'label w-5/6 md:w-1/2 mx-auto pt-5 font-medium'%>
+    <p class="text-start text-sm w-5/6 md:w-1/2 mx-auto">（推奨サイズ：1080×1080pxの正方形）</p>
     <%= f.file_field :post_image, class: 'file-input file-input-bordered form-control w-5/6 md:w-1/2 mx-auto text-sm', accept: 'image/*', data: { "image-preview-target": "input", action: "change->image-preview#previewImage"} %>
     <%= f.hidden_field :post_image_cache %>
 
