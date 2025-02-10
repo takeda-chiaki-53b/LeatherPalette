@@ -18,9 +18,6 @@ export default class extends Controller {
     }
 
     // filesは<input type="file"> 要素で選択されているファイルのリスト
-    // filesは空でもFileListオブジェクトは存在するのでtrueとなる
-    // files[0]はfilesリストの最初の要素を示している。
-    // 「ユーザーが少なくとも1つのファイルを選択していて、それにアクセスできる状態である」という条件文
     if (files && files[0]) {
     const reader = new FileReader() // 変数readerをFileReaderオブジェクトとして定義。非同期にファイルを読み込むことができる
 
@@ -28,15 +25,8 @@ export default class extends Controller {
     reader.onload = (e) => {
         preview.innerHTML = `<img src="${e.target.result}" style="max-width: ${width}px; max-height: ${height}px;">`;
         }
-        // previewのターゲット要素にHTMLを追加する
-        // e.target.resultには読み込んだファイルの内容が含まれており、これはBase64エンコーディングされたデータURLの形式で提供される
-        // このデータURLを画像のsrc属性に設定することで、ブラウザ上に画像を直接表示することが可能になる
+
     reader.readAsDataURL(files[0])
-    // readerに対してreadAsDataURLメソッドを使う
-    // readAsDataURLメソッドはfileの内容を読み込み、データURLとして返す(Base64エンコーディングされた文字列)メソッド
-    // ユーザーがfilesからファイルを選択した時、そのファイルはfiles配列の0番目に格納されるので内容を非同期に読み込み、その内容をデータURLとして保持
-    // 読み込みが完了すると、FileReader オブジェクトの onload イベントが発火
-    // 読み込まれたファイルのデータは e.target.result を通じてアクセス可能になる
     }
   }
 }
