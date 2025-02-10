@@ -12,7 +12,7 @@ RSpec.describe "Users", type: :system do
           fill_in "メールアドレス", with: "email@example.com"
           fill_in "パスワード", with: "password"
           fill_in "パスワード再入力", with: "password"
-          click_button "登録"
+          click_button "登 録"
           expect(page).to have_content "ユーザー登録が完了しました"
           expect(current_path).to eq posts_path
         end
@@ -25,7 +25,7 @@ RSpec.describe "Users", type: :system do
           fill_in "メールアドレス", with: ""
           fill_in "パスワード", with: "password"
           fill_in "パスワード再入力", with: "password"
-          click_button "登録"
+          click_button "登 録"
           expect(page).to have_content "ユーザー登録に失敗しました"
           expect(page).to have_content "メールアドレスを入力してください"
           expect(current_path).to eq users_path # renderメソッドで再表示させる為、new_user_pathへのリダイレクトではない。
@@ -40,7 +40,7 @@ RSpec.describe "Users", type: :system do
           fill_in "メールアドレス", with: "email@example.com"
           fill_in "パスワード", with: "password"
           fill_in "パスワード再入力", with: "password"
-          click_button "登録"
+          click_button "登 録"
           expect(page).to have_content "ユーザー登録に失敗しました"
           expect(page).to have_content "メールアドレス：このメールアドレスは使用できません。別のメールアドレスをご入力ください。"
           expect(current_path).to eq users_path
