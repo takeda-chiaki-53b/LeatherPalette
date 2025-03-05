@@ -16,6 +16,7 @@
         </div>
 
         <%= f.label :avatar, class: "label w-full mx-auto text-sm" %>
+        <p class="text-start text-sm">（推奨サイズ：320×320px）</p>
         <%= f.file_field :avatar, class: 'file-input file-input-bordered form-control w-full mx-auto', accept: 'image/*' %>
         <%= f.hidden_field :avatar_cache %>
       </div>
