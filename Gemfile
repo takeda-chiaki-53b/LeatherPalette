@@ -48,7 +48,7 @@ gem "rails-i18n", "~> 7.0.10"
 gem "carrierwave", "~> 3.1"
 
 # production_upload_images
-gem "fog-aws", "3.30.0"
+gem "fog-aws", "3.31.0"
 
 # Railsアプリケーションで設定情報を管理する(APIキーやコールバックURLなど、環境ごとに異なる設定を行う)ためのgem
 gem "config"
